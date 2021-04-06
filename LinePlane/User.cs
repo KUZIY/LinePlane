@@ -10,8 +10,12 @@ namespace LinePlane
     {
         public int Id { get; set; }
 
-        private string _Login,  _Email;
+
+
+        private string _Login;
         private int _Password;
+        private string _Email;
+
 
         public string Login
         {

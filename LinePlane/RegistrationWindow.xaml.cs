@@ -76,9 +76,11 @@ namespace LinePlane
                 EmailField.ToolTip = "";
                 EmailField.Background = Brushes.Transparent;
 
+                int HashPassword = password.GetHashCode();
+
                 MessageBox.Show("Зарегистрирован");
 
-                User user = new User(login, password, email);
+                User user = new User(login, HashPassword, email);
 
                 DB.Users.Add(user);
                 DB.SaveChanges();

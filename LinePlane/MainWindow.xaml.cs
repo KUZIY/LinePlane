@@ -24,8 +24,9 @@ namespace LinePlane
     {
         public Line line;
         private bool First_clic = true;
-        RegistrationWindow Registration;
-        EnterWindow Avtoauthorization;
+        private RegistrationWindow Registration;
+        private EnterWindow Avtoauthorization;
+        private List<Object> Buffer;
 
         private readonly List<Line> _lines = new List<Line>();
         public MainWindow()
@@ -73,11 +74,20 @@ namespace LinePlane
             }
             else
             {
-                if (line.X2 - line.X1 < 40 && line.X2 - line.X1>-40)
+                int rounding_value = (int)Math.Sqrt(Math.Pow(line.X2 - line.X1, 2) + Math.Pow(line.Y2 - line.Y1, 2));
+
+                if (rounding_value > 50)
+                {
+                    rounding_value = 50;
+                }
+
+                //foreach(var line in canvas.Children line.Where(X=>))
+
+                if (line.X2 - line.X1 < rounding_value && line.X2 - line.X1> -rounding_value)
                 {
                     line.X2 = line.X1;
                 }
-                if (line.Y2 - line.Y1 < 40 && line.Y2 - line.Y1 > -40)
+                if (line.Y2 - line.Y1 < rounding_value && line.Y2 - line.Y1 > -rounding_value)
                 {
                     line.Y2 = line.Y1;
                 }
