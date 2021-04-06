@@ -87,6 +87,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AplicationContext.cs" />
+    <Compile Include="Furniture.cs" />
     <Compile Include="User.cs" />
     <Page Include="EnterWindow.xaml">
       <SubType>Designer</SubType>
