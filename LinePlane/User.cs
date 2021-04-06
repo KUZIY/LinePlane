@@ -10,7 +10,9 @@ namespace LinePlane
     {
         public int Id { get; set; }
 
-        private string _Login, _Password, _Email;
+        private string _Login;
+        private int _Password;
+        private string _Email;
 
         public string Login
         {
@@ -24,7 +26,7 @@ namespace LinePlane
             set { _Email = value; }
         }
 
-        public string Password
+        public int Password
         {
             get { return _Password; }
             set { _Password = value; }
@@ -32,7 +34,7 @@ namespace LinePlane
 
         public User() { }
 
-        public User(string login, string pass, string email)
+        public User(string login, int pass, string email)
         {
             _Login = login;
             _Password = pass;
