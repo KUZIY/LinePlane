@@ -30,11 +30,11 @@
 
                 </Grid>
 
-                <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Повторно введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <Button HorizontalAlignment="Center"  Content="Зарегистрироваться" Margin="0 20"/>
+                <TextBox x:Name="RegistrationField" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <PasswordBox x:Name="PasswordField1" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <PasswordBox x:Name="PasswordField2" materialDesign:HintAssist.Hint="Повторно введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <TextBox x:Name="EmailField" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Button HorizontalAlignment="Center"  Content="Зарегистрироваться" Margin="0 20" Click="Registration_button"/>
 
             </StackPanel>
 

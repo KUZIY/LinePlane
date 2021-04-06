@@ -6,58 +6,33 @@
         xmlns:local="clr-namespace:LinePlane"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="LinePlane" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow"
-        MinWidth="400" MinHeight="300"
-        
+        Title="FloorPlan" WindowStartupLocation="CenterScreen" 
+         WindowState="Maximized"  
+        MinHeight="576"
+        MinWidth="1000" WindowStyle="ThreeDBorderWindow"
+        Icon="/Image/Icon.png"
         >
 
-    <Grid Background="#FF292929" >
 
-        <Grid.ColumnDefinitions>
-
-
-
-            <ColumnDefinition Width="101*"/>
-            <ColumnDefinition Width="395*"/>
-
-
-
-        </Grid.ColumnDefinitions>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="200*"/>
-
+            <RowDefinition Height="43*" />
+            <RowDefinition Height="222*" />
+            <RowDefinition Height="35*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*" />
+            <ColumnDefinition Width="634*" />
+            <ColumnDefinition Width="83*" />
+        </Grid.ColumnDefinitions>
 
-        <Button MinWidth="50" Margin="15,15,0,0" Background="#CCFFFFFF" VerticalAlignment="Top"  MinHeight="50" MaxHeight="100" Width="60" Height="60"
-                MaxWidth="100" Click="Button_Window_Menu_Click" HorizontalAlignment="Left" RenderTransformOrigin="0.47,0.54"  x:Name="MenuButton" 
-               >
+        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4">
 
-            <StackPanel Orientation=" Horizontal" HorizontalAlignment="Center">
-                <Image Source="/Image/MenuImage.png" Margin="0,0,0,0" Stretch="Uniform" HorizontalAlignment="Center" Width="46" Visibility="Visible" RenderTransformOrigin="0.5,0.5"/>
-            </StackPanel>
-
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
-            </Button.Effect>
-        </Button>
+        </Canvas>
 
 
-        <Border MinWidth="200" MaxWidth="500" MinHeight="400" MaxHeight="600" Background="White" CornerRadius="15" Grid.Row="0" Margin="10,90,0,0" HorizontalAlignment="Left" Width="221" VerticalAlignment="Top" Grid.ColumnSpan="2" x:Name="MenyStrip" Opacity="0.9" Height="416" Visibility="Hidden">
-            <Grid>
-                <Button Background="#CCFFFFFF" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="0,0,0,10" Height="46" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_registration_Click" Width="124">
-
-                    Регистрация
-
-                </Button>
-
-                <Button Background="#CCFFFFFF" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="0,0,0,10" Height="46" FontSize="16" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_enter_Click" Width="92">
-
-                    Вход
-
-                </Button>
-            </Grid>
-        </Border>
+        <Ellipse Fill="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="2" Grid.Row="0" MaxHeight="70" MaxWidth="70" MinHeight="30" MinWidth="30" Height="Auto" Width="Auto"  Margin="13,10,10,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
     </Grid>
 

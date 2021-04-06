@@ -22,7 +22,7 @@
 
             <StackPanel>
 
-                <TextBlock Text="Привет!" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                <TextBlock Text="С возвращением" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 30"/>
 
                 <Grid Margin="0 0 0 20">
 
@@ -30,9 +30,9 @@
 
                 </Grid>
 
-                <TextBox materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <Button HorizontalAlignment="Center"  Content="Войти" Margin="224,20"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="LoginField" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="PasswordField" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <Button HorizontalAlignment="Center"  Content="Войти" Margin="224,20" Click="EnterButtonClic"/>
 
             </StackPanel>
 

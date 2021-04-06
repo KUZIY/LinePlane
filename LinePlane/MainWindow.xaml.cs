@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Shapes;    
 using System.Windows.Media.Animation;
 using System.Timers;
 
@@ -22,40 +22,17 @@ namespace LinePlane
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Line line;
+        private bool First_clic = true;
+
+        private readonly List<Line> _lines = new List<Line>();
         public MainWindow()
         {
             InitializeComponent();
         }
+ 
 
-        private void Button_Window_Menu_Click(object sender, RoutedEventArgs e)
-        {
-            
 
-            if (MenuButton.FontSize!=10)
-            {
-                DoubleAnimation animation = new DoubleAnimation();
-                animation.From = 0;
-                animation.To = 90;
-                animation.Duration = TimeSpan.FromSeconds(0.1);
-                RotateTransform rt = new RotateTransform() { CenterX = 0, CenterY = 0 };
-                MenuButton.RenderTransform = rt;
-                rt.BeginAnimation(RotateTransform.AngleProperty, animation);
-                MenuButton.FontSize = 10;
-                MenyStrip.Visibility = Visibility.Visible;
-            }   
-            else
-            {
-                DoubleAnimation animation = new DoubleAnimation();
-                animation.From = 90;
-                animation.To = 0;
-                animation.Duration = TimeSpan.FromSeconds(0.1);
-                RotateTransform rt = new RotateTransform() { CenterX = 0, CenterY = 0 };
-                MenuButton.RenderTransform = rt;
-                rt.BeginAnimation(RotateTransform.AngleProperty, animation);
-                MenuButton.FontSize = 20;
-                MenyStrip.Visibility = Visibility.Hidden;
-            }
-        }
 
         private void Button_registration_Click(object sender, RoutedEventArgs e)
         {
@@ -68,5 +45,73 @@ namespace LinePlane
            EnterWindow Avtoauthorization = new EnterWindow();
             Avtoauthorization.Show();
         }
+
+
+        private void SetLinePosition(MouseEventArgs e)
+        {
+            if(line == null) return;
+
+            if (First_clic == false)
+            {
+
+                line.X2 = Mouse.GetPosition(this).X - canvas.Margin.Left;
+                line.Y2 = Mouse.GetPosition(this).Y - canvas.Margin.Top;
+                if (line.X2 - line.X1 < 10)
+                {
+                   
+                }
+            }
+            else
+            {
+                if (line.X2 - line.X1 < 40 && line.X2 - line.X1>-40)
+                {
+                    line.X2 = line.X1;
+                }
+                if (line.Y2 - line.Y1 < 40 && line.Y2 - line.Y1 > -40)
+                {
+                    line.Y2 = line.Y1;
+                }
+
+                line = null;
+               
+            }
+
+        }
+
+        
+
+        private void Canvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            if (First_clic)
+            {
+                line = new Line()
+                {
+                    X1 = (line == null) ? Mouse.GetPosition(this).X - canvas.Margin.Left : line.X2,
+                    Y1 = (line == null) ? Mouse.GetPosition(this).Y - canvas.Margin.Top : line.Y2,
+                    X2 = Mouse.GetPosition(this).X - canvas.Margin.Left,
+                    Y2 = Mouse.GetPosition(this).Y - canvas.Margin.Top
+                };
+
+                line.Stroke = new SolidColorBrush(Colors.Black);
+
+                line.StrokeThickness = 10;
+
+                _lines.Add(line);
+                canvas.Children.Add(line);
+            }
+
+            First_clic = !First_clic;
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            SetLinePosition(e); //обновляем линию
+        }
+
+        private void User_Button(object sender, MouseEventArgs e) { 
+        
+        }
+
     }
 }
