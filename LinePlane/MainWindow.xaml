@@ -11,6 +11,7 @@
         MinHeight="576"
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
         Icon="/Image/Icon.png"
+        KeyDown="Cancel"
         >
 
 
@@ -22,17 +23,32 @@
             <RowDefinition Height="35*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="275*" />
-            <ColumnDefinition Width="634*" />
-            <ColumnDefinition Width="83*" />
+            <ColumnDefinition Width="211*" />
+            <ColumnDefinition Width="452*" />
+            <ColumnDefinition Width="97*" />
         </Grid.ColumnDefinitions>
 
-        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4">
+        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="3" Grid.RowSpan="3" PreviewMouseRightButtonDown="Abort_Line" >
 
         </Canvas>
 
 
-        <Ellipse Fill="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="2" Grid.Row="0" MaxHeight="70" MaxWidth="70" MinHeight="30" MinWidth="30" Height="Auto" Width="Auto"  Margin="13,10,10,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Ellipse Fill="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="2" Grid.Row="0" MaxHeight="70" MaxWidth="70" MinHeight="30" MinWidth="30" Height="Auto" Width="Auto"  Margin="13,10,10,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+
+
+        </Ellipse>
+
+        <Border Grid.Row="1" Grid.Column="2" Background="#66292929" x:Name="User_Border" CornerRadius="10" Visibility="Hidden" >
+            <StackPanel>
+            <Button Background="#FF292929"  Margin="26,0" Height="24" FontSize="16" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_enter_Click" Width="45"/>
+            <Button Background="#FF292929"   VerticalAlignment="Bottom" Margin="0,50,0,10" Height="46" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_registration_Click" Width="54"/>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"  Height="100" Width="20" Style="{StaticResource MaterialDesignFlatButton}" Background="#FF292929" >
+            
+        </Button>
 
     </Grid>
 

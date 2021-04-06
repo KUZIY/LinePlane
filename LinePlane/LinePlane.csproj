@@ -87,7 +87,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AplicationContext.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="User.cs" />
     <Page Include="EnterWindow.xaml">
       <SubType>Designer</SubType>
@@ -151,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

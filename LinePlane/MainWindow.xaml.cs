@@ -24,25 +24,35 @@ namespace LinePlane
     {
         public Line line;
         private bool First_clic = true;
+        RegistrationWindow Registration;
+        EnterWindow Avtoauthorization;
 
         private readonly List<Line> _lines = new List<Line>();
         public MainWindow()
         {
             InitializeComponent();
         }
- 
+
 
 
 
         private void Button_registration_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow Avtoauthorization = new RegistrationWindow();
-            Avtoauthorization.Show();
+            if (Registration == null)
+            {
+                Registration = new RegistrationWindow();
+            }
+            Registration.Show();
+
         }
 
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
-           EnterWindow Avtoauthorization = new EnterWindow();
+            if (Avtoauthorization == null)
+            {
+                Avtoauthorization = new EnterWindow();
+            }
+
             Avtoauthorization.Show();
         }
 
@@ -104,14 +114,44 @@ namespace LinePlane
             First_clic = !First_clic;
         }
 
+        private void Abort_Line(object sender, MouseButtonEventArgs e)
+        {
+            if (line != null)
+            {
+                line = null;
+                Delete_last_canvas_Obj();
+                First_clic = true;
+            }
+        }
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             SetLinePosition(e); //обновляем линию
         }
 
-        private void User_Button(object sender, MouseEventArgs e) { 
-        
+        private void User_Button(object sender, MouseEventArgs e) {
+            if (User_Border.Visibility == Visibility.Hidden)
+                User_Border.Visibility = Visibility.Visible;
+            else
+                User_Border.Visibility = Visibility.Hidden;
         }
 
+        private void Cancel(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
+            {
+                if (e.Key == Key.Z)
+                {
+                    Delete_last_canvas_Obj();
+                }
+            }
+        }
+
+        private void Delete_last_canvas_Obj()
+        {
+            int cnt = canvas.Children.Count;
+
+            if(cnt>0)
+            canvas.Children.RemoveAt(cnt - 1);
+        }
     }
 }
