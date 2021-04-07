@@ -74,7 +74,7 @@ namespace LinePlane
             }
             else
             {
-                int rounding_value = (int)Math.Sqrt(Math.Pow(line.X2 - line.X1, 2) + Math.Pow(line.Y2 - line.Y1, 2));
+                int rounding_value = (int)Math.Sqrt(Math.Pow(line.X2 - line.X1, 2) + Math.Pow(line.Y2 - line.Y1, 2))/5;
 
                 if (rounding_value > 50)
                 {
