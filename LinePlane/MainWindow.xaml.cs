@@ -32,6 +32,7 @@ namespace LinePlane
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
 
@@ -163,5 +164,39 @@ namespace LinePlane
             if(cnt>0)
             canvas.Children.RemoveAt(cnt - 1);
         }
+        
+        private void ToolBar_Button(object sender, EventArgs e)
+        {
+            DoubleAnimation buttonAnim = new DoubleAnimation();
+
+           
+
+
+            if (Tool_grid.Width==20)
+            {
+                buttonAnim.From = 20;
+                buttonAnim.To = 125;
+                buttonAnim.Duration = TimeSpan.FromSeconds(2);
+                Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
+                buttonAnim.From = 0;
+                buttonAnim.To = 105;
+                ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
+               
+            }
+            else
+            {
+                buttonAnim.From = 125;
+                buttonAnim.To = 20;
+                buttonAnim.Duration = TimeSpan.FromSeconds(2);
+                Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
+
+                buttonAnim.From = 105;
+                buttonAnim.To = 0;
+                buttonAnim.Duration = TimeSpan.FromSeconds(3);
+                ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
+            }
+
+        }
+        
     }
 }
