@@ -26,7 +26,6 @@ namespace LinePlane
         private bool First_clic = true;
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
-        private List<Object> Buffer;
 
         private readonly List<Line> _lines = new List<Line>();
         public MainWindow()
@@ -82,7 +81,11 @@ namespace LinePlane
                     rounding_value = 50;
                 }
 
-                //foreach(var line in canvas.Children line.Where(X=>))
+                if (rounding_value < 4)
+                {
+                    rounding_value = 4;
+                }
+
 
                 if (line.X2 - line.X1 < rounding_value && line.X2 - line.X1> -rounding_value)
                 {
