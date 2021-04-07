@@ -44,15 +44,18 @@
 
         <Border Grid.Row="1" Grid.Column="2" Background="#66292929" x:Name="User_Border" CornerRadius="10" Visibility="Hidden" >
             <StackPanel>
-            <Button Background="#FF292929"  Margin="26,0" Height="24" FontSize="16" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_enter_Click" Width="45"/>
-            <Button Background="#FF292929"   VerticalAlignment="Bottom" Margin="0,50,0,10" Height="46" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_registration_Click" Width="54"/>
+                <Button Background="#FF292929"  Margin="26,0" Height="24" FontSize="16" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_enter_Click" Width="45"/>
+                <Button Background="#FF292929"   VerticalAlignment="Bottom" Margin="0,50,0,10" Height="46" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_registration_Click" Width="54"/>
             </StackPanel>
         </Border>
 
-        <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"  Height="100" Width="20" Style="{StaticResource MaterialDesignFlatButton}" Background="#FF292929" >
-            
+        <Grid  Grid.Column="0" Grid.Row="1" Width="20" HorizontalAlignment="Left" x:Name="Tool_grid">
+        <Button x:Name="ButtonTB" Click="ToolBar_Button"   HorizontalAlignment="Right"  Height="100" Width="20" Style="{StaticResource MaterialDesignFlatButton}" Background="#FF292929" >
+
         </Button>
 
+        <Border Background="#66292929" x:Name="ToolBAr_Border" CornerRadius="5" Visibility="Visible" Margin="0,0,105,0" Grid.Row="1" Width="0" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 
 </Window>
