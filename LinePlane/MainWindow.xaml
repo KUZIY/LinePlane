@@ -36,8 +36,10 @@
             <Border BorderBrush="Black" BorderThickness="0" Height="62" Width="1427" Background="#66292929" Grid.Row="1"/>
         </Canvas>
 
-        <Button  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
-            <Image Source="Image/next.png" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+
+        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
+            <Image Source="Image/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -48,19 +50,21 @@
                 </Image.RenderTransform>
             </Image>
         </Button>
-        <Button  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center">
-            <Image Source="Image/next.png" Height="29" Width="27" />
-        </Button>
-        <Button  HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
-            <Image Source="Image/Save.png" Height="29" Width="27" />
-        </Button>
 
-        <Button HorizontalAlignment="Left" Height="35" Width="50" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center">
-            <Image Source="Image/moon2.png" Height="29" Width="27" RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center"/>
+        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center">
+            <Image Source="Image/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+        </Button>
+        <Button Background="White" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
+            <Image Source="Image/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
         </Button>
 
+        <Button Background="White" HorizontalAlignment="Left" Height="35" Width="50" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center">
+            <Image Source="Image/moon2.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center"/>
 
-        <Ellipse Stroke="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        </Button>
+
+
+        <Ellipse Stroke="#673AB7" RenderOptions.BitmapScalingMode="Fant" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Ellipse.Fill>
 
                 <ImageBrush Stretch="Uniform" 
@@ -97,21 +101,22 @@
 
                         <Grid>
                             <Button Height="30" Click="Button_Hand" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,7,53,0" HorizontalAlignment="Center" Width="54" VerticalAlignment="Top">
-                                <Image Source="Image/hand.png" Height="36" Width="22" />
+                                <Image Source="Image/hand.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                             </Button>
 
                             <Button Width="55" Height="30" Click="Button_Edit" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <Image Source="Image/edit.png" Height="36" Width="22" />
+                                <Image Source="Image/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                             </Button>
 
                             <Button Width="55" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <Image Source="Image/cursor.png" Height="36" Width="22" />
+                                <Image Source="Image/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                             </Button>
 
                             <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,40,10,0" VerticalAlignment="Top">
                                 <StackPanel Orientation="Horizontal" >
                                     <TextBlock Text="Добавить мебель" TextAlignment="Center"/>
                                 </StackPanel>
+
                     </Button>
                 </Grid>
 
