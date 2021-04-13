@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;    
 using System.Windows.Media.Animation;
 using System.Timers;
+using System.Windows.Markup;
 
 namespace LinePlane
 {
@@ -175,28 +176,71 @@ namespace LinePlane
             if (Tool_grid.Width==20)
             {
                 buttonAnim.From = 20;
-                buttonAnim.To = 125;
+                buttonAnim.To = 420;
                 buttonAnim.Duration = TimeSpan.FromSeconds(2);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
                 buttonAnim.From = 0;
-                buttonAnim.To = 105;
-                ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
+                buttonAnim.To = 200;
+                ToolBAr_Border.BeginAnimation(Border.WidthProperty, buttonAnim);
                
             }
             else
             {
-                buttonAnim.From = 125;
+                buttonAnim.From = 420;
                 buttonAnim.To = 20;
                 buttonAnim.Duration = TimeSpan.FromSeconds(2);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
 
-                buttonAnim.From = 105;
+                buttonAnim.From = 200;
                 buttonAnim.To = 0;
-                buttonAnim.Duration = TimeSpan.FromSeconds(3);
+                buttonAnim.Duration = TimeSpan.FromSeconds(2);
                 ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
             }
 
         }
-        
+
+        public class FileToUIElementConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                System.IO.FileStream fileStream = new System.IO.FileStream((string)parameter, System.IO.FileMode.Open);
+                return XamlReader.Load(fileStream) as DrawingImage;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void Button_NigthDay(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Save(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Next(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Cursor(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Edit(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Hand(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
