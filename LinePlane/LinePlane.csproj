@@ -97,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Image\USER2-removebg-preview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -161,6 +165,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\USER2-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\moon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\moon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\cursor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\hand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
