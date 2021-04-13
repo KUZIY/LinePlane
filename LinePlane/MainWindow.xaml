@@ -62,8 +62,10 @@
 
         <Ellipse Stroke="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Ellipse.Fill>
+
                 <ImageBrush Stretch="Uniform" 
                          ImageSource="/Image/USER2-removebg-preview.png"  />
+
             </Ellipse.Fill>
 
 
