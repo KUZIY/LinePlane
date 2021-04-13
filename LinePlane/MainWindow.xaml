@@ -53,11 +53,11 @@
             <Image Source="Image/Save.png" Height="33" Width="40" />
         </Button>
         <Button Background="White" Height="Auto" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="2">
-            <Image Source="Image/moon2.png" Height="40" Width="39" RenderTransformOrigin="-0.047,0.522"/>
+            <Image Source="Image/moon2.png" Height="40" Width="39" RenderTransformOrigin="-0.047,0.522" RenderOptions.BitmapScalingMode="Fant"/>
         </Button>
 
 
-        <Ellipse Stroke="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Ellipse RenderOptions.BitmapScalingMode="Fant" Stroke="#673AB7" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Ellipse.Fill>
                 <ImageBrush Stretch="Uniform"
                          ImageSource="/Image/USER2-removebg-preview.png" RenderOptions.BitmapScalingMode="HighQuality"/>
