@@ -15,16 +15,19 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Timers;
 using System.Windows.Markup;
+using System.IO;
 
 namespace LinePlane
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    /// 
+     
     public partial class MainWindow : Window
     {
-        public Line line;
-        private bool First_clic = true;
+        private Draw a;
+
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
 
@@ -32,10 +35,10 @@ namespace LinePlane
         public MainWindow()
         {
             InitializeComponent();
-
+            a= new Draw_Cursor(this);
         }
 
-
+        internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
 
         private void Button_registration_Click(object sender, RoutedEventArgs e)
@@ -58,90 +61,32 @@ namespace LinePlane
             Avtoauthorization.Show();
         }
 
-
+       #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
-            if(line == null) return;
-
-            if (First_clic == false)
-            {
-
-                line.X2 = Mouse.GetPosition(this).X - canvas.Margin.Left;
-                line.Y2 = Mouse.GetPosition(this).Y - canvas.Margin.Top;
-                if (line.X2 - line.X1 < 10)
-                {
-                   
-                }
-            }
-            else
-            {
-                int rounding_value = (int)Math.Sqrt(Math.Pow(line.X2 - line.X1, 2) + Math.Pow(line.Y2 - line.Y1, 2))/5;
-
-                if (rounding_value > 50)
-                {
-                    rounding_value = 50;
-                }
-
-                if (rounding_value < 4)
-                {
-                    rounding_value = 4;
-                }
-
-
-                if (line.X2 - line.X1 < rounding_value && line.X2 - line.X1> -rounding_value)
-                {
-                    line.X2 = line.X1;
-                }
-                if (line.Y2 - line.Y1 < rounding_value && line.Y2 - line.Y1 > -rounding_value)
-                {
-                    line.Y2 = line.Y1;
-                }
-
-                line = null;
-               
-            }
+           a.Set(e,canvas);
 
         }
-
-        
-
         private void Canvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            if (First_clic)
-            {
-                line = new Line()
-                {
-                    X1 = (line == null) ? Mouse.GetPosition(this).X - canvas.Margin.Left : line.X2,
-                    Y1 = (line == null) ? Mouse.GetPosition(this).Y - canvas.Margin.Top : line.Y2,
-                    X2 = Mouse.GetPosition(this).X - canvas.Margin.Left,
-                    Y2 = Mouse.GetPosition(this).Y - canvas.Margin.Top
-                };
-
-                line.Stroke = new SolidColorBrush(Colors.Black);
-
-                line.StrokeThickness = 10;
-
-                _lines.Add(line);
-                canvas.Children.Add(line);
-            }
-
-            First_clic = !First_clic;
+            a.Draw(e, canvas);
+           
         }
 
-        private void Abort_Line(object sender, MouseButtonEventArgs e)
+        private void Abort_Paint(object sender, MouseButtonEventArgs e)
         {
-            if (line != null)
-            {
-                line = null;
-                Delete_last_canvas_Obj();
-                First_clic = true;
-            }
+            Delete_last_canvas_Obj();
+            a.Abort(sender, e);
         }
+        
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            SetLinePosition(e); //обновляем линию
+            SetLinePosition(e); 
         }
+
+        #endregion
+
+        private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
 
         private void User_Button(object sender, MouseEventArgs e) {
             if (User_Border.Visibility == Visibility.Hidden)
@@ -150,6 +95,7 @@ namespace LinePlane
                 User_Border.Visibility = Visibility.Hidden;
         }
 
+        
         private void Cancel(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
@@ -202,29 +148,45 @@ namespace LinePlane
 
         }
 
-        public class FileToUIElementConverter : IValueConverter
+        private void Button_Save(object sender, RoutedEventArgs e)
         {
-            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            {
-                System.IO.FileStream fileStream = new System.IO.FileStream((string)parameter, System.IO.FileMode.Open);
-                return XamlReader.Load(fileStream) as DrawingImage;
-            }
+            Microsoft.Win32.SaveFileDialog saveimg = new Microsoft.Win32.SaveFileDialog();
 
-            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+           
+
+            saveimg.Filter = "(.PNG)|*.PNG|(.JPEG)|*.JPEG ; *.jpg|(.BMP)|*.bmp" +
+                "|All Files|*.*";
+
+            saveimg.DefaultExt = saveimg.Filter;
+           
+            if (saveimg.ShowDialog() == true)
             {
-                throw new NotImplementedException();
+                ToImageSource(canvas, saveimg.FileName); 
             }
         }
+        public static void ToImageSource(Canvas canvas, string filename)
+        {
+            RenderTargetBitmap bmp = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
 
+            canvas.Measure(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight));
+            canvas.Arrange(new Rect(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight)));
+
+            bmp.Render(canvas);
+
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+
+            encoder.Frames.Add(BitmapFrame.Create(bmp));
+
+            using (FileStream file = File.Create(filename))
+            {
+                encoder.Save(file);
+            }
+        }
         private void Button_NigthDay(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Save(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Next(object sender, RoutedEventArgs e)
         {
@@ -233,12 +195,12 @@ namespace LinePlane
 
         private void Button_Cursor(object sender, RoutedEventArgs e)
         {
-
+            a = new Draw_Cursor(this);
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-
+            a = new Draw_Line(this);
         }
 
         private void Button_Hand(object sender, RoutedEventArgs e)

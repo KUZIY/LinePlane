@@ -32,12 +32,13 @@
         </Grid.ColumnDefinitions>
 
 
-        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Line" Margin="0,0,0,0"   >
-            <Border BorderBrush="Black" BorderThickness="0" Height="62" Width="1427" Background="#66292929" Grid.Row="1"/>
+        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
         </Canvas>
 
 
-        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
+        <Border BorderBrush="Black" BorderThickness="0" Background="#66292929" Grid.Row="0" Grid.ColumnSpan="4"/>
+
+        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center" Click="Cancel_button">
             <Image Source="Image/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
 
                 <Image.RenderTransform>
