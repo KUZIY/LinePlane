@@ -196,16 +196,18 @@ namespace LinePlane
         private void Button_Cursor(object sender, RoutedEventArgs e)
         {
             a = new Draw_Cursor(this);
+            Display_Area.Cursor = Cursors.Arrow;
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
             a = new Draw_Line(this);
+            Display_Area.Cursor = Cursors.Cross;
         }
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
-
+            Display_Area.Cursor = Cursors.Hand;
         }
     }
 }
