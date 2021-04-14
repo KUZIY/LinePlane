@@ -126,7 +126,7 @@ namespace LinePlane
             {
                 buttonAnim.From = 20;
                 buttonAnim.To = 420;
-                buttonAnim.Duration = TimeSpan.FromSeconds(2);
+                buttonAnim.Duration = TimeSpan.FromSeconds(1);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
                 buttonAnim.From = 0;
                 buttonAnim.To = 200;
@@ -137,12 +137,12 @@ namespace LinePlane
             {
                 buttonAnim.From = 420;
                 buttonAnim.To = 20;
-                buttonAnim.Duration = TimeSpan.FromSeconds(2);
+                buttonAnim.Duration = TimeSpan.FromSeconds(1);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
 
                 buttonAnim.From = 200;
                 buttonAnim.To = 0;
-                buttonAnim.Duration = TimeSpan.FromSeconds(2);
+                buttonAnim.Duration = TimeSpan.FromSeconds(1);
                 ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
             }
 
