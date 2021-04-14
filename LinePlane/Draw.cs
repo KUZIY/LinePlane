@@ -14,25 +14,25 @@ namespace LinePlane
     {
         void Abort(object sender, MouseButtonEventArgs e);
         void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas);
-        void Set(MouseEventArgs e,System.Windows.Controls.Panel canvas);
+        void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas);
     }
 
     internal sealed class Draw_Line : Draw
     {
-        
+
         private MainWindow window;
 
         private Line line;
         private bool First_clic = true;
 
 
-         public Draw_Line (MainWindow _window)
+        public Draw_Line(MainWindow _window)
         {
             window = _window;
         }
 
 
-        public void Abort (object sender, MouseButtonEventArgs e)
+        public void Abort(object sender, MouseButtonEventArgs e)
         {
             if (line != null)
             {
@@ -41,7 +41,7 @@ namespace LinePlane
             }
         }
 
-        public void Set( MouseEventArgs e, System.Windows.Controls.Panel canvas)
+        public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas)
         {
             Point Cursor = window.Get_Cursor_Point(e);
 
@@ -86,7 +86,7 @@ namespace LinePlane
             }
         }
 
-        public void Draw( MouseButtonEventArgs e, System.Windows.Controls.Panel canvas)
+        public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas)
         {
             Point Cursor = window.Get_Cursor_Point(e);
 
@@ -112,7 +112,7 @@ namespace LinePlane
         }
     }
 
-    internal sealed class Draw_Cursor: Draw
+    internal sealed class Draw_Cursor : Draw
     {
         public Draw_Cursor(MainWindow window) { }
 

@@ -82,7 +82,8 @@ namespace LinePlane
 
                 User user = new User(login, HashPassword, email);
 
-               
+                DB.Users.Add(user);
+                DB.SaveChanges();
             }
 
             
