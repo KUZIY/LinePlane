@@ -151,6 +151,9 @@
     <Resource Include="Image\moon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\moon2.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Image\Save.png" />
   </ItemGroup>
   <ItemGroup>
