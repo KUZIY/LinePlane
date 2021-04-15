@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -20,15 +21,15 @@ namespace LinePlaneCore
     internal sealed class Draw_Line : Draw
     {
 
-        private MainWindow window;
+        private MainWindow _window;
 
         private Line line;
         private bool First_clic = true;
 
 
-        public Draw_Line(MainWindow _window)
+        public Draw_Line(MainWindow window)
         {
-            window = _window;
+            _window = window;
         }
 
 
@@ -36,14 +37,16 @@ namespace LinePlaneCore
         {
             if (line != null)
             {
+                _window.canvas.Children.Remove(line);
                 line = null;
                 First_clic = true;
+              
             }
         }
 
         public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas)
         {
-            Point Cursor = window.Get_Cursor_Point(e);
+            Point Cursor = _window.Get_Cursor_Point(e);
 
             if (line == null) return;
 
@@ -52,10 +55,7 @@ namespace LinePlaneCore
 
                 line.X2 = Cursor.X - canvas.Margin.Left;
                 line.Y2 = Cursor.Y - canvas.Margin.Top;
-                if (line.X2 - line.X1 < 10)
-                {
-
-                }
+               
             }
             else
             {
@@ -88,7 +88,7 @@ namespace LinePlaneCore
 
         public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas)
         {
-            Point Cursor = window.Get_Cursor_Point(e);
+            Point Cursor = _window.Get_Cursor_Point(e);
 
             if (First_clic)
             {
@@ -104,7 +104,6 @@ namespace LinePlaneCore
 
                 line.StrokeThickness = 10;
 
-                //_lines.Add(line);
                 canvas.Children.Add(line);
             }
 
@@ -119,5 +118,85 @@ namespace LinePlaneCore
         public void Abort(object sender, MouseButtonEventArgs e) { }
         public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) { }
         public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) { }
+    }
+
+    internal class Draw_Square:Draw {
+
+        private MainWindow _window;
+        private double widith;
+        private double height;
+        private Rectangle shape;
+
+
+        public Draw_Square(MainWindow window, int size) {
+
+            _window = window;
+
+        switch (size)
+            {
+                case 1:
+                    {
+                        widith = 100;
+                        height = 100;
+                        break;
+                    }
+
+                case 2:
+                    {
+                        widith = 200;
+                        height = 200;
+                        break;
+                    }
+
+                case 3:
+                    {
+                        widith = 300;
+                        height = 300;
+                        break;
+                    }
+
+            }
+
+            shape = new Rectangle();
+
+            shape.Height = height;
+            shape.Width = widith;
+            var brash = new BrushConverter();
+           
+
+            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+
+            window.canvas.Children.Add(shape);
+        }
+
+        public void Abort(object sender, MouseButtonEventArgs e)
+        {
+            _window.canvas.Children.Remove(shape);
+            shape = null;
+        }
+
+        public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) {
+
+            Point Cursor = _window.Get_Cursor_Point(e);
+
+
+            if (shape == null) return;
+
+            Canvas.SetLeft (shape, Cursor.X - canvas.Margin.Left - widith/2);
+            Canvas.SetTop (shape, Cursor.Y - canvas.Margin.Top - height/2);
+
+            
+
+        }
+        public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) {
+
+            if (shape != null)
+            shape.Fill = new SolidColorBrush(Colors.Black);
+
+            shape = null;
+        }
+
+
+
     }
 }

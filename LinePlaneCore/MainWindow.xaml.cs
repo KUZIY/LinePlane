@@ -75,13 +75,13 @@ namespace LinePlaneCore
 
         private void Abort_Paint(object sender, MouseButtonEventArgs e)
         {
-            Delete_last_canvas_Obj();
             a.Abort(sender, e);
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
             SetLinePosition(e);
+            
         }
 
         #endregion
@@ -127,7 +127,7 @@ namespace LinePlaneCore
             {
                 buttonAnim.From = 20;
                 buttonAnim.To = 420;
-                buttonAnim.Duration = TimeSpan.FromSeconds(1);
+                buttonAnim.Duration = TimeSpan.FromSeconds(0.2);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
                 buttonAnim.From = 0;
                 buttonAnim.To = 200;
@@ -138,12 +138,12 @@ namespace LinePlaneCore
             {
                 buttonAnim.From = 420;
                 buttonAnim.To = 20;
-                buttonAnim.Duration = TimeSpan.FromSeconds(1);
+                buttonAnim.Duration = TimeSpan.FromSeconds(0.2);
                 Tool_grid.BeginAnimation(Grid.WidthProperty, buttonAnim);
 
                 buttonAnim.From = 200;
                 buttonAnim.To = 0;
-                buttonAnim.Duration = TimeSpan.FromSeconds(1);
+                buttonAnim.Duration = TimeSpan.FromSeconds(0.2);
                 ToolBAr_Border.BeginAnimation(Button.WidthProperty, buttonAnim);
             }
 
@@ -208,6 +208,7 @@ namespace LinePlaneCore
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
+            a = new Draw_Square(this,3);
             Display_Area.Cursor = Cursors.Hand;
         }
     }
