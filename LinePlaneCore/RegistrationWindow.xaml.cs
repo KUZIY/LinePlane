@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LinePlane
+namespace LinePlaneCore
 {
     /// <summary>
     /// Логика взаимодействия для MenuWindow.xaml
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        AplicationContext DB;
         public RegistrationWindow()
         {
             InitializeComponent();
 
-            DB = new AplicationContext();
         }
 
         private void Registration_button(object sender, RoutedEventArgs e)
@@ -80,9 +78,7 @@ namespace LinePlane
 
                 MessageBox.Show("Зарегистрирован");
 
-                User user = new User(login, HashPassword, email);
 
-               
             }
 
             
