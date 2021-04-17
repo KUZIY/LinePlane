@@ -11,26 +11,53 @@ using System.Windows.Shapes;
 
 namespace LinePlaneCore
 {
-    internal interface Draw
+    internal interface IDraw
     {
         void Abort(object sender, MouseButtonEventArgs e);
         void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas);
         void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas);
     }
 
-    internal sealed class Draw_Line : Draw
+    internal interface ISelectable
     {
+        void Choise_Mouse_Click(object sender, MouseButtonEventArgs e);
+    }
 
-        private MainWindow _window;
+    abstract internal class Shape {
+
+        protected MainWindow _window;
+        protected Point Offset;
+        protected UIElement dragObject;
+        abstract protected Image _shape_image
+        {
+            get;
+            set;
+        }
+
+        protected Shape(MainWindow window)
+        {
+            _window = window;
+        }
+    }
+
+    internal sealed class Draw_Line :Shape, IDraw,ISelectable
+    {
 
         private Line line;
         private bool First_clic = true;
 
-
-        public Draw_Line(MainWindow window)
+        override protected Image _shape_image
         {
-            _window = window;
+            get { return null; }
+            set { }
         }
+
+
+        public Draw_Line(MainWindow window) : base(window) {
+            line = new Line();
+           
+        }
+       
 
 
         public void Abort(object sender, MouseButtonEventArgs e)
@@ -99,6 +126,8 @@ namespace LinePlaneCore
                     X2 = Cursor.X - canvas.Margin.Left,
                     Y2 = Cursor.Y - canvas.Margin.Top
                 };
+                line.MouseRightButtonDown += Choise_Mouse_Click;
+
 
                 line.Stroke = new SolidColorBrush(Colors.Black);
 
@@ -111,67 +140,54 @@ namespace LinePlaneCore
         }
 
 
-        public void Choise_Mouse_Click (MouseButtonEventArgs e)
+         public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e)
         {
-            line.Stroke = new SolidColorBrush(Colors.Gray);
-            line.StrokeThickness = 3;
-            line.StrokeDashCap = PenLineCap.Round;
+            dragObject = sender as UIElement;
+            Offset = e.GetPosition(_window.canvas);
+            Offset.X -= Canvas.GetTop(dragObject);
+            Offset.Y -= Canvas.GetLeft(dragObject);
+            _window.canvas.CaptureMouse();
+
+
+
+            ((Line)dragObject).Stroke = new SolidColorBrush(Colors.Gray);
+            ((Line)dragObject).StrokeThickness = 6;
+            ((Line)dragObject).StrokeDashCap = PenLineCap.Round;
+            ((Line)dragObject).StrokeDashArray.Add(2);
         }
 
 
     }
 
-    internal sealed class Draw_Cursor : Draw
+    internal sealed class Draw_Cursor : Shape, IDraw,ISelectable
     {
-        public Draw_Cursor(MainWindow window) { }
+        override protected Image _shape_image
+        {
+            get { return null; }
+            set { }
+        }
+        public Draw_Cursor(MainWindow window): base (window) { }
 
         public void Abort(object sender, MouseButtonEventArgs e) { }
         public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) { }
         public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) { }
+
+        public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e) { }
     }
 
-    internal class Draw_Square:Draw {
+    internal class Draw_Square:Shape, IDraw, ISelectable
+    {
 
-        private MainWindow _window;
-        private double widith;
-        private double height;
         private Rectangle shape;
+        override protected Image _shape_image
+        {
+            get;
+            set;
+        }
 
-        Point Offset;
-        UIElement dragObject;
-
-
-        public Draw_Square(MainWindow window, int size) {
-
-            _window = window;
-
-        switch (size)
-            {
-                case 1:
-                    {
-                        widith = 100;
-                        height = 100;
-                        break;
-                    }
-
-                case 2:
-                    {
-                        widith = 200;
-                        height = 200;
-                        break;
-                    }
-
-                case 3:
-                    {
-                        widith = 300;
-                        height = 300;
-                        break;
-                    }
-
-            }
+        public Draw_Square(MainWindow window, double widith, double height): base (window) {
 
             shape = new Rectangle();
-
 
             shape.MouseRightButtonDown += Choise_Mouse_Click;
 
@@ -179,8 +195,23 @@ namespace LinePlaneCore
             shape.Height = height;
             shape.Width = widith;
             var brash = new BrushConverter();
-           
+            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
 
+            window.canvas.Children.Add(shape);
+        }
+
+        public Draw_Square(MainWindow window, double widith, double height,Image _shape_png) : base(window)
+        {
+
+            shape = new Rectangle();
+
+            shape.MouseRightButtonDown += Choise_Mouse_Click;
+
+            _shape_image = _shape_png;
+
+            shape.Height = height;
+            shape.Width = widith;
+            var brash = new BrushConverter();
             shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
 
             window.canvas.Children.Add(shape);
@@ -191,7 +222,6 @@ namespace LinePlaneCore
             _window.canvas.Children.Remove(shape);
             shape = null;
         }
-
         public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) {
 
             Point Cursor = _window.Get_Cursor_Point(e);
@@ -199,10 +229,8 @@ namespace LinePlaneCore
 
             if (shape == null) return;
 
-            Canvas.SetLeft (shape, Cursor.X - canvas.Margin.Left - widith/2);
-            Canvas.SetTop (shape, Cursor.Y - canvas.Margin.Top - height/2);
-
-            
+            Canvas.SetLeft (shape, Cursor.X - canvas.Margin.Left - shape.Width/2);
+            Canvas.SetTop (shape, Cursor.Y - canvas.Margin.Top - shape.Height / 2);
 
         }
         public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) {
@@ -214,23 +242,22 @@ namespace LinePlaneCore
             shape = null;
         }
 
-
         public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e)
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
             Offset.X -= Canvas.GetTop(dragObject);
-            Offset.Y-= Canvas.GetLeft(dragObject);
+            Offset.Y -= Canvas.GetLeft(dragObject);
             _window.canvas.CaptureMouse();
 
-           
+
 
             ((Rectangle)dragObject).Stroke = new SolidColorBrush(Colors.Gray);
             ((Rectangle)dragObject).StrokeThickness = 6;
             ((Rectangle)dragObject).StrokeDashCap = PenLineCap.Round;
             ((Rectangle)dragObject).StrokeDashArray.Add(2);
         }
-
-
     }
+
+    
 }

@@ -26,7 +26,7 @@ namespace LinePlaneCore
 
     public partial class MainWindow : Window
     {
-        private Draw a;
+        private IDraw a;
 
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
@@ -209,7 +209,7 @@ namespace LinePlaneCore
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
 
-            a = new Draw_Square(this,1);
+            a = new Draw_Square(this,100,100);
 
             Display_Area.Cursor = Cursors.Hand;
         }
