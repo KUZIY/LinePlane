@@ -208,7 +208,7 @@ namespace LinePlaneCore
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
-            a = new Draw_Square(this,3);
+            a = new Draw_Square(this,1);
             Display_Area.Cursor = Cursors.Hand;
         }
     }
