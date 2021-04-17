@@ -114,8 +114,6 @@ C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\bin\Debug\net5.
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\LinePlaneCore.csprojAssemblyReference.cache
-C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\Image\save.baml
-C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\Image\USER2-removebg-preview.baml
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\EnterWindow.g.cs
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\Админ\Documents\GitHub\LinePlaneCore\LinePlaneCore\obj\Debug\net5.0-windows\RegistrationWindow.g.cs
