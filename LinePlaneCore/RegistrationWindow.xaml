@@ -1,0 +1,45 @@
+﻿<Window x:Class="LinePlaneCore.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LinePlane"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="LinePlane" Height="600" Width="1000" WindowStartupLocation="CenterScreen"
+        MinWidth="400" MinHeight="300">
+    
+    <Grid Background="#FF292929" >
+
+        <Border MinWidth="400" MaxWidth="600" Margin="15" Background="White" VerticalAlignment="Center" Padding="40"
+                CornerRadius="10"
+                >
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
+            </Border.Effect>
+
+
+            <StackPanel>
+
+                <TextBlock Text="Привет!" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+
+                <Grid Margin="0 0 0 20">
+
+                    <TextBlock Text="Регистрация" FontSize="20"  HorizontalAlignment="Left" Margin="0 0 0 10"/>
+
+                </Grid>
+
+                <TextBox x:Name="RegistrationField" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <PasswordBox x:Name="PasswordField1" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <PasswordBox x:Name="PasswordField2" materialDesign:HintAssist.Hint="Повторно введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <TextBox x:Name="EmailField" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Button HorizontalAlignment="Center"  Content="Зарегистрироваться" Margin="0 20" Click="Registration_button"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+    
+</Window>
