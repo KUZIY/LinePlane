@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="FloorPlan" WindowStartupLocation="CenterScreen" 
-        Icon="/Resources/icon.png"
          WindowState="Maximized"  
         MinHeight="576"
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
@@ -37,10 +36,10 @@
 
         </Canvas>
 
-        <Border BorderBrush="Black" BorderThickness="0"  Background="#66292929" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <Border BorderBrush="Black" BorderThickness="0"  Background="Brown" Grid.Row="0" Grid.ColumnSpan="4"/>
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button">
-            <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button">
+            <Image  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
 
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -53,24 +52,29 @@
             </Image>
         </Button>
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
-            <Image Source="Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+        <Button Background="White"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
+            <Image RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
         </Button>
-        <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
-            <Image Source="Resources/save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+        <Button Background="White" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
+            <Image  RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
         </Button>
 
 
-        <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="50" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center" >
-            <Image Source="Resources/moon.png" RenderOptions.BitmapScalingMode="Fant"  RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center" />
+        <Button Background="White" HorizontalAlignment="Left" Height="35" Width="50" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center" >
+            <Image Source="Image/moon.png" RenderOptions.BitmapScalingMode="Fant"  RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center" />
 
         </Button>
 
 
         <Ellipse Stroke="#673AB7" RenderOptions.BitmapScalingMode="Fant" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Ellipse.Fill>
-                <ImageBrush Stretch="Uniform"  ImageSource="Resources/user2.png" />
+
+                <ImageBrush Stretch="Uniform" 
+                         />
+
             </Ellipse.Fill>
+
+
         </Ellipse>
 
 
@@ -99,57 +103,22 @@
 
                 <Grid>
                     <Button Height="30" Click="Button_Hand" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,7,53,0" HorizontalAlignment="Center" Width="54" VerticalAlignment="Top">
-                        <Image Source="Resources/hand.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image  Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Width="55" Height="30" Click="Button_Edit" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Image Source="Resources/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image  Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Width="55" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <Image Source="Resources/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image  Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,40,10,0" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Мебель для гостиной" TextAlignment="Center"/>
+                            <TextBlock Text="Добавить мебель" TextAlignment="Center"/>
                         </StackPanel>
-                    </Button>
 
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,70,10,0" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Мебель для спальни" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,100,10,0" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Мебель для кухни" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,130,10,0" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Столы и стулья" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,160,10,0" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Бытовая техника" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,190,10,0" VerticalAlignment="Top">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Шкафы и гардеробы" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Background="#FF292929" Width="180" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="10,220,10,0" VerticalAlignment="Top" Cursor="Hand">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Интерьер и декор" TextAlignment="Center"/>
-                        </StackPanel>
                     </Button>
                 </Grid>
 

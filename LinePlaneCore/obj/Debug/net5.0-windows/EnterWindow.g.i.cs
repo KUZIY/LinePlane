@@ -72,7 +72,7 @@ namespace LinePlaneCore {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LinePlaneCore;component/enterwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LinePlaneCore;V1.0.0.0;component/enterwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\EnterWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
