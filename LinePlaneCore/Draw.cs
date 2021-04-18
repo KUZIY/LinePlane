@@ -14,13 +14,16 @@ namespace LinePlaneCore
     internal interface IDraw
     {
         void Abort(object sender, MouseButtonEventArgs e);
-        void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas);
-        void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas);
+        void Draw(MouseButtonEventArgs e);
+        void Set(MouseEventArgs e);
+
     }
 
     internal interface ISelectable
     {
-        void Choise_Mouse_Click(object sender, MouseButtonEventArgs e);
+        void Shape_Menu(object sender, MouseButtonEventArgs e);
+        void Choise_Shape(object sender, MouseButtonEventArgs e);
+        void Free_Shape(object sender, MouseButtonEventArgs e);
     }
 
     abstract internal class Shape {
@@ -28,6 +31,7 @@ namespace LinePlaneCore
         protected MainWindow _window;
         protected Point Offset;
         protected UIElement dragObject;
+
         abstract protected Image _shape_image
         {
             get;
@@ -40,7 +44,7 @@ namespace LinePlaneCore
         }
     }
 
-    internal sealed class Draw_Line :Shape, IDraw,ISelectable
+    internal sealed class Draw_Line : Shape, IDraw, ISelectable
     {
 
         private Line line;
@@ -51,15 +55,20 @@ namespace LinePlaneCore
             get { return null; }
             set { }
         }
-
-
+        private void set_events(Line shape)
+        {
+            shape.MouseRightButtonDown += Shape_Menu;
+            shape.PreviewMouseLeftButtonDown += Choise_Shape;
+            shape.PreviewMouseLeftButtonUp += Free_Shape;
+            shape.IsEnabled = false;
+        }
         public Draw_Line(MainWindow window) : base(window) {
             line = new Line();
-           
+
         }
-       
 
 
+        #region выполнение IDraw
         public void Abort(object sender, MouseButtonEventArgs e)
         {
             if (line != null)
@@ -67,11 +76,11 @@ namespace LinePlaneCore
                 _window.canvas.Children.Remove(line);
                 line = null;
                 First_clic = true;
-              
+
             }
         }
 
-        public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas)
+        public void Set(MouseEventArgs e)
         {
             Point Cursor = _window.Get_Cursor_Point(e);
 
@@ -80,9 +89,9 @@ namespace LinePlaneCore
             if (First_clic == false)
             {
 
-                line.X2 = Cursor.X - canvas.Margin.Left;
-                line.Y2 = Cursor.Y - canvas.Margin.Top;
-               
+                line.X2 = Cursor.X - _window.canvas.Margin.Left;
+                line.Y2 = Cursor.Y - _window.canvas.Margin.Top;
+
             }
             else
             {
@@ -113,7 +122,7 @@ namespace LinePlaneCore
             }
         }
 
-        public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas)
+        public void Draw(MouseButtonEventArgs e)
         {
             Point Cursor = _window.Get_Cursor_Point(e);
 
@@ -121,61 +130,88 @@ namespace LinePlaneCore
             {
                 line = new Line()
                 {
-                    X1 = (line == null) ? Cursor.X - canvas.Margin.Left : line.X2,
-                    Y1 = (line == null) ? Cursor.Y - canvas.Margin.Top : line.Y2,
-                    X2 = Cursor.X - canvas.Margin.Left,
-                    Y2 = Cursor.Y - canvas.Margin.Top
+                    X1 = (line == null) ? Cursor.X - _window.canvas.Margin.Left : line.X2,
+                    Y1 = (line == null) ? Cursor.Y - _window.canvas.Margin.Top : line.Y2,
+                    X2 = Cursor.X - _window.canvas.Margin.Left,
+                    Y2 = Cursor.Y - _window.canvas.Margin.Top
                 };
-                line.MouseRightButtonDown += Choise_Mouse_Click;
+
+                set_events(line);
+                line.IsEnabled = false;
 
 
                 line.Stroke = new SolidColorBrush(Colors.Black);
 
                 line.StrokeThickness = 10;
 
-                canvas.Children.Add(line);
+                _window.canvas.Children.Add(line);
             }
 
             First_clic = !First_clic;
         }
+        #endregion
 
-
-         public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e)
+        #region выполнение ISelectable
+        public void Choise_Shape(object sender, MouseButtonEventArgs e)
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
             Offset.X -= Canvas.GetTop(dragObject);
             Offset.Y -= Canvas.GetLeft(dragObject);
-            _window.canvas.CaptureMouse();
+            //_window.canvas.CaptureMouse();
 
 
 
             ((Line)dragObject).Stroke = new SolidColorBrush(Colors.Gray);
-            ((Line)dragObject).StrokeThickness = 6;
+            ((Line)dragObject).StrokeThickness = 10;
             ((Line)dragObject).StrokeDashCap = PenLineCap.Round;
-            ((Line)dragObject).StrokeDashArray.Add(2);
+            ((Line)dragObject).StrokeDashArray.Add(1.5);
         }
 
+        public void Free_Shape(object sender, MouseButtonEventArgs e)
+        {
+            ((Line)dragObject).StrokeThickness = 10;
+            ((Line)dragObject).StrokeDashArray.Clear();
+            ((Line)dragObject).Stroke = new SolidColorBrush(Colors.Black);
 
+            dragObject = null;
+            _window.canvas.ReleaseMouseCapture();
+        }
+
+        public void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragObject == null)
+                return;
+
+            var position = e.GetPosition(sender as IInputElement);
+            Canvas.SetTop(dragObject, position.Y - Offset.Y);
+            Canvas.SetLeft(dragObject, position.X - Offset.X);
+        }
+
+        public void Shape_Menu(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        #endregion
     }
 
-    internal sealed class Draw_Cursor : Shape, IDraw,ISelectable
+    internal sealed class Draw_Cursor : Shape, IDraw
     {
         override protected Image _shape_image
         {
             get { return null; }
             set { }
         }
-        public Draw_Cursor(MainWindow window): base (window) { }
+        public Draw_Cursor(MainWindow window) : base(window) { }
 
+        #region заглущки для IDraw
         public void Abort(object sender, MouseButtonEventArgs e) { }
-        public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) { }
-        public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) { }
-
-        public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e) { }
+        public void Set(MouseEventArgs e) { }
+        public void Draw(MouseButtonEventArgs e) { }
+        #endregion
     }
 
-    internal class Draw_Square:Shape, IDraw, ISelectable
+    internal class Draw_Square : Shape, IDraw, ISelectable
     {
 
         private Rectangle shape;
@@ -184,13 +220,20 @@ namespace LinePlaneCore
             get;
             set;
         }
+        private void set_events(Rectangle shape)
+        {
+            //shape.MouseRightButtonDown += Shape_Menu;
+            shape.PreviewMouseLeftButtonDown += Choise_Shape;
+            shape.PreviewMouseLeftButtonUp += Free_Shape;
+            shape.IsEnabled = false;
+        }
 
-        public Draw_Square(MainWindow window, double widith, double height): base (window) {
+        #region конструкторы
+        public Draw_Square(MainWindow window, double widith, double height) : base(window) {
 
             shape = new Rectangle();
 
-            shape.MouseRightButtonDown += Choise_Mouse_Click;
-
+            set_events(shape);
 
             shape.Height = height;
             shape.Width = widith;
@@ -199,13 +242,12 @@ namespace LinePlaneCore
 
             window.canvas.Children.Add(shape);
         }
-
-        public Draw_Square(MainWindow window, double widith, double height,Image _shape_png) : base(window)
+        public Draw_Square(MainWindow window, double widith, double height, Image _shape_png) : base(window)
         {
 
             shape = new Rectangle();
 
-            shape.MouseRightButtonDown += Choise_Mouse_Click;
+            set_events(shape);
 
             _shape_image = _shape_png;
 
@@ -216,39 +258,43 @@ namespace LinePlaneCore
 
             window.canvas.Children.Add(shape);
         }
+        #endregion
 
+        #region исполнение IDrow
         public void Abort(object sender, MouseButtonEventArgs e)
         {
             _window.canvas.Children.Remove(shape);
             shape = null;
         }
-        public void Set(MouseEventArgs e, System.Windows.Controls.Panel canvas) {
+        public void Set(MouseEventArgs e) {
 
             Point Cursor = _window.Get_Cursor_Point(e);
 
 
             if (shape == null) return;
 
-            Canvas.SetLeft (shape, Cursor.X - canvas.Margin.Left - shape.Width/2);
-            Canvas.SetTop (shape, Cursor.Y - canvas.Margin.Top - shape.Height / 2);
+            Canvas.SetLeft(shape, Cursor.X - _window.canvas.Margin.Left - shape.Width / 2);
+            Canvas.SetTop(shape, Cursor.Y - _window.canvas.Margin.Top - shape.Height / 2);
 
         }
-        public void Draw(MouseButtonEventArgs e, System.Windows.Controls.Panel canvas) {
+        public void Draw(MouseButtonEventArgs e) {
 
             if (shape != null)
 
-            shape.Fill = new SolidColorBrush(Colors.Black);
+                shape.Fill = new SolidColorBrush(Colors.Black);
 
             shape = null;
         }
+        #endregion
 
-        public void Choise_Mouse_Click(object sender, MouseButtonEventArgs e)
+        #region исполнение ISelectable
+        public void Choise_Shape(object sender, MouseButtonEventArgs e)
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
             Offset.X -= Canvas.GetTop(dragObject);
             Offset.Y -= Canvas.GetLeft(dragObject);
-            _window.canvas.CaptureMouse();
+            //_window.canvas.CaptureMouse();
 
 
 
@@ -257,7 +303,43 @@ namespace LinePlaneCore
             ((Rectangle)dragObject).StrokeDashCap = PenLineCap.Round;
             ((Rectangle)dragObject).StrokeDashArray.Add(2);
         }
+
+        public void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragObject == null)
+                return;
+
+            var position = e.GetPosition(sender as IInputElement);
+            Canvas.SetTop(dragObject, position.Y - Offset.Y);
+            Canvas.SetLeft(dragObject, position.X - Offset.X);
+        }
+        public void Free_Shape(object sender, MouseButtonEventArgs e)
+        {
+            ((Rectangle)dragObject).StrokeThickness = 0;
+            dragObject = null;
+            _window.canvas.ReleaseMouseCapture();
+        }
+
+        public void Shape_Menu(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        #endregion
+
     }
 
-    
+
+
+    internal class Enable
+    {
+        public Enable(Panel canvas, bool selector)
+        {
+            for (int i = 0; i < canvas.Children.Count; ++i)
+            {
+                    var s = canvas.Children[i];
+                    s.IsEnabled = selector;
+            }
+        }
+    }
+
 }
