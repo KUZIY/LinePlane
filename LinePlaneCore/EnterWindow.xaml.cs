@@ -12,20 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LinePlane
+namespace LinePlaneCore
 {
     /// <summary>
     /// Логика взаимодействия для EnterWindow.xaml
     /// </summary>
     public partial class EnterWindow : Window
     {
-        AplicationContext DB;
+        
 
         public EnterWindow()
         {
             InitializeComponent();
 
-            DB = new AplicationContext();
         }
 
         private void EnterButtonClic(object sender, RoutedEventArgs e)
