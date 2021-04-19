@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 
 namespace LinePlaneCore
 {
+
     internal interface IDraw
     {
         void Abort(object sender, MouseButtonEventArgs e);
@@ -69,6 +70,7 @@ namespace LinePlaneCore
 
 
         #region выполнение IDraw
+
         public void Abort(object sender, MouseButtonEventArgs e)
         {
             if (line != null)
@@ -77,10 +79,12 @@ namespace LinePlaneCore
                 line = null;
                 First_clic = true;
 
+
             }
         }
 
         public void Set(MouseEventArgs e)
+
         {
             Point Cursor = _window.Get_Cursor_Point(e);
 
@@ -91,6 +95,7 @@ namespace LinePlaneCore
 
                 line.X2 = Cursor.X - _window.canvas.Margin.Left;
                 line.Y2 = Cursor.Y - _window.canvas.Margin.Top;
+
 
             }
             else
@@ -122,7 +127,9 @@ namespace LinePlaneCore
             }
         }
 
+
         public void Draw(MouseButtonEventArgs e)
+
         {
             Point Cursor = _window.Get_Cursor_Point(e);
 
@@ -130,6 +137,7 @@ namespace LinePlaneCore
             {
                 line = new Line()
                 {
+
                     X1 = (line == null) ? Cursor.X - _window.canvas.Margin.Left : line.X2,
                     Y1 = (line == null) ? Cursor.Y - _window.canvas.Margin.Top : line.Y2,
                     X2 = Cursor.X - _window.canvas.Margin.Left,
@@ -140,15 +148,19 @@ namespace LinePlaneCore
                 line.IsEnabled = false;
 
 
+
                 line.Stroke = new SolidColorBrush(Colors.Black);
 
                 line.StrokeThickness = 10;
 
+
                 _window.canvas.Children.Add(line);
+
             }
 
             First_clic = !First_clic;
         }
+
         #endregion
 
         #region выполнение ISelectable
@@ -251,27 +263,35 @@ namespace LinePlaneCore
 
             _shape_image = _shape_png;
 
+
             shape.Height = height;
             shape.Width = widith;
             var brash = new BrushConverter();
+
+
             shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
 
             window.canvas.Children.Add(shape);
         }
+
         #endregion
 
         #region исполнение IDrow
+
         public void Abort(object sender, MouseButtonEventArgs e)
         {
             _window.canvas.Children.Remove(shape);
             shape = null;
         }
+
         public void Set(MouseEventArgs e) {
+
 
             Point Cursor = _window.Get_Cursor_Point(e);
 
 
             if (shape == null) return;
+
 
             Canvas.SetLeft(shape, Cursor.X - _window.canvas.Margin.Left - shape.Width / 2);
             Canvas.SetTop(shape, Cursor.Y - _window.canvas.Margin.Top - shape.Height / 2);
@@ -289,10 +309,12 @@ namespace LinePlaneCore
 
         #region исполнение ISelectable
         public void Choise_Shape(object sender, MouseButtonEventArgs e)
+
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
             Offset.X -= Canvas.GetTop(dragObject);
+
             Offset.Y -= Canvas.GetLeft(dragObject);
             //_window.canvas.CaptureMouse();
 
@@ -341,5 +363,6 @@ namespace LinePlaneCore
             }
         }
     }
+
 
 }

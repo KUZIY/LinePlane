@@ -53,12 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="cursor.png" />
-    <Resource Include="edit.png" />
-    <Resource Include="hand.png" />
-    <Resource Include="Icon.png" />
-    <Resource Include="moon.png" />
-    <Resource Include="next.png" />
+
     <Resource Include="Resources\appliances.png" />
     <Resource Include="Resources\bath.png" />
     <Resource Include="Resources\bedroom.png" />
@@ -75,8 +70,7 @@
     <Resource Include="Resources\user.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
     <Resource Include="Resources\wardrobe.png" />
-    <Resource Include="Save.png" />
-    <Resource Include="USER2-removebg-preview.png" />
+
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="FloorPlan" WindowStartupLocation="CenterScreen" 
-        Icon="/Icon.png"
+
+        Icon="/Resources/Icon.png"
+
          WindowState="Maximized"  
         MinHeight="576"
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
@@ -40,7 +42,9 @@
         <Border BorderBrush="Black" BorderThickness="0"  Background="#66292929" Grid.Row="0" Grid.ColumnSpan="4"/>
 
         <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button">
-            <Image  Source="/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+
+            <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+
 
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -54,22 +58,28 @@
         </Button>
 
         <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
-            <Image Source="/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+
+            <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
         </Button>
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
-            <Image Source="/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+            <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+
         </Button>
 
 
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="50" Click="Button_NigthDay" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center" >
-            <Image Source="/moon.png" RenderOptions.BitmapScalingMode="Fant"  RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center" />
+
+            <Image Source="/Resources/moon.png" RenderOptions.BitmapScalingMode="Fant"  RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center" />
+
 
         </Button>
 
 
         <Ellipse Stroke="#673AB7" RenderOptions.BitmapScalingMode="Fant" MouseLeftButtonDown="User_Button" Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Ellipse.Fill>
-                <ImageBrush Stretch="Uniform"  ImageSource="/USER2-removebg-preview.png" />
+
+                <ImageBrush Stretch="Uniform"  ImageSource="/Resources/USER2-removebg-preview.png" />
+
             </Ellipse.Fill>
         </Ellipse>
 
@@ -91,58 +101,307 @@
             </StackPanel>
         </Border>
 
-        <Button Height="30" Click="Button_Hand" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,7,53,0" HorizontalAlignment="Center" Width="54" VerticalAlignment="Top">
-            <Image Source="/hand.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
-        </Button>
 
-        <Button Width="55" Height="30" Click="Button_Edit" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Image Source="/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
-        </Button>
 
-        <Button Width="55" Height="30" Click="Button_Cursor"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,7,0,1" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
-        </Button>
-
-        <Grid  Grid.Column="0" Grid.Row="2" Width="50" HorizontalAlignment="Left" x:Name="Tool_grid">
-            <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" CornerRadius="5" Visibility="Visible" Grid.Row="1" RenderTransformOrigin="0.48,0.038">
+        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="Tool_grid" Margin="0,0,0,50" Grid.RowSpan="3">
+            <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="5" Visibility="Visible" Grid.Row="1" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="3">
                 <Grid>
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand" Click="Button_NigthDay">
-                        <Image  Source="/Resources/moon.png" Width="25" Height="40" RenderOptions.BitmapScalingMode="Fant"/>
-
+                    <!--#region button of panel-->
+                    <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
+                        <Image Source="/Resources/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
-                        <Image  Source="/Resources/mainroom.png" Width="25" Height="32" RenderOptions.BitmapScalingMode="Fant"/>
+                    <Button Width="50" Height="50" Click="Button_Hand" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
+                        <Image Source="/Resources/hand.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
+                    <Button Width="50" Height="50" Click="Button_Edit" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
+                        <Image Source="/Resources/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                    </Button>
+                <!--#endregion-->
+
+                    <!--#region button mainroom-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Mainroom"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,150,0,0" Cursor="Hand">
+                        <Image  Source="/Resources/mainroom.png" RenderOptions.BitmapScalingMode="Fant"/>
+                    </Button>
+
+
+                    <Border Background="#66292929" x:Name="mainroom"  CornerRadius="5" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Диван двухместный"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Диван трехместный"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Диван угловой"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Кресло"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Журнальный столик"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <TextBlock Text="Тумба для телевизора"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,215,0,0" Cursor="Hand"  >
+                                <TextBlock Text="Рабочий стол"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,250,0,0"  >
+                                <TextBlock Text="Офисное кресло"/>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+                    
+                    <!--#region button bedroom-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bedroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
                         <Image  Source="/Resources/bedroom.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,150,0,0">
+                    <Border Background="#66292929" x:Name="bedroom"  CornerRadius="5" Visibility="Hidden" Margin="55,-55,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Кровать односпальная"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Кровать двухспальная"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Прикроватная тумбочка"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Косметический столик"/>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region button kitchen-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Kitchen" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,250,0,0">
                         <Image  Source="/Resources/kitchen.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
+                    <Border Background="#66292929" x:Name="kitchen"  CornerRadius="5" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Кухонная тумба"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Тумба с раковиной"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Стол квадратный(мал)"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Стол прямоугольный(бол)"/>
+                            </Button>
+
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Стол круглый"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <TextBlock Text="Стул стандартный"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region button bytovaya teh-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Appliances" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,300,0,0">
                         <Image  Source="/Resources/appliances.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,250,0,0">
-                        <Image  Source="/Resources/wardrobe.png" RenderOptions.BitmapScalingMode="Fant"/>
+                    <Border Background="#66292929" x:Name="appliances"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Телевизор"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Холодильник"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="холодильник двухдверный"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Плита"/>
+                            </Button>
+
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Стиральная машина"/>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region button garderobe-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Wardrobe" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,350,0,0" Cursor="Hand">
+                        <Image  Source="/Resources/wardrobe.png" RenderOptions.BitmapScalingMode="Fant" Height="32" Width="32" HorizontalAlignment="Center" Margin="0,6,0,10"/>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,300,0,0">
+                    <Border Background="#66292929" x:Name="wardrobe"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Гардероб"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Гардероб двухдверный"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Книжный шкаф"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Открытый шкаф"/>
+                            </Button>
+
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Тумба для обуви"/>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region button bathroom-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bathroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,400,0,0">
                         <Image  Source="/Resources/bath.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,350,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant"  Height="25" Width="24" HorizontalAlignment="Center"/>
+                    <Border Background="#66292929" x:Name="bathroom"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Раковина"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Ванная"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Душ"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Унитаз"/>
+                            </Button>
+
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Джакузи"/>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <!--#region button interior-->
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Interior" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,450,0,0">
+                        <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
+
+                    <Border Background="#66292929" x:Name="interior"  CornerRadius="5" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                        </Border.Effect>
+
+
+                        <Grid>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <TextBlock Text="Зеркало"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <TextBlock Text="Растения"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <TextBlock Text="Камин"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <TextBlock Text="Беговая дорожка"/>
+                            </Button>
+
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <TextBlock Text="Аквариум"/>
+                            </Button>
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <TextBlock Text="Пианино"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+
                 </Grid>
+            </Border >
 
 
-
-            </Border>
+            
 
 
         </Grid>
