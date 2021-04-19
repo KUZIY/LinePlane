@@ -207,22 +207,6 @@ namespace LinePlaneCore
         #endregion
     }
 
-    internal sealed class Draw_Cursor : Shape, IDraw
-    {
-        override protected Image _shape_image
-        {
-            get { return null; }
-            set { }
-        }
-        public Draw_Cursor(MainWindow window) : base(window) { }
-
-        #region заглущки для IDraw
-        public void Abort(object sender, MouseButtonEventArgs e) { }
-        public void Set(MouseEventArgs e) { }
-        public void Draw(MouseButtonEventArgs e) { }
-        #endregion
-    }
-
     internal class Draw_Square : Shape, IDraw, ISelectable
     {
 
@@ -313,10 +297,10 @@ namespace LinePlaneCore
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
-            Offset.X -= Canvas.GetTop(dragObject);
-
-            Offset.Y -= Canvas.GetLeft(dragObject);
-            //_window.canvas.CaptureMouse();
+            Offset.X -= Canvas.GetLeft(dragObject);
+            Offset.Y -= Canvas.GetTop(dragObject);
+            Move.dragObject = this.dragObject;
+            Move.Offset = this.Offset;
 
 
 
@@ -326,20 +310,11 @@ namespace LinePlaneCore
             ((Rectangle)dragObject).StrokeDashArray.Add(2);
         }
 
-        public void Canvas_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (dragObject == null)
-                return;
-
-            var position = e.GetPosition(sender as IInputElement);
-            Canvas.SetTop(dragObject, position.Y - Offset.Y);
-            Canvas.SetLeft(dragObject, position.X - Offset.X);
-        }
         public void Free_Shape(object sender, MouseButtonEventArgs e)
         {
             ((Rectangle)dragObject).StrokeThickness = 0;
             dragObject = null;
-            _window.canvas.ReleaseMouseCapture();
+            Move.ArgsClear();
         }
 
         public void Shape_Menu(object sender, MouseButtonEventArgs e)
@@ -350,6 +325,128 @@ namespace LinePlaneCore
 
     }
 
+
+    internal class Draw_Ellipse : Shape, IDraw, ISelectable
+    {
+
+        private Ellipse shape;
+        override protected Image _shape_image
+        {
+            get;
+            set;
+        }
+        private void set_events(Ellipse shape)
+        {
+            //shape.MouseRightButtonDown += Shape_Menu;
+            shape.PreviewMouseLeftButtonDown += Choise_Shape;
+            shape.PreviewMouseLeftButtonUp += Free_Shape;
+            shape.IsEnabled = false;
+        }
+
+        #region конструкторы
+        public Draw_Ellipse(MainWindow window, double widith, double height) : base(window)
+        {
+
+            shape = new Ellipse();
+
+            set_events(shape);
+
+            shape.Height = height;
+            shape.Width = widith;
+            var brash = new BrushConverter();
+            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+
+            window.canvas.Children.Add(shape);
+        }
+        public Draw_Ellipse(MainWindow window, double widith, double height, Image _shape_png) : base(window)
+        {
+
+            shape = new Ellipse();
+
+            set_events(shape);
+
+            _shape_image = _shape_png;
+
+
+            shape.Height = height;
+            shape.Width = widith;
+            var brash = new BrushConverter();
+
+
+            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+
+            window.canvas.Children.Add(shape);
+        }
+
+        #endregion
+
+        #region исполнение IDrow
+
+        public void Abort(object sender, MouseButtonEventArgs e)
+        {
+            _window.canvas.Children.Remove(shape);
+            shape = null;
+        }
+
+        public void Set(MouseEventArgs e)
+        {
+
+
+            Point Cursor = _window.Get_Cursor_Point(e);
+
+
+            if (shape == null) return;
+
+
+            Canvas.SetLeft(shape, Cursor.X - _window.canvas.Margin.Left - shape.Width / 2);
+            Canvas.SetTop(shape, Cursor.Y - _window.canvas.Margin.Top - shape.Height / 2);
+
+        }
+        public void Draw(MouseButtonEventArgs e)
+        {
+
+            if (shape != null)
+
+                shape.Fill = new SolidColorBrush(Colors.Black);
+
+            shape = null;
+        }
+        #endregion
+
+        #region исполнение ISelectable
+        public void Choise_Shape(object sender, MouseButtonEventArgs e)
+
+        {
+            dragObject = sender as UIElement;
+            Offset = e.GetPosition(_window.canvas);
+            Offset.X -= Canvas.GetLeft(dragObject);
+            Offset.Y -= Canvas.GetTop(dragObject);
+            Move.dragObject = this.dragObject;
+            Move.Offset = this.Offset;
+
+
+
+            ((Ellipse)dragObject).Stroke = new SolidColorBrush(Colors.Gray);
+            ((Ellipse)dragObject).StrokeThickness = 6;
+            ((Ellipse)dragObject).StrokeDashCap = PenLineCap.Round;
+            ((Ellipse)dragObject).StrokeDashArray.Add(2);
+        }
+
+        public void Free_Shape(object sender, MouseButtonEventArgs e)
+        {
+            ((Ellipse)dragObject).StrokeThickness = 0;
+            dragObject = null;
+            Move.ArgsClear();
+        }
+
+        public void Shape_Menu(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+    }
 
 
     internal class Enable
