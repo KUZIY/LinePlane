@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Resource Include="Resources\appliances.png" />
     <Resource Include="Resources\bath.png" />
     <Resource Include="Resources\bedroom.png" />
@@ -69,6 +70,7 @@
     <Resource Include="Resources\user.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
     <Resource Include="Resources\wardrobe.png" />
+
   </ItemGroup>
 
 </Project>

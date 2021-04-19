@@ -26,14 +26,17 @@ namespace LinePlaneCore
 
     public partial class MainWindow : Window
     {
-        private Draw a;
+
+        private IDraw a;
 
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
 
         private readonly List<Line> _lines = new List<Line>();
 
+
         private List<Border> borders = new List<Border>();
+
 
 
         public MainWindow()
@@ -41,6 +44,7 @@ namespace LinePlaneCore
             InitializeComponent();
             a = new Draw_Cursor(this);
         }
+
 
         private void SetBorder()
         {
@@ -52,6 +56,7 @@ namespace LinePlaneCore
             borders.Add(appliances);
             borders.Add(bedroom);
         }
+
 
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
@@ -68,10 +73,12 @@ namespace LinePlaneCore
 
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
-            if (Avtoauthorization == null)
-            {
+
+            if (Avtoauthorization!=null)
+                Avtoauthorization.Close();
+
                 Avtoauthorization = new EnterWindow();
-            }
+
 
             Avtoauthorization.Show();
         }
@@ -79,12 +86,15 @@ namespace LinePlaneCore
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
-            a.Set(e, canvas);
+
+            a.Set(e);
+
 
         }
         private void Canvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            a.Draw(e, canvas);
+
+            a.Draw(e);
 
         }
 
@@ -95,8 +105,9 @@ namespace LinePlaneCore
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
+
             SetLinePosition(e);
-            
+
         }
 
         #endregion
@@ -201,6 +212,10 @@ namespace LinePlaneCore
         private void Button_NigthDay(object sender, RoutedEventArgs e)
         {
 
+            a = new Draw_Cursor(this);
+            Display_Area.Cursor = Cursors.Arrow;
+            var s = new Enable(canvas,true);
+
         }
 
 
@@ -223,6 +238,7 @@ namespace LinePlaneCore
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
+
 
             a = new Draw_Square(this,1);
 
@@ -285,5 +301,6 @@ namespace LinePlaneCore
                 i.Visibility = Visibility.Hidden;
             }
         }
+
     }
 }
