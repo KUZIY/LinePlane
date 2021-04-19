@@ -26,8 +26,7 @@ namespace LinePlaneCore
 
     public partial class MainWindow : Window
     {
-        private IDraw a;
-        private UIElement dragObject;
+        private Draw a;
 
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
@@ -54,10 +53,10 @@ namespace LinePlaneCore
 
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
-            if (Avtoauthorization!=null)
-                Avtoauthorization.Close();
-
+            if (Avtoauthorization == null)
+            {
                 Avtoauthorization = new EnterWindow();
+            }
 
             Avtoauthorization.Show();
         }
@@ -65,12 +64,12 @@ namespace LinePlaneCore
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
-            a.Set(e);
+            a.Set(e, canvas);
 
         }
         private void Canvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            a.Draw(e);
+            a.Draw(e, canvas);
 
         }
 
@@ -81,9 +80,8 @@ namespace LinePlaneCore
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-
             SetLinePosition(e);
-           
+            
         }
 
         #endregion
@@ -187,9 +185,7 @@ namespace LinePlaneCore
         }
         private void Button_NigthDay(object sender, RoutedEventArgs e)
         {
-            a = new Draw_Cursor(this);
-            Display_Area.Cursor = Cursors.Arrow;
-            var s = new Enable(canvas,true);
+
         }
 
 
@@ -212,9 +208,7 @@ namespace LinePlaneCore
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
-
-            a = new Draw_Square(this,100,100);
-
+            a = new Draw_Square(this,1);
             Display_Area.Cursor = Cursors.Hand;
         }
     }
