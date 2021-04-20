@@ -32,7 +32,9 @@ namespace LinePlaneCore
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
 
+
         private readonly List<UIElement> object_memory = new List<UIElement>();
+
 
 
         private List<Border> borders = new List<Border>();
@@ -42,7 +44,9 @@ namespace LinePlaneCore
         public MainWindow()
         {
             InitializeComponent();
+
             a =null;
+
         }
 
 
@@ -56,6 +60,9 @@ namespace LinePlaneCore
             borders.Add(appliances);
             borders.Add(bedroom);
         }
+
+
+
         private void Button_registration_Click(object sender, RoutedEventArgs e)
         {
             if (Registration == null)
@@ -65,6 +72,7 @@ namespace LinePlaneCore
             Registration.Show();
 
         }
+
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
 
@@ -77,40 +85,50 @@ namespace LinePlaneCore
             Avtoauthorization.Show();
         }
 
+
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
             if (a!=null)
+
             a.Set(e);
 
 
         }
         private void Canvas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             if (a != null)
                 a.Draw(e);
+
 
         }
 
         private void Abort_Paint(object sender, MouseButtonEventArgs e)
         {
+
             if (a != null)
                 a.Abort(sender, e);
+
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
+
             if (a != null)
                 SetLinePosition(e);
 
             Move.Move_shape(sender, e);
+
         }
 
         #endregion
 
         private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
+
+
         private void User_Button(object sender, MouseEventArgs e)
         {
             if (User_Border.Visibility == Visibility.Hidden)
@@ -118,6 +136,7 @@ namespace LinePlaneCore
             else
                 User_Border.Visibility = Visibility.Hidden;
         }
+
         private void Cancel(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
@@ -128,11 +147,13 @@ namespace LinePlaneCore
                 }
             }
         }
+
         private void Delete_last_canvas_Obj()
         {
             int cnt = canvas.Children.Count;
 
             if (cnt > 0)
+
             {
                 object_memory.Add(canvas.Children[cnt - 1]);
                 canvas.Children.RemoveAt(cnt - 1);
@@ -149,6 +170,7 @@ namespace LinePlaneCore
         private void Button_Save(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
+
 
             Microsoft.Win32.SaveFileDialog saveimg = new Microsoft.Win32.SaveFileDialog();
 
@@ -185,6 +207,7 @@ namespace LinePlaneCore
         private void Button_NigthDay(object sender, RoutedEventArgs e)
         {
 
+
         }
         private void Button_Next(object sender, RoutedEventArgs e)
         {
@@ -200,6 +223,7 @@ namespace LinePlaneCore
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
+
             a = new Draw_Line(this);
             Display_Area.Cursor = Cursors.Cross;
         }
@@ -207,42 +231,53 @@ namespace LinePlaneCore
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
 
+
             Enable_Shapes(true);
             Display_Area.Cursor = Cursors.SizeAll;
             a = null;
            
+
         }
 
         private void Button_Mainroom(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
+
             SetBorder();
             Button_Room(mainroom);
         }
 
         private void Button_Bedroom(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
+
             SetBorder();
             Button_Room(bedroom);
         }
 
         private void Button_Kitchen(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
+
             SetBorder();
             Button_Room(kitchen);
         }
 
         private void Button_Appliances(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
+
             SetBorder();
             Button_Room(appliances);
         }
 
         private void Button_Wardrobe(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
             SetBorder();
             Button_Room(wardrobe);
@@ -250,6 +285,7 @@ namespace LinePlaneCore
 
         private void Button_Bathroom(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
             SetBorder();
             Button_Room(bathroom);
@@ -257,6 +293,7 @@ namespace LinePlaneCore
 
         private void Button_Interior(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(false);
             SetBorder();
             Button_Room(interior);
@@ -276,6 +313,7 @@ namespace LinePlaneCore
                 i.Visibility = Visibility.Hidden;
             }
         }
+
 
         private void square_table(object sender, RoutedEventArgs e)
         {

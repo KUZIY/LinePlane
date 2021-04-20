@@ -22,19 +22,24 @@
     <None Remove="next.png" />
     <None Remove="Resources\appliances.png" />
     <None Remove="Resources\bath.png" />
+
+    <None Remove="Resources\bed.png" />
     <None Remove="Resources\bedroom.png" />
     <None Remove="Resources\cactus.png" />
+    <None Remove="Resources\closet.png" />
     <None Remove="Resources\cursor.png" />
-    <None Remove="Resources\delete.png" />
     <None Remove="Resources\edit.png" />
+    <None Remove="Resources\electrical.png" />
     <None Remove="Resources\hand.png" />
     <None Remove="Resources\Icon.png" />
     <None Remove="Resources\kitchen.png" />
+    <None Remove="Resources\livingroom.png" />
     <None Remove="Resources\mainroom.png" />
     <None Remove="Resources\moon.png" />
     <None Remove="Resources\next.png" />
+    <None Remove="Resources\plumbing.png" />
     <None Remove="Resources\Save.png" />
-    <None Remove="Resources\user.png" />
+
     <None Remove="Resources\USER2-removebg-preview.png" />
     <None Remove="Resources\wardrobe.png" />
     <None Remove="Save.png" />
@@ -55,23 +60,22 @@
 
   <ItemGroup>
 
-    <Resource Include="Resources\appliances.png" />
-    <Resource Include="Resources\bath.png" />
-    <Resource Include="Resources\bedroom.png" />
+    <Resource Include="Resources\bed.png" />
     <Resource Include="Resources\cactus.png" />
+    <Resource Include="Resources\closet.png" />
     <Resource Include="Resources\cursor.png" />
-    <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\electrical.png" />
     <Resource Include="Resources\hand.png" />
     <Resource Include="Resources\Icon.png" />
     <Resource Include="Resources\kitchen.png" />
-    <Resource Include="Resources\mainroom.png" />
+    <Resource Include="Resources\livingroom.png" />
     <Resource Include="Resources\moon.png" />
     <Resource Include="Resources\next.png" />
+    <Resource Include="Resources\plumbing.png" />
     <Resource Include="Resources\Save.png" />
-    <Resource Include="Resources\user.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
-    <Resource Include="Resources\wardrobe.png" />
+
 
   </ItemGroup>
 

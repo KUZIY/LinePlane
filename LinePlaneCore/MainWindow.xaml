@@ -15,10 +15,13 @@
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
       
         KeyDown="Cancel" d:DesignWidth="1264.864" d:DesignHeight="1020.166"
+
+        
         >
 
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Display_Area" >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Display_Area">
+
 
         <Grid.RowDefinitions>
             <RowDefinition Height="86*" />
@@ -27,10 +30,12 @@
             <RowDefinition Height="192*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+
             <ColumnDefinition Width="162*" />
             <ColumnDefinition Width="332*" />
             <ColumnDefinition Width="67*" />
             <ColumnDefinition Width="Auto" />
+
         </Grid.ColumnDefinitions>
 
 
@@ -38,7 +43,9 @@
 
         </Canvas>
 
+
         <Border BorderBrush="Black" BorderThickness="0"  Background="#FF646464" Grid.Row="0" Grid.ColumnSpan="4">
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
             </Border.Effect>
@@ -60,11 +67,10 @@
             </Image>
         </Button>
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="80" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand" BorderBrush="#FF020202">
-            <Grid>
-                <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
 
-            </Grid>
+        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
+
+            <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
 
         </Button>
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
@@ -110,6 +116,7 @@
 
 
 
+
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="0,0,0,50" Grid.RowSpan="2">
             <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="17" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
 
@@ -125,51 +132,80 @@
 
                     <Button Width="50" Height="50" Click="Button_Edit" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
                         <Image Source="/Resources/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+
                     </Button>
                     <!--#endregion-->
 
                     <!--#region button mainroom-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Mainroom"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,150,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/mainroom.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                        <Image  Source="/Resources/livingroom.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
 
-                    <Border Background="#66292929"  x:Name="mainroom"  CornerRadius="5" Visibility="Hidden" Margin="55,85,-205,0" Grid.Row="1" Width="200" Height="285" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="mainroom"  CornerRadius="11" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
-                            <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
+                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,5,0,0" UseLayoutRounding="False"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Диван двухместный"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Диван трехместный"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Диван угловой"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Кресло"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Журнальный столик"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Тумба для телевизора"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,215,0,0" Cursor="Hand"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,215,0,0" Cursor="Hand"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Рабочий стол"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,250,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,250,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Офисное кресло"/>
                             </Button>
 
@@ -179,29 +215,45 @@
 
                     <!--#region button bedroom-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bedroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
-                        <Image  Source="/Resources/bedroom.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                        <Image  Source="/Resources/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="bedroom"  CornerRadius="5" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="bedroom"  CornerRadius="11" Visibility="Hidden" Margin="55,-55,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Кровать односпальная"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Кровать двухспальная"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Прикроватная тумбочка"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Косметический столик"/>
                             </Button>
 
@@ -210,39 +262,63 @@
                     <!--#endregion-->
 
                     <!--#region button kitchen-->
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Kitchen" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,250,0,0">
-                        <Image  Source="/Resources/kitchen.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Kitchen" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,250,0,0" Cursor="Hand">
+                        <Image Source="/Resources/kitchen.png"  RenderOptions.BitmapScalingMode="Fant" Height="20" Width="19"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="kitchen"  CornerRadius="5" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="kitchen"  CornerRadius="11" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Кухонная тумба"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Тумба с раковиной"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0" Click="square_table" >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Стол квадратный(мал)"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Стол прямоугольный(бол)"/>
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0" Click="ellipse_table" >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Стол круглый"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Стул стандартный"/>
                             </Button>
                         </Grid>
@@ -250,35 +326,56 @@
                     <!--#endregion-->
 
                     <!--#region button bytovaya teh-->
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Appliances" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,300,0,0">
-                        <Image  Source="/Resources/appliances.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Appliances" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,300,0,0" Cursor="Hand">
+                        <Image  Source="/Resources/electrical.png" RenderOptions.BitmapScalingMode="Fant" Height="25" Width="20"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="appliances"  CornerRadius="5" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="appliances"  CornerRadius="11" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Телевизор"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Холодильник"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
-                                <TextBlock Text="холодильник двухдверный"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="218"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+                                <TextBlock Text="Холодильник двухдверный"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Плита"/>
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Стиральная машина"/>
                             </Button>
 
@@ -288,34 +385,54 @@
 
                     <!--#region button garderobe-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Wardrobe" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,350,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/wardrobe.png" RenderOptions.BitmapScalingMode="Fant" Height="32" Width="32" HorizontalAlignment="Center" Margin="0,6,0,10"/>
+
+                        <Image  Source="/Resources/closet.png" RenderOptions.BitmapScalingMode="Fant" Height="27" Width="23" HorizontalAlignment="Center"/>
+
                     </Button>
 
-                    <Border Background="#66292929" x:Name="wardrobe"  CornerRadius="5" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="wardrobe"  CornerRadius="11" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Гардероб"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
-                                <TextBlock Text="Гардероб двухдверный"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+                                <TextBlock Text="Шкаф купе"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Книжный шкаф"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
-                                <TextBlock Text="Открытый шкаф"/>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+                                <TextBlock Text="Сервант"/>
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Тумба для обуви"/>
                             </Button>
 
@@ -324,35 +441,56 @@
                     <!--#endregion-->
 
                     <!--#region button bathroom-->
-                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bathroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,400,0,0">
-                        <Image  Source="/Resources/bath.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                    <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bathroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,400,0,0" Cursor="Hand">
+                        <Image  Source="/Resources/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="bathroom"  CornerRadius="5" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="bathroom"  CornerRadius="11" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Раковина"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Ванная"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Душ"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Унитаз"/>
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Джакузи"/>
                             </Button>
 
@@ -362,38 +500,61 @@
 
                     <!--#region button interior-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Interior" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,450,0,0">
-                        <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant"/>
+
+                        <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="interior"  CornerRadius="5" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#FFA6A39D" x:Name="interior"  CornerRadius="11" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
 
 
                         <Grid>
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,5,0,0"  >
+
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Зеркало"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Растения"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Камин"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Беговая дорожка"/>
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
                                 <TextBlock Text="Аквариум"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
+                                </Button.Effect>
+
                                 <TextBlock Text="Пианино"/>
                             </Button>
                         </Grid>
@@ -402,6 +563,7 @@
 
                 </Grid>
             </Border >
+
         </Grid>
 
         <Border x:Name="underbutton" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="171,48,0,0" Grid.Row="2" CornerRadius="7">
@@ -427,6 +589,7 @@
 
             </Grid>
         </Border>
+
 
     </Grid>
 

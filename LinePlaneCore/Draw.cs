@@ -34,7 +34,9 @@ namespace LinePlaneCore
         protected Point Offset;
         protected UIElement dragObject;
 
+
         abstract protected BitmapImage _shape_image
+
         {
             get;
             set;
@@ -52,7 +54,9 @@ namespace LinePlaneCore
         private Line line;
         private bool First_clic = true;
 
+
         override protected BitmapImage _shape_image
+
         {
             get { return null; }
             set { }
@@ -208,11 +212,14 @@ namespace LinePlaneCore
         #endregion
     }
 
+
     internal class Draw_Square : Shape, IDraw, ISelectable
     {
 
         private Rectangle shape;
+
         override protected BitmapImage _shape_image
+
         {
             get;
             set;
@@ -239,7 +246,9 @@ namespace LinePlaneCore
 
             window.canvas.Children.Add(shape);
         }
+
         public Draw_Square(MainWindow window, double widith, double height, BitmapImage _shape_png) : base(window)
+
         {
 
             shape = new Rectangle();
@@ -253,6 +262,7 @@ namespace LinePlaneCore
             shape.Width = widith;
             var brash = new BrushConverter();
 
+
             try
             {
                 shape.Fill = new ImageBrush(_shape_png);
@@ -261,6 +271,7 @@ namespace LinePlaneCore
             {
                 shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
             }
+
 
             window.canvas.Children.Add(shape);
         }
@@ -304,10 +315,12 @@ namespace LinePlaneCore
         {
             dragObject = sender as UIElement;
             Offset = e.GetPosition(_window.canvas);
+
             Offset.X -= Canvas.GetLeft(dragObject);
             Offset.Y -= Canvas.GetTop(dragObject);
             Move.dragObject = this.dragObject;
             Move.Offset = this.Offset;
+
 
 
 
@@ -317,11 +330,14 @@ namespace LinePlaneCore
             ((Rectangle)dragObject).StrokeDashArray.Add(2);
         }
 
+
         public void Free_Shape(object sender, MouseButtonEventArgs e)
         {
             ((Rectangle)dragObject).StrokeThickness = 0;
             dragObject = null;
+
             Move.ArgsClear();
+
         }
 
         public void Shape_Menu(object sender, MouseButtonEventArgs e)
@@ -331,6 +347,7 @@ namespace LinePlaneCore
         #endregion
 
     }
+
     internal class Draw_Ellipse : Shape, IDraw, ISelectable
     {
 
@@ -460,6 +477,7 @@ namespace LinePlaneCore
 
     }
  
+
     internal class Enable
     {
         public Enable(Panel canvas, bool selector)
@@ -471,4 +489,5 @@ namespace LinePlaneCore
             }
         }
     }
+
 }
