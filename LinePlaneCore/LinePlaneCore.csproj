@@ -41,6 +41,8 @@
     <None Remove="Resources\next.png" />
     <None Remove="Resources\plumbing.png" />
     <None Remove="Resources\Save.png" />
+    <None Remove="Resources\turn-right.png" />
+    <None Remove="Resources\undo-arrow.png" />
 
     <None Remove="Resources\USER2-removebg-preview.png" />
     <None Remove="Resources\wardrobe.png" />
@@ -66,9 +68,11 @@
     <Resource Include="Resources\cactus.png" />
     <Resource Include="Resources\closet.png" />
     <Resource Include="Resources\cursor.png" />
+
     <Resource Include="Resources\delete.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\electrical.png" />
     <Resource Include="Resources\grid.png" />
@@ -80,6 +84,7 @@
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\plumbing.png" />
     <Resource Include="Resources\Save.png" />
+    <Resource Include="Resources\undo-arrow.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
 
 
