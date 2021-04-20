@@ -240,6 +240,7 @@ namespace LinePlaneCore
             Display_Area.Cursor = Cursors.SizeAll;
             a = null;
         }
+        #region mainroom
         private void Button_Mainroom(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
@@ -249,6 +250,40 @@ namespace LinePlaneCore
             ChangeBorderVisibilityToolbar(mainroom, ButMainroom);
             
         }
+        private void sofa2(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void sofa3(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void sofacorner(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void armchar(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void coffeetable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void TVstand(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void desctop(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void officechair(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region bedroom
         private void Button_Bedroom(object sender, RoutedEventArgs e)
         {
 
@@ -257,6 +292,24 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(bedroom, ButBedroom);
         }
+        private void bed1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bed2(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bedsidetable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void cosmetictable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region kitchen
         private void Button_Kitchen(object sender, RoutedEventArgs e)
         {
 
@@ -265,6 +318,32 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(kitchen, ButKitchen);
         }
+        private void kitchencabinet(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void cabinetwithsink(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void squaretable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void rectangulartable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void roundtable(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void chair(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region appliances
         private void Button_Appliances(object sender, RoutedEventArgs e)
         {
 
@@ -273,6 +352,28 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(appliances, ButAppl);
         }
+        private void TV(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void freezer1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void freezer2(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void stove(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void washingmashing(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region wardrobe
         private void Button_Wardrobe(object sender, RoutedEventArgs e)
         {
 
@@ -281,6 +382,28 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(wardrobe, ButGard);
         }
+        private void wardrobe1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void wardrobekype(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bookswardrobe(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void sideboard(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void shoespedestal(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region bathroom
         private void Button_Bathroom(object sender, RoutedEventArgs e)
         {
 
@@ -289,6 +412,28 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(bathroom, ButBath);
         }
+        private void sinq(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bath(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void shower(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void toilet(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void hottub(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+        #region interior
         private void Button_Interior(object sender, RoutedEventArgs e)
         {
 
@@ -297,7 +442,31 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(interior, ButInterior);
         }
+        private void mirror(object sender, RoutedEventArgs e)
+        {
 
+        }
+        private void plant(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void fireplace(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void ikonostas(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void aquarium(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void piano(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
         private void ChangeButtonBackcolorToolbar(Button item)
         {
             ButMainroom.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
