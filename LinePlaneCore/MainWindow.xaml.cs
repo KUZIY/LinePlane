@@ -32,6 +32,7 @@ namespace LinePlaneCore
         private EnterWindow Avtoauthorization;
         private readonly List<UIElement> object_memory = new List<UIElement>();
         private List<Border> borders = new List<Border>();
+        private List<Button> buttons = new List<Button>();
 
         public MainWindow()
         {
@@ -49,6 +50,16 @@ namespace LinePlaneCore
             borders.Add(interior);
             borders.Add(appliances);
             borders.Add(bedroom);
+        }
+        private void SetButtonToolbar()
+        {
+            buttons.Add(ButAppl);
+            buttons.Add(ButBath);
+            buttons.Add(ButBedroom);
+            buttons.Add(ButGard);
+            buttons.Add(ButInterior);
+            buttons.Add(ButKitchen);
+            buttons.Add(ButMainroom);
         }
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
@@ -225,85 +236,100 @@ namespace LinePlaneCore
         }
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
-
-
             Enable_Shapes(true);
             Display_Area.Cursor = Cursors.SizeAll;
             a = null;
-
-
         }
         private void Button_Mainroom(object sender, RoutedEventArgs e)
         {
-
             Enable_Shapes(false);
-
+            SetButtonToolbar();
+            ChangeButtonBackcolorToolbar(ButMainroom);
             SetBorder();
-            Button_Room(mainroom);
+            ChangeBorderVisibilityToolbar(mainroom, ButMainroom);
+            
         }
         private void Button_Bedroom(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
-
+            ChangeButtonBackcolorToolbar(ButBedroom);
             SetBorder();
-            Button_Room(bedroom);
+            ChangeBorderVisibilityToolbar(bedroom, ButBedroom);
         }
         private void Button_Kitchen(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
-
+            ChangeButtonBackcolorToolbar(ButKitchen);
             SetBorder();
-            Button_Room(kitchen);
+            ChangeBorderVisibilityToolbar(kitchen, ButKitchen);
         }
         private void Button_Appliances(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
-
+            ChangeButtonBackcolorToolbar(ButAppl);
             SetBorder();
-            Button_Room(appliances);
+            ChangeBorderVisibilityToolbar(appliances, ButAppl);
         }
         private void Button_Wardrobe(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
+            ChangeButtonBackcolorToolbar(ButGard);
             SetBorder();
-            Button_Room(wardrobe);
+            ChangeBorderVisibilityToolbar(wardrobe, ButGard);
         }
         private void Button_Bathroom(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
+            ChangeButtonBackcolorToolbar(ButBath);
             SetBorder();
-            Button_Room(bathroom);
+            ChangeBorderVisibilityToolbar(bathroom, ButBath);
         }
         private void Button_Interior(object sender, RoutedEventArgs e)
         {
 
             Enable_Shapes(false);
+            ChangeButtonBackcolorToolbar(ButInterior);
             SetBorder();
-            Button_Room(interior);
+            ChangeBorderVisibilityToolbar(interior, ButInterior);
+        }
+
+        private void ChangeButtonBackcolorToolbar(Button item)
+        {
+            ButMainroom.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButBedroom.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButKitchen.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButAppl.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButGard.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButBath.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            ButInterior.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            item.Background = new SolidColorBrush(Color.FromArgb(255, 142, 123, 166));
         }
 
         #endregion
 
 
 
-        private void Button_Room(Border item)
+        private void ChangeBorderVisibilityToolbar(Border itemBr, Button itemBtn)
         {
             SetBorder();
 
-            if (item.Visibility == Visibility.Hidden)
-                item.Visibility = Visibility.Visible;
+            if (itemBr.Visibility == Visibility.Hidden)
+                itemBr.Visibility = Visibility.Visible;
             else
-                item.Visibility = Visibility.Hidden;
+                itemBr.Visibility = Visibility.Hidden;
 
-            foreach (var i in borders.Where(x => x != item))
+            foreach (var i in borders.Where(x => x != itemBr))
             {
                 i.Visibility = Visibility.Hidden;
             }
+
+            if(itemBr.Visibility == Visibility.Hidden)
+                itemBtn.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
         }
 
         private void square_table(object sender, RoutedEventArgs e)
