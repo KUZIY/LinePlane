@@ -194,14 +194,14 @@
                                 <TextBlock Text="Тумба для телевизора"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,215,0,0" Cursor="Hand"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,215,0,0" Cursor="Hand"  Click="square_table">
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Рабочий стол"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,250,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,250,0,0" Click="ellipse_table" Cursor="Hand" >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
