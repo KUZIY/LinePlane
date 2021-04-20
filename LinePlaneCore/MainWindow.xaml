@@ -39,7 +39,10 @@
         </Grid.ColumnDefinitions>
 
 
-        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+        <Canvas x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Resources/grid.png" Opacity="0.2"/>
+            </Canvas.Background>
 
         </Canvas>
 
@@ -123,9 +126,9 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
                 </Border.Effect>
-                
+
                 <Grid>
-                                       
+
                     <!--#region button of panel-->
                     <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
                         <Image Source="/Resources/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
