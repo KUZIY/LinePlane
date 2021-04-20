@@ -44,7 +44,13 @@
         </Canvas>
 
 
-        <Border BorderBrush="Black" BorderThickness="0"  Background="#FF646464" Grid.Row="0" Grid.ColumnSpan="4">
+        <Border BorderBrush="#FFA6A39D" BorderThickness="0" Grid.Row="0" Grid.ColumnSpan="4">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFDCD8D1" Offset="0"/>
+                    <GradientStop Color="#FF938F89" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
@@ -123,20 +129,20 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
                 </Border.Effect>
-                
+
                 <Grid>
-                                       
+
                     <!--#region button of panel-->
                     <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
-                        <Image Source="/Resources/cursor.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/cursor.png" Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Width="50" Height="50" Click="Button_Hand" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
-                        <Image Source="/Resources/hand.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/hand.png" Height="22" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Width="50" Height="50" Click="Button_Edit" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
-                        <Image Source="/Resources/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/edit.png" Height="22" Width="18" RenderOptions.BitmapScalingMode="Fant"/>
 
                     </Button>
                     <!--#endregion-->
@@ -571,23 +577,35 @@
 
         <Border x:Name="underbutton" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="171,48,0,0" Grid.Row="2" CornerRadius="7">
             <Grid>
-                <Button  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
-
-                    <Image Source="/Resources/delete.png" Width="18" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
-                </Button>
-
                 <Image Source="/Resources/delete.png" Width="18"  HorizontalAlignment="Left" Margin="11.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
-
-                <Button  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
+                <Button  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#4C7A7777" BorderThickness="0" Cursor="Hand"/>
+                <Image Source="/Resources/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="41,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90.308"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Button  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#477A7777" BorderThickness="0" Cursor="Hand"/>
+                <Image Source="/Resources/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="71.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90.249"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Button  HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#4C7A7777" BorderThickness="0" Cursor="Hand">
 
                 </Button>
 
-                <Button  HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
-
-                </Button>
-
-                <Button  HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Width="83" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
-
+                <TextBlock Text="Перейти на сайт" FontSize="9" Width="82" HorizontalAlignment="Left" Margin="113,0,0,0" VerticalAlignment="Center" FontWeight="Bold" />
+                <Button  HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Width="83" Height="23" Background="#4C7A7777" BorderThickness="0" Cursor="Hand">
                 </Button>
 
             </Grid>
