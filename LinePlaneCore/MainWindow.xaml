@@ -39,7 +39,10 @@
         </Grid.ColumnDefinitions>
 
 
-        <Canvas Background="#FFFFFA " x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+        <Canvas x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Resources/grid.png" Opacity="0.2"/>
+            </Canvas.Background>
 
         </Canvas>
 
