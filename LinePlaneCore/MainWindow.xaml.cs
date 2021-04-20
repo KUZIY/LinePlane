@@ -206,6 +206,7 @@ namespace LinePlaneCore
 
         private void Button_Hand(object sender, RoutedEventArgs e)
         {
+
             Enable_Shapes(true);
             Display_Area.Cursor = Cursors.SizeAll;
             a = null;

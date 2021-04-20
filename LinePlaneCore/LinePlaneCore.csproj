@@ -25,6 +25,7 @@
     <None Remove="Resources\bedroom.png" />
     <None Remove="Resources\cactus.png" />
     <None Remove="Resources\cursor.png" />
+    <None Remove="Resources\delete.png" />
     <None Remove="Resources\edit.png" />
     <None Remove="Resources\hand.png" />
     <None Remove="Resources\Icon.png" />
@@ -59,6 +60,7 @@
     <Resource Include="Resources\bedroom.png" />
     <Resource Include="Resources\cactus.png" />
     <Resource Include="Resources\cursor.png" />
+    <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\hand.png" />
     <Resource Include="Resources\Icon.png" />

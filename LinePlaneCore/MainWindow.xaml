@@ -27,10 +27,10 @@
             <RowDefinition Height="192*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="322*" />
-            <ColumnDefinition Width="660*" />
-            <ColumnDefinition Width="133*" />
-            <ColumnDefinition Width="142*" />
+            <ColumnDefinition Width="162*" />
+            <ColumnDefinition Width="332*" />
+            <ColumnDefinition Width="67*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
 
@@ -60,9 +60,12 @@
             </Image>
         </Button>
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
+        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="80" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand" BorderBrush="#FF020202">
+            <Grid>
+                <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
 
-            <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+            </Grid>
+
         </Button>
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Click="Button_Save" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" >
             <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
@@ -106,8 +109,10 @@
 
 
 
-        <Grid  Grid.Column="0" Grid.Row="1" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="0,0,0,50" Grid.RowSpan="3">
-            <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="5" Visibility="Visible" Grid.Row="1" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="3">
+
+        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="0,0,0,50" Grid.RowSpan="2">
+            <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="17" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
+
                 <Grid>
                     <!--#region button of panel-->
                     <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
@@ -121,7 +126,7 @@
                     <Button Width="50" Height="50" Click="Button_Edit" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
                         <Image Source="/Resources/edit.png" Height="36" Width="22" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
-                <!--#endregion-->
+                    <!--#endregion-->
 
                     <!--#region button mainroom-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Mainroom"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,150,0,0" Cursor="Hand">
@@ -129,9 +134,9 @@
                     </Button>
 
 
-                    <Border Background="#66292929" x:Name="mainroom"  CornerRadius="5" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929"  x:Name="mainroom"  CornerRadius="5" Visibility="Hidden" Margin="55,85,-205,0" Grid.Row="1" Width="200" Height="285" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
-                            <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
+                            <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
                         </Border.Effect>
 
 
@@ -171,13 +176,13 @@
                         </Grid>
                     </Border>
                     <!--#endregion-->
-                    
+
                     <!--#region button bedroom-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bedroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
                         <Image  Source="/Resources/bedroom.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="bedroom"  CornerRadius="5" Visibility="Hidden" Margin="55,-55,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="bedroom"  CornerRadius="5" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -209,7 +214,7 @@
                         <Image  Source="/Resources/kitchen.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="kitchen"  CornerRadius="5" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="kitchen"  CornerRadius="5" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -249,7 +254,7 @@
                         <Image  Source="/Resources/appliances.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="appliances"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="appliances"  CornerRadius="5" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -284,14 +289,9 @@
                     <!--#region button garderobe-->
                     <Button Width="50" Height="50" VerticalAlignment="Top" Click="Button_Wardrobe" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,350,0,0" Cursor="Hand">
                         <Image  Source="/Resources/wardrobe.png" RenderOptions.BitmapScalingMode="Fant" Height="32" Width="32" HorizontalAlignment="Center" Margin="0,6,0,10"/>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}"/>
-                            </ControlTemplate>
-                        </Button.Template>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="wardrobe"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="wardrobe"  CornerRadius="5" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -328,7 +328,7 @@
                         <Image  Source="/Resources/bath.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="bathroom"  CornerRadius="5" Visibility="Hidden" Margin="55,-30,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="bathroom"  CornerRadius="5" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -365,7 +365,7 @@
                         <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#66292929" x:Name="interior"  CornerRadius="5" Visibility="Hidden" Margin="55,15,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#66292929" x:Name="interior"  CornerRadius="5" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -402,13 +402,31 @@
 
                 </Grid>
             </Border >
-
-
-            
-
-
         </Grid>
 
+        <Border x:Name="underbutton" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="171,48,0,0" Grid.Row="2" CornerRadius="7">
+            <Grid>
+                <Button  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
+
+                    <Image Source="/Resources/delete.png" Width="18" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
+                </Button>
+
+                <Image Source="/Resources/delete.png" Width="18"  HorizontalAlignment="Left" Margin="11.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
+
+                <Button  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
+
+                </Button>
+
+                <Button  HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
+
+                </Button>
+
+                <Button  HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Width="83" Height="23" Background="#FF7A7777" BorderThickness="0" Cursor="Hand">
+
+                </Button>
+
+            </Grid>
+        </Border>
 
     </Grid>
 
