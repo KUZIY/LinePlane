@@ -15,8 +15,6 @@
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
       
         KeyDown="Cancel" d:DesignWidth="1264.864" d:DesignHeight="1020.166"
-
-        
         >
 
 
@@ -50,7 +48,7 @@
         <Border BorderBrush="#FFA6A39D" BorderThickness="0" Grid.Row="0" Grid.ColumnSpan="4">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFDCD8D1" Offset="0"/>
+                    <GradientStop Color="#FFC1C1C1" Offset="0"/>
                     <GradientStop Color="#FF938F89" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
@@ -578,7 +576,7 @@
 
         </Grid>
 
-        <Border x:Name="underbutton" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="171,48,0,0" Grid.Row="2" CornerRadius="7">
+        <Border x:Name="understrip" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"  CornerRadius="7" Visibility="Hidden">
             <Grid>
                 <Image Source="/Resources/delete.png" Width="18"  HorizontalAlignment="Left" Margin="11.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
                 <Button  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#4C7A7777" BorderThickness="0" Cursor="Hand"/>

@@ -101,6 +101,7 @@ namespace LinePlaneCore
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
+            //Show_Ander_Strip.Show_button_strip_menu(this);
             if (a!=null)
 
             a.Set(e);
