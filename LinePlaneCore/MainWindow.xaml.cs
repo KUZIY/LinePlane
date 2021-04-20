@@ -32,7 +32,7 @@ namespace LinePlaneCore
         private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
 
-        private readonly List<Line> _lines = new List<Line>();
+        private readonly List<UIElement> object_memory = new List<UIElement>();
 
 
         private List<Border> borders = new List<Border>();
@@ -56,11 +56,6 @@ namespace LinePlaneCore
             borders.Add(appliances);
             borders.Add(bedroom);
         }
-
-
-        internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
-
-
         private void Button_registration_Click(object sender, RoutedEventArgs e)
         {
             if (Registration == null)
@@ -70,7 +65,6 @@ namespace LinePlaneCore
             Registration.Show();
 
         }
-
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
 
@@ -82,6 +76,8 @@ namespace LinePlaneCore
 
             Avtoauthorization.Show();
         }
+
+        internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
@@ -115,7 +111,6 @@ namespace LinePlaneCore
         #endregion
 
         private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
-
         private void User_Button(object sender, MouseEventArgs e)
         {
             if (User_Border.Visibility == Visibility.Hidden)
@@ -123,8 +118,6 @@ namespace LinePlaneCore
             else
                 User_Border.Visibility = Visibility.Hidden;
         }
-
-
         private void Cancel(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
@@ -135,13 +128,23 @@ namespace LinePlaneCore
                 }
             }
         }
-
         private void Delete_last_canvas_Obj()
         {
             int cnt = canvas.Children.Count;
 
             if (cnt > 0)
+            {
+                object_memory.Add(canvas.Children[cnt - 1]);
                 canvas.Children.RemoveAt(cnt - 1);
+            }
+        }
+        private void Remove_last_Changes() 
+        { 
+        if (object_memory.Count > 0)
+            {
+                canvas.Children.Add(object_memory[object_memory.Count-1]);
+                object_memory.RemoveAt(object_memory.Count - 1);
+            }
         }
         private void Button_Save(object sender, RoutedEventArgs e)
         {
@@ -183,20 +186,17 @@ namespace LinePlaneCore
         {
 
         }
-
-
         private void Button_Next(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
+            Remove_last_Changes();
         }
-
         private void Button_Cursor(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
             a = null;
             Display_Area.Cursor = Cursors.Arrow;
         }
-
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);

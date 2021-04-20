@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace LinePlaneCore
@@ -33,7 +34,7 @@ namespace LinePlaneCore
         protected Point Offset;
         protected UIElement dragObject;
 
-        abstract protected Image _shape_image
+        abstract protected BitmapImage _shape_image
         {
             get;
             set;
@@ -51,7 +52,7 @@ namespace LinePlaneCore
         private Line line;
         private bool First_clic = true;
 
-        override protected Image _shape_image
+        override protected BitmapImage _shape_image
         {
             get { return null; }
             set { }
@@ -211,7 +212,7 @@ namespace LinePlaneCore
     {
 
         private Rectangle shape;
-        override protected Image _shape_image
+        override protected BitmapImage _shape_image
         {
             get;
             set;
@@ -238,7 +239,7 @@ namespace LinePlaneCore
 
             window.canvas.Children.Add(shape);
         }
-        public Draw_Square(MainWindow window, double widith, double height, Image _shape_png) : base(window)
+        public Draw_Square(MainWindow window, double widith, double height, BitmapImage _shape_png) : base(window)
         {
 
             shape = new Rectangle();
@@ -252,8 +253,14 @@ namespace LinePlaneCore
             shape.Width = widith;
             var brash = new BrushConverter();
 
-
-            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+            try
+            {
+                shape.Fill = new ImageBrush(_shape_png);
+            }
+            catch
+            {
+                shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+            }
 
             window.canvas.Children.Add(shape);
         }
@@ -324,23 +331,22 @@ namespace LinePlaneCore
         #endregion
 
     }
-
-
     internal class Draw_Ellipse : Shape, IDraw, ISelectable
     {
 
         private Ellipse shape;
-        override protected Image _shape_image
-        {
-            get;
-            set;
-        }
         private void set_events(Ellipse shape)
         {
             //shape.MouseRightButtonDown += Shape_Menu;
             shape.PreviewMouseLeftButtonDown += Choise_Shape;
             shape.PreviewMouseLeftButtonUp += Free_Shape;
             shape.IsEnabled = false;
+        }
+
+        override protected BitmapImage _shape_image
+        {
+            get;
+            set;
         }
 
         #region конструкторы
@@ -358,7 +364,7 @@ namespace LinePlaneCore
 
             window.canvas.Children.Add(shape);
         }
-        public Draw_Ellipse(MainWindow window, double widith, double height, Image _shape_png) : base(window)
+        public Draw_Ellipse(MainWindow window, double widith, double height, BitmapImage _shape_png) : base(window)
         {
 
             shape = new Ellipse();
@@ -372,8 +378,14 @@ namespace LinePlaneCore
             shape.Width = widith;
             var brash = new BrushConverter();
 
-
-            shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+            try
+            {
+                shape.Fill = new ImageBrush(_shape_png);
+            }
+            catch
+            {
+                shape.Fill = (Brush)brash.ConvertFrom("#CC000000");
+            }
 
             window.canvas.Children.Add(shape);
         }
@@ -447,8 +459,7 @@ namespace LinePlaneCore
         #endregion
 
     }
-
-
+ 
     internal class Enable
     {
         public Enable(Panel canvas, bool selector)
@@ -460,6 +471,4 @@ namespace LinePlaneCore
             }
         }
     }
-
-
 }
