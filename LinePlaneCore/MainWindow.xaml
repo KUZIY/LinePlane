@@ -15,11 +15,10 @@
         MinWidth="1000" WindowStyle="ThreeDBorderWindow"
       
         KeyDown="Cancel" d:DesignWidth="1264.864" d:DesignHeight="1020.166"
-        
         >
 
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Display_Area">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Display_Area" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="86*" />
@@ -39,7 +38,11 @@
 
         </Canvas>
 
-        <Border BorderBrush="Black" BorderThickness="0"  Background="#66292929" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <Border BorderBrush="Black" BorderThickness="0"  Background="#FF646464" Grid.Row="0" Grid.ColumnSpan="4">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
+            </Border.Effect>
+        </Border>
 
         <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button">
 
@@ -106,8 +109,10 @@
 
 
 
+
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="0,0,0,50" Grid.RowSpan="2">
             <Border BorderThickness="0" BorderBrush="Black" Background="#66292929" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="17" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
+
                 <Grid>
                     <!--#region button of panel-->
                     <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
@@ -224,7 +229,7 @@
                                 <TextBlock Text="Тумба с раковиной"/>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,75,0,0" Click="square_table" >
                                 <TextBlock Text="Стол квадратный(мал)"/>
                             </Button>
 
@@ -233,7 +238,7 @@
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="#90000000" VerticalAlignment="Top" Margin="0,145,0,0" Click="ellipse_table" >
                                 <TextBlock Text="Стол круглый"/>
                             </Button>
 
