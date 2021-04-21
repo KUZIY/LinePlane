@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinePlaneCore.Server
+namespace LinePlaneCore
 {
     public class FurnitureContext: DbContext
     {
         public DbSet<Room> Rooms { get; set; }
         public DbSet<TipeFurniture> TipeFurnitures { get; set; }
-        public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<Measurements> Measurments { get; set; }
-
+        public DbSet<Furniture> Furnitures { get; set; }
 
 
 
