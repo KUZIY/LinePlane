@@ -19,10 +19,13 @@ namespace LinePlaneCore
     /// </summary>
     public partial class RegistrationWindow : Window
     {
+        UserContext UserDB;
+
         public RegistrationWindow()
         {
             InitializeComponent();
 
+            UserDB = new UserContext();
         }
 
         private void Registration_button(object sender, RoutedEventArgs e)
@@ -47,7 +50,7 @@ namespace LinePlaneCore
             }
             else if (password.Length < 5)
             {
-                PasswordField1.ToolTip = "Пароль должен содержать минимум 2 символа";
+                PasswordField1.ToolTip = "Пароль должен содержать минимум 5 символа";
                 PasswordField1.Background = (Brush)(new BrushConverter().ConvertFrom("#F15122"));
             }
             else if (password != PasswordField2.Password.Trim())
@@ -76,8 +79,26 @@ namespace LinePlaneCore
 
                 int HashPassword = password.GetHashCode();
 
-                MessageBox.Show("Зарегистрирован");
+                User client = new User();
 
+                client._Email = email;
+                client._Password = HashPassword;
+                client._Login = login;
+
+               
+                try
+                {
+                    UserDB.Add(client);
+                    UserDB.SaveChanges();
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Такой пользователь уже существует");
+                    
+                }
+
+                
 
             }
 

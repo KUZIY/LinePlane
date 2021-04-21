@@ -30,7 +30,7 @@
 
                 </Grid>
 
-                <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="LoginField" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="LoginField" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="IBeam"/>
                 <PasswordBox materialDesign:HintAssist.Hint="Введите пароль" x:Name="PasswordField" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                 <Button HorizontalAlignment="Center"  Content="Войти" Margin="224,20" Click="EnterButtonClic"/>
 

@@ -32,7 +32,54 @@ namespace LinePlaneCore
             string Login = LoginField.Text.ToLower().Trim();
             string password = PasswordField.Password.Trim();
 
-            //if ()
+            #region установка цвета полей ввода
+
+            PasswordField.Background = Brushes.Transparent;
+            LoginField.Background = Brushes.Transparent;
+
+            #endregion
+
+            if (Login.Length < 4)
+            {
+                LoginField.ToolTip = "Логин должен содержать минимум 4 символа";
+                LoginField.Background = (Brush)(new BrushConverter().ConvertFrom("#F15122"));
+            }
+            else if (password.Length < 5)
+            {
+                PasswordField.ToolTip = "Пароль должен содержать минимум 5 символа";
+                PasswordField.Background = (Brush)(new BrushConverter().ConvertFrom("#F15122"));
+            }
+            else
+            {
+                LoginField.ToolTip = "";
+                LoginField.Background = Brushes.Transparent;
+
+                PasswordField.ToolTip = "";
+                PasswordField.Background = Brushes.Transparent;
+
+
+                int HashPassword = password.GetHashCode();
+
+                User AuthUser = null;
+
+                 using (UserContext User_DB = new UserContext())
+                {
+                    AuthUser = User_DB.Users.Where(b => b._Login==Login && b._Password == HashPassword).FirstOrDefault();
+                }
+
+                 if (AuthUser != null)
+                {
+                    MessageBox.Show("Вход произведён");
+                    this.Close();
+                }
+                 else
+                {
+                    MessageBox.Show("Пользователь не найден");
+                }
+
+
+
+            }
 
         }
     }
