@@ -16,6 +16,11 @@ namespace LinePlaneCore
         public int _Id { get; set; }
         [Required]
         public string _NameRoom { get; set; }
+        [Required]
+        public int _IdTipeFurniture { get; set; } 
+        [ForeignKey(nameof(_IdTipeFurniture))]
+        public TipeFurniture _TipeFurniture { get; set; }
+
 
     }
 }

@@ -15,24 +15,17 @@ namespace LinePlaneCore
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int _Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string _Picture { get; set; }
         [Required]
         public string _Link { get; set; }
         [Required]
         public int _Price { get; set; }
-        
         [Required]
-        public int _IdRoom { get; set; }
-        [ForeignKey(nameof(_IdRoom))]
-        public Room _Room { get; set; }
-        
-        [Required]
-        public int _IdTipeFurniture { get; set; }
-        [ForeignKey(nameof(_IdTipeFurniture))]
-        public TipeFurniture _TipeFurniture { get; set; }
-        
+        public int _IdMeasurements { get; set; }
+        [ForeignKey(nameof(_IdMeasurements))]
+        public Measurements _Measurements { get; set; }
 
     }
 }

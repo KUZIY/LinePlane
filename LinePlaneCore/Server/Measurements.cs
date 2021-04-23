@@ -18,10 +18,6 @@ namespace LinePlaneCore
         public string _Length { get; set; }
         [Required]
         public string _Width { get; set; }
-        
-        [Required]
-        public int _IdFurniture { get; set; }
-        [ForeignKey(nameof(_IdFurniture))]
-        public TipeFurniture _Furniture { get; set; }
+
     }
 }
