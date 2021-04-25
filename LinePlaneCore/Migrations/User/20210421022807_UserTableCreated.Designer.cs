@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinePlaneCore.Migrations.User
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20210420232354_UserTableCreated")]
+    [Migration("20210421022807_UserTableCreated")]
     partial class UserTableCreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

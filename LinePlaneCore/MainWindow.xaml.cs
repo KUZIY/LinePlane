@@ -28,7 +28,6 @@ namespace LinePlaneCore
     {
 
         private IDraw a;
-        private RegistrationWindow Registration;
         private EnterWindow Avtoauthorization;
         private readonly List<UIElement> object_memory = new List<UIElement>();
         private List<Border> borders = new List<Border>();
@@ -63,26 +62,7 @@ namespace LinePlaneCore
         }
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
-
         #region Пользователь
-
-        private void User_Button(object sender, MouseEventArgs e)
-        {
-            if (User_Border.Visibility == Visibility.Hidden)
-                User_Border.Visibility = Visibility.Visible;
-            else
-                User_Border.Visibility = Visibility.Hidden;
-        }
-
-        private void Button_registration_Click(object sender, RoutedEventArgs e)
-        {
-            if (Registration == null)
-            {
-                Registration = new RegistrationWindow();
-            }
-            Registration.Show();
-
-        }
 
         private void Button_enter_Click(object sender, RoutedEventArgs e)
         {
@@ -253,37 +233,46 @@ namespace LinePlaneCore
         }
         private void sofa2(object sender, RoutedEventArgs e)
         {
-
+           (double,double)size = SearchDBClass.Search_in_DB("Hall", "sofa2");
+            square(size.Item1, size.Item2);
         }
         private void sofa3(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "sofa3");
+            square(size.Item1, size.Item2);
         }
         private void sofacorner(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "SofaAngle");
+            square(size.Item1, size.Item2);
         }
         private void armchar(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Armchair");
+            square(size.Item1, size.Item2);
         }
         private void coffeetable(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Bookcase");
+            square(size.Item1, size.Item2);
         }
         private void TVstand(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "TV stand");
+            square(size.Item1, size.Item2);
         }
         private void desctop(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Desktop");
+            square(size.Item1, size.Item2);
         }
         private void officechair(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Office chair");
+            ellipse(size.Item1, size.Item2);
         }
         #endregion
+
         #region bedroom
         private void Button_Bedroom(object sender, RoutedEventArgs e)
         {
@@ -310,6 +299,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region kitchen
         private void Button_Kitchen(object sender, RoutedEventArgs e)
         {
@@ -344,6 +334,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region appliances
         private void Button_Appliances(object sender, RoutedEventArgs e)
         {
@@ -374,6 +365,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region wardrobe
         private void Button_Wardrobe(object sender, RoutedEventArgs e)
         {
@@ -404,6 +396,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region bathroom
         private void Button_Bathroom(object sender, RoutedEventArgs e)
         {
@@ -434,6 +427,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region interior
         private void Button_Interior(object sender, RoutedEventArgs e)
         {
@@ -502,16 +496,16 @@ namespace LinePlaneCore
                 itemBtn.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
         }
 
-        private void square_table(object sender, RoutedEventArgs e)
+        private void square(double widith, double height)
         {
             
-            a = new Draw_Square(this, 100, 100);
+            a = new Draw_Square(this, widith, height);
         }
 
-        private void ellipse_table(object sender, RoutedEventArgs e)
+        private void ellipse(double widith, double height)
         {
            
-            a = new Draw_Ellipse(this, 100, 100);
+            a = new Draw_Ellipse(this, widith, height);
         }
 
         private void Enable_Shapes (bool swith)
