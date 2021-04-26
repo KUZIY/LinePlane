@@ -28,7 +28,7 @@ namespace LinePlaneCore
             UserDB = new UserContext();
         }
 
-        private void Registration_button(object sender, RoutedEventArgs e)
+       /* private void Registration_button(object sender, RoutedEventArgs e)
         {
             string login=RegistrationField.Text.ToLower().Trim();
             string password=PasswordField1.Password.Trim();
@@ -103,6 +103,6 @@ namespace LinePlaneCore
             }
 
             
-        }
+        }*/
     }
 }

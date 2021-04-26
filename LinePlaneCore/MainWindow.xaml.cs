@@ -28,7 +28,6 @@ namespace LinePlaneCore
     {
 
         private IDraw a;
-        private EnterWindow Avtoauthorization;
         private readonly List<UIElement> object_memory = new List<UIElement>();
         private List<Border> borders = new List<Border>();
         private List<Button> buttons = new List<Button>();
@@ -62,21 +61,6 @@ namespace LinePlaneCore
         }
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
-        #region Пользователь
-
-        private void Button_enter_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (Avtoauthorization != null)
-                Avtoauthorization.Close();
-
-            Avtoauthorization = new EnterWindow();
-
-
-            Avtoauthorization.Show();
-        }
-
-        #endregion
 
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
@@ -119,11 +103,7 @@ namespace LinePlaneCore
 
         #region Tollstrip
 
-        private void Button_NigthDay(object sender, RoutedEventArgs e)
-        {
-
-
-        }
+       
         private void Button_Next(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
@@ -160,43 +140,6 @@ namespace LinePlaneCore
             }
         }
 
-        private void Button_Save(object sender, RoutedEventArgs e)
-        {
-            Enable_Shapes(false);
-
-
-            Microsoft.Win32.SaveFileDialog saveimg = new Microsoft.Win32.SaveFileDialog();
-
-
-
-            saveimg.Filter = "(.PNG)|*.PNG|(.JPEG)|*.JPEG ; *.jpg|(.BMP)|*.bmp" +
-                "|All Files|*.*";
-
-            saveimg.DefaultExt = saveimg.Filter;
-
-            if (saveimg.ShowDialog() == true)
-            {
-                ToImageSource(canvas, saveimg.FileName);
-            }
-        }
-        public static void ToImageSource(Canvas canvas, string filename)
-        {
-            RenderTargetBitmap bmp = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
-
-            canvas.Measure(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight));
-            canvas.Arrange(new Rect(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight)));
-
-            bmp.Render(canvas);
-
-            PngBitmapEncoder encoder = new PngBitmapEncoder();
-
-            encoder.Frames.Add(BitmapFrame.Create(bmp));
-
-            using (FileStream file = File.Create(filename))
-            {
-                encoder.Save(file);
-            }
-        }
         private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
         #endregion
 
@@ -233,18 +176,18 @@ namespace LinePlaneCore
         }
         private void sofa2(object sender, RoutedEventArgs e)
         {
-           (double,double)size = SearchDBClass.Search_in_DB("Hall", "sofa2");
-            square(size.Item1, size.Item2);
+           //(double,double)size = SearchDBClass.Search_in_DB("Hall", "sofa2");
+            square(100, 100);
         }
         private void sofa3(object sender, RoutedEventArgs e)
         {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "sofa3");
-            square(size.Item1, size.Item2);
+            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "sofa3");
+            square(100, 100);
         }
         private void sofacorner(object sender, RoutedEventArgs e)
         {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "SofaAngle");
-            square(size.Item1, size.Item2);
+            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "SofaAngle");
+            square(100, 100);
         }
         private void armchar(object sender, RoutedEventArgs e)
         {
