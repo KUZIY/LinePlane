@@ -37,11 +37,14 @@
 
                 </Grid>
 
-                <TextBox x:Name="RegistrationField" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="IBeam" Text="{Binding UserName}"/>
-                <PasswordBox x:Name="PasswordField1" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Password="{Binding Password}"/>
-                <PasswordBox x:Name="PasswordField2" materialDesign:HintAssist.Hint="Повторно введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  PasswordChar="{Binding SecondPassword}"/>
-                <TextBox x:Name="EmailField" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserEmail}"/>
-                <Button HorizontalAlignment="Center"  Content="Зарегистрироваться" Margin="0 20" />
+                <TextBox  materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="IBeam" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Background="{Binding UserNameBrush}" ToolTip="{Binding LoginError}"/>
+                <PasswordBox x:Name="Password"  materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Background="{Binding PasswordBrush}" Cursor="IBeam" ToolTip="{Binding PasswordError}"/>
+                <TextBox  materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}" Background="{Binding EmailBrush}"  ToolTip="{Binding EmailError}"/>
+                <Button HorizontalAlignment="Center"  Content="Зарегистрироваться" Margin="0 20"  Cursor="Hand">
+                    <Button.InputBindings>
+                        <MouseBinding Command="{Binding RegistrationCommand}" CommandParameter="{Binding ElementName=Password}" MouseAction="LeftClick"/>
+                    </Button.InputBindings>
+                </Button>
 
             </StackPanel>
 

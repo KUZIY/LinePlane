@@ -11,13 +11,13 @@ using System.Windows.Media;
 
 namespace LinePlaneCore.Control
 {
-    class RegistrationWindowShell : Base
+    class EnterWindowShell:Base
     {
+
         #region Данные пользователя
 
         private string _UserName = "";
         private string _Password = "";
-        private string _UserEmail = "";
 
 
         public string UserName
@@ -25,11 +25,7 @@ namespace LinePlaneCore.Control
             get => _UserName;
             set => Set(ref _UserName, value);
         }
-        public string UserEmail
-        {
-            get => _UserEmail;
-            set => Set(ref _UserEmail, value);
-        }
+
         #endregion
 
         #region цвета полей и текст ошибки
@@ -37,7 +33,6 @@ namespace LinePlaneCore.Control
         #region цвета полей
         private Brush _UserNameBrush = Brushes.Transparent;
         private Brush _PasswordBrush = Brushes.Transparent;
-        private Brush _EmailBrush = Brushes.Transparent;
 
 
         public Brush UserNameBrush
@@ -52,18 +47,12 @@ namespace LinePlaneCore.Control
             set => Set(ref _PasswordBrush, value);
         }
 
-        public Brush EmailBrush
-        {
-            get => _EmailBrush;
-            set => Set(ref _EmailBrush, value);
-        }
         #endregion
 
         #region отображение ошибок
 
         private string _LoginError = "";
         private string _PasswordError = "";
-        private string _EmailError = "";
 
         public string LoginError
         {
@@ -77,37 +66,28 @@ namespace LinePlaneCore.Control
             set => Set(ref _PasswordError, value);
         }
 
-        public string EmailError
-        {
-            get => _EmailError;
-            set => Set(ref _EmailError, value);
-        }
-
         #endregion
 
         #endregion
 
         #region Команда для регистрации
 
-        public ICommand RegistrationCommand { get; }
+        public ICommand EnterCommand { get; }
 
-        private void OnRegistrationCommandExecuted(object p)
+        private void OnEnterCommandExecuted(object p)
         {
             _Password = (p as PasswordBox).Password;
 
             string login = _UserName.ToLower().Trim();
             string password = _Password.Trim();
-            string email = _UserEmail.ToLower().Trim();
 
             #region установка цвета полей ввода и обнуление текста ошибок
 
             UserNameBrush = Brushes.Transparent;
             PasswordBrush = Brushes.Transparent;
-            EmailBrush = Brushes.Transparent;
 
             LoginError = "";
             PasswordError = "";
-            _EmailError = "";
 
             #endregion
 
@@ -121,11 +101,6 @@ namespace LinePlaneCore.Control
                 PasswordError = "Пароль должен содержать минимум 5 символа";
                 PasswordBrush = (Brush)(new BrushConverter().ConvertFrom("#F15122"));
             }
-            else if (!email.Contains("@") || !email.Contains(".") || email.Length < 5)
-            {
-                EmailError = "Неверно введён Email";
-                EmailBrush = (Brush)(new BrushConverter().ConvertFrom("#F15122"));
-            }
             else
             {
                 LoginError = "";
@@ -134,42 +109,37 @@ namespace LinePlaneCore.Control
                 PasswordError = "";
                 PasswordBrush = Brushes.Transparent;
 
-                EmailError = "";
-                EmailBrush = Brushes.Transparent;
-
                 int HashPassword = password.GetHashCode();
 
-                User client = new User();
+                User AuthUser = null;
 
-                client._Email = email;
-                client._Password = HashPassword;
-                client._Login = login;
 
-                MessageBox.Show("Зареистрированно");
-
-                /*try
+                /*using (UserContext User_DB = new UserContext())
                 {
-                    UserDB.Add(client);
-                    UserDB.SaveChanges();
-                    this.Close();
+                    AuthUser = User_DB.Users.Where(b => b._Login == login && b._Password == HashPassword).FirstOrDefault();
                 }
-                catch
-                {
-                    MessageBox.Show("Такой пользователь уже существует");
 
+                if (AuthUser != null)
+                {
+                    MessageBox.Show("Вход произведён");
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не найден");
                 }*/
 
             }
         }
 
-        private bool CanRegistrationCommandExecuted(object p) => true;
+        private bool CanEnterCommandExecuted(object p) => true;
 
         #endregion
 
-        public RegistrationWindowShell()
+        public EnterWindowShell()
         {
-            RegistrationCommand = new ActionCommand(OnRegistrationCommandExecuted, CanRegistrationCommandExecuted);
+            EnterCommand = new ActionCommand(OnEnterCommandExecuted, CanEnterCommandExecuted);
         }
+
 
     }
 }
