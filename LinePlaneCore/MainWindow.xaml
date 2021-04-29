@@ -39,11 +39,21 @@
         </Grid.ColumnDefinitions>
 
 
-        <Canvas x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+        <Canvas  x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
             <Canvas.Background>
-                <ImageBrush ImageSource="/Resources/grid.png" Opacity="0.2"/>
+                <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing Brush="Black">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup FillRule="EvenOdd">
+                                    <RectangleGeometry Rect="0,0,50,50" />
+                                    <RectangleGeometry Rect="0,0,49,49" />
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
             </Canvas.Background>
-
         </Canvas>
 
 
