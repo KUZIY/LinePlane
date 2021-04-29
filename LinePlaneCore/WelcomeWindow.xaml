@@ -15,7 +15,7 @@
 
     <Grid Visibility="Visible" Background="#FFA6A39D">
 
-        <Image Source="/Resources/hon.png" HorizontalAlignment="Center" Height="384" Margin="0,27,0,0" RenderOptions.BitmapScalingMode="Fant" VerticalAlignment="Top" Width="558"/>
+        <Image Source="/Resources/phon.png" HorizontalAlignment="Center" Height="384" Margin="0,27,0,0" RenderOptions.BitmapScalingMode="Fant" VerticalAlignment="Top" Width="558"/>
 
 
         <TextBox  Visibility="Visible" TextWrapping="Wrap" Text="LinePlane" Width="266" FontSize="70" Margin="0,99,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -35,4 +35,3 @@
 
     </Grid>
 </Window>
-

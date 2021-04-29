@@ -70,6 +70,8 @@
             </Border.Effect>
         </Border>
 
+
+
         <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button">
 
             <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
