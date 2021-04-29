@@ -38,7 +38,7 @@
 
                 <TextBox materialDesign:HintAssist.Hint="Введите логин" x:Name="LoginField" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Cursor="IBeam" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Background="{Binding UserNameBrush}" ToolTip="{Binding LoginError}"/>
                 <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Background="{Binding PasswordBrush}" Cursor="IBeam" ToolTip="{Binding PasswordError}"/>
-                <Button HorizontalAlignment="Center"  Content="Войти" Margin="224,20" Click="EnterButtonClic" >
+                <Button HorizontalAlignment="Center"  Content="Войти" Margin="224,20" Cursor="Hand" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=Password}" MouseAction="LeftClick"/>
                     </Button.InputBindings>
