@@ -47,6 +47,7 @@
     <None Remove="Resources\mainroom.png" />
     <None Remove="Resources\moon.png" />
     <None Remove="Resources\next.png" />
+    <None Remove="Resources\phon.png" />
     <None Remove="Resources\plumbing.png" />
     <None Remove="Resources\Save.png" />
     <None Remove="Resources\turn-right.png" />
@@ -95,7 +96,8 @@
     <Resource Include="Resources\livingroom.png" />
     <Resource Include="Resources\moon.png" />
     <Resource Include="Resources\next.png" />
-    <Resource Include="Resources\plumbing.png" />
+    <Resource Include="Resources\phon.png" />
+    <SplashScreen Include="Resources\plumbing.png" />
     <Resource Include="Resources\Save.png" />
     <Resource Include="Resources\undo-arrow.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
