@@ -14,6 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Server\Class1.cs" />
+    <Compile Remove="Server\Class2.cs" />
+    <Compile Remove="Server\Class3.cs" />
+    <Compile Remove="Server\Class4.cs" />
+    <Compile Remove="Server\Measurments.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="cursor.png" />
     <None Remove="edit.png" />
     <None Remove="hand.png" />
@@ -48,6 +56,7 @@
     <None Remove="Resources\USER2-removebg-preview.png" />
     <None Remove="Resources\wardrobe.png" />
     <None Remove="Save.png" />
+    <None Remove="Server\Room" />
     <None Remove="USER2-removebg-preview.png" />
   </ItemGroup>
 
@@ -55,12 +64,16 @@
     <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup>

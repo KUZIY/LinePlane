@@ -14,12 +14,9 @@ using System.Windows.Shapes;
 
 namespace LinePlaneCore
 {
-    /// <summary>
-    /// Логика взаимодействия для EnterWindow.xaml
-    /// </summary>
+
     public partial class EnterWindow : Window
     {
-        
 
         public EnterWindow()
         {
@@ -27,13 +24,22 @@ namespace LinePlaneCore
 
         }
 
-        private void EnterButtonClic(object sender, RoutedEventArgs e)
-        {
-            string Login = LoginField.Text.ToLower().Trim();
-            string password = PasswordField.Password.Trim();
+                /*User AuthUser = null;
 
-            //if ()
+                 using (UserContext User_DB = new UserContext())
+                {
+                    AuthUser = User_DB.Users.Where(b => b._Login==Login && b._Password == HashPassword).FirstOrDefault();
+                }
 
-        }
+                 if (AuthUser != null)
+                {
+                    MessageBox.Show("Вход произведён");
+                    this.Close();
+                }
+                 else
+                {
+                    MessageBox.Show("Пользователь не найден");
+                }*/
+
     }
 }

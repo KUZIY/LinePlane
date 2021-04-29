@@ -226,7 +226,7 @@ namespace LinePlaneCore
         }
         private void set_events(Rectangle shape)
         {
-            //shape.MouseRightButtonDown += Shape_Menu;
+            shape.MouseRightButtonDown += Shape_Menu;
             shape.PreviewMouseLeftButtonDown += Choise_Shape;
             shape.PreviewMouseLeftButtonUp += Free_Shape;
             shape.IsEnabled = false;
@@ -342,7 +342,9 @@ namespace LinePlaneCore
 
         public void Shape_Menu(object sender, MouseButtonEventArgs e)
         {
-
+            dragObject = sender as UIElement;
+            Show_Ander_Strip.Object = dragObject;
+            Show_Ander_Strip.Show_button_strip_menu(_window);
         }
         #endregion
 
@@ -354,7 +356,7 @@ namespace LinePlaneCore
         private Ellipse shape;
         private void set_events(Ellipse shape)
         {
-            //shape.MouseRightButtonDown += Shape_Menu;
+            shape.MouseRightButtonDown += Shape_Menu;
             shape.PreviewMouseLeftButtonDown += Choise_Shape;
             shape.PreviewMouseLeftButtonUp += Free_Shape;
             shape.IsEnabled = false;
@@ -470,7 +472,8 @@ namespace LinePlaneCore
 
         public void Shape_Menu(object sender, MouseButtonEventArgs e)
         {
-
+            dragObject = sender as UIElement;
+            Show_Ander_Strip.Object = dragObject;
         }
 
         #endregion

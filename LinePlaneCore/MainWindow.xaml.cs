@@ -28,8 +28,6 @@ namespace LinePlaneCore
     {
 
         private IDraw a;
-        private RegistrationWindow Registration;
-        private EnterWindow Avtoauthorization;
         private readonly List<UIElement> object_memory = new List<UIElement>();
         private List<Border> borders = new List<Border>();
         private List<Button> buttons = new List<Button>();
@@ -64,43 +62,10 @@ namespace LinePlaneCore
         internal Point Get_Cursor_Point(MouseEventArgs e) => Mouse.GetPosition(this);
 
 
-        #region Пользователь
-
-        private void User_Button(object sender, MouseEventArgs e)
-        {
-            if (User_Border.Visibility == Visibility.Hidden)
-                User_Border.Visibility = Visibility.Visible;
-            else
-                User_Border.Visibility = Visibility.Hidden;
-        }
-
-        private void Button_registration_Click(object sender, RoutedEventArgs e)
-        {
-            if (Registration == null)
-            {
-                Registration = new RegistrationWindow();
-            }
-            Registration.Show();
-
-        }
-
-        private void Button_enter_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (Avtoauthorization != null)
-                Avtoauthorization.Close();
-
-            Avtoauthorization = new EnterWindow();
-
-
-            Avtoauthorization.Show();
-        }
-
-        #endregion
-
         #region Прорисовка объектов
         private void SetLinePosition(MouseEventArgs e)
         {
+            //Show_Ander_Strip.Show_button_strip_menu(this);
             if (a!=null)
 
             a.Set(e);
@@ -138,11 +103,7 @@ namespace LinePlaneCore
 
         #region Tollstrip
 
-        private void Button_NigthDay(object sender, RoutedEventArgs e)
-        {
-
-
-        }
+       
         private void Button_Next(object sender, RoutedEventArgs e)
         {
             Enable_Shapes(false);
@@ -179,43 +140,6 @@ namespace LinePlaneCore
             }
         }
 
-        private void Button_Save(object sender, RoutedEventArgs e)
-        {
-            Enable_Shapes(false);
-
-
-            Microsoft.Win32.SaveFileDialog saveimg = new Microsoft.Win32.SaveFileDialog();
-
-
-
-            saveimg.Filter = "(.PNG)|*.PNG|(.JPEG)|*.JPEG ; *.jpg|(.BMP)|*.bmp" +
-                "|All Files|*.*";
-
-            saveimg.DefaultExt = saveimg.Filter;
-
-            if (saveimg.ShowDialog() == true)
-            {
-                ToImageSource(canvas, saveimg.FileName);
-            }
-        }
-        public static void ToImageSource(Canvas canvas, string filename)
-        {
-            RenderTargetBitmap bmp = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
-
-            canvas.Measure(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight));
-            canvas.Arrange(new Rect(new Size((int)canvas.ActualWidth, (int)canvas.ActualHeight)));
-
-            bmp.Render(canvas);
-
-            PngBitmapEncoder encoder = new PngBitmapEncoder();
-
-            encoder.Frames.Add(BitmapFrame.Create(bmp));
-
-            using (FileStream file = File.Create(filename))
-            {
-                encoder.Save(file);
-            }
-        }
         private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
         #endregion
 
@@ -252,37 +176,46 @@ namespace LinePlaneCore
         }
         private void sofa2(object sender, RoutedEventArgs e)
         {
-
+           //(double,double)size = SearchDBClass.Search_in_DB("Hall", "sofa2");
+            square(100, 100);
         }
         private void sofa3(object sender, RoutedEventArgs e)
         {
-
+            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "sofa3");
+            square(100, 100);
         }
         private void sofacorner(object sender, RoutedEventArgs e)
         {
-
+            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "SofaAngle");
+            square(100, 100);
         }
         private void armchar(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Armchair");
+            square(size.Item1, size.Item2);
         }
         private void coffeetable(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Bookcase");
+            square(size.Item1, size.Item2);
         }
         private void TVstand(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "TV stand");
+            square(size.Item1, size.Item2);
         }
         private void desctop(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Desktop");
+            square(size.Item1, size.Item2);
         }
         private void officechair(object sender, RoutedEventArgs e)
         {
-
+            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Office chair");
+            ellipse(size.Item1, size.Item2);
         }
         #endregion
+
         #region bedroom
         private void Button_Bedroom(object sender, RoutedEventArgs e)
         {
@@ -309,6 +242,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region kitchen
         private void Button_Kitchen(object sender, RoutedEventArgs e)
         {
@@ -343,6 +277,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region appliances
         private void Button_Appliances(object sender, RoutedEventArgs e)
         {
@@ -373,6 +308,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region wardrobe
         private void Button_Wardrobe(object sender, RoutedEventArgs e)
         {
@@ -403,6 +339,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region bathroom
         private void Button_Bathroom(object sender, RoutedEventArgs e)
         {
@@ -433,6 +370,7 @@ namespace LinePlaneCore
 
         }
         #endregion
+
         #region interior
         private void Button_Interior(object sender, RoutedEventArgs e)
         {
@@ -501,16 +439,16 @@ namespace LinePlaneCore
                 itemBtn.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
         }
 
-        private void square_table(object sender, RoutedEventArgs e)
+        private void square(double widith, double height)
         {
             
-            a = new Draw_Square(this, 100, 100);
+            a = new Draw_Square(this, widith, height);
         }
 
-        private void ellipse_table(object sender, RoutedEventArgs e)
+        private void ellipse(double widith, double height)
         {
            
-            a = new Draw_Ellipse(this, 100, 100);
+            a = new Draw_Ellipse(this, widith, height);
         }
 
         private void Enable_Shapes (bool swith)
