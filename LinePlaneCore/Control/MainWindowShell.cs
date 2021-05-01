@@ -13,10 +13,7 @@ namespace LinePlaneCore.Control
 {
     internal class MainWindowShell : Base
     {
-        #region Windows
-        private RegistrationWindow Registration;
-        private EnterWindow Enter;
-        #endregion
+        
 
         #region UserButton
         private Visibility _UserButton = Visibility.Hidden;
@@ -41,7 +38,7 @@ namespace LinePlaneCore.Control
             set => Set(ref _MainCanvas, value);
         }
 
-
+        private List<UIElement> ShapeMemory = new List<UIElement>();
         #endregion
 
         #region Команды
@@ -63,39 +60,7 @@ namespace LinePlaneCore.Control
         private bool CanShowUserPanelCommandExecuted(object p) => true;
         #endregion
 
-        #region команда кнопки Registration
-        public ICommand RegistrationWindowCommand { get; }
-
-        private void OnRegistrationWindowCommandExecuted(object p)
-        {
-            if (Enter != null) Enter.Close();
-            if (Registration != null) Registration.Close();
-
-            Registration = new RegistrationWindow();
-
-            Registration.Show();
-        }
-
-        private bool CanRegistrationWindowCommandExecuted(object p) => true;
-        #endregion
-
-        #region команда кнопки Authorization
-        public ICommand AuthorizationWindowCommand { get; }
-
-        private void OnAuthorizationWindowCommandExecuted(object p)
-        {
-            if (Registration != null) Registration.Close();
-            if (Enter != null)  Enter.Close();
-
-            Enter = new EnterWindow();
-
-            Enter.Show();
-        }
-
-        private bool CanAuthorizationWindowCommandExecuted(object p) => true;
-        #endregion
-
-        #region команда перердача Canvas
+        #region команда перердачи Canvas
         public ICommand CanvasTransportCommand { get; }
 
         private void OnCanvasTransportCommandExecuted(object p)
@@ -105,6 +70,46 @@ namespace LinePlaneCore.Control
 
         private bool CanCanvasTransportCommandExecuted(object p) => true;
         #endregion
+
+        #region команды следующее\пердидущее действие
+
+        public ICommand DeleteLastCanvasObjCmommand { get; }
+
+        private void OnDeleteLastCanvasObjExecuted(object p)
+        {
+            int cnt = _MainCanvas.Children.Count;
+            ShapeMemory.Add(_MainCanvas.Children[cnt - 1]);
+            _MainCanvas.Children.RemoveAt(cnt - 1);
+
+        }
+
+        private bool CanDeleteLastCanvasObjExecuted(object p) 
+        {
+            if (_MainCanvas.Children.Count > 0) return true;
+            else return false;
+        }
+
+
+
+        public ICommand BackDeleteCanvasObjCmommand { get; }
+
+        private void OnBackDeleteCanvasObjExecuted(object p)
+        {
+            _MainCanvas.Children.Add(ShapeMemory[ShapeMemory.Count - 1]);
+            ShapeMemory.RemoveAt(ShapeMemory.Count - 1);
+
+        }
+
+        private bool CanBackDeleteCanvasObjExecuted(object p)
+        {
+            if (ShapeMemory.Count > 0) return true;
+            else return false;
+        }
+
+
+        #endregion
+
+        №
 
         #endregion
 
@@ -133,26 +138,31 @@ namespace LinePlaneCore.Control
 
         #endregion
 
+        #region команда спавна предмета
+
+        public ICommand SpawnShapeCommand { get; }
+
+        private void OnSpawnShapeCommandExecuted(object p)
+        {
+            a = new Draw_Square(widith, height);
+        }
+
+        private bool CanSpawnShapeCommandExecuted(object p) => true;
+
+        #endregion
+
+
         #endregion
 
         public MainWindowShell()
         {
             CanvasTransportCommand = new ActionCommand(OnCanvasTransportCommandExecuted, CanCanvasTransportCommandExecuted);
 
-            #region user command
+            DeleteLastCanvasObjCmommand = new ActionCommand(OnDeleteLastCanvasObjExecuted, CanDeleteLastCanvasObjExecuted);
+            BackDeleteCanvasObjCmommand = new ActionCommand(OnBackDeleteCanvasObjExecuted, CanBackDeleteCanvasObjExecuted);
 
             #region команда для кнопки User
             ShowUserPanelCommand = new ActionCommand(OnShowUserPanelCommandExecuted, CanShowUserPanelCommandExecuted);
-            #endregion
-
-            #region команда для кнопки Registration
-            RegistrationWindowCommand = new ActionCommand(OnRegistrationWindowCommandExecuted, CanRegistrationWindowCommandExecuted);
-            #endregion
-
-            #region команда для кнопки Authorization
-            AuthorizationWindowCommand = new ActionCommand(OnAuthorizationWindowCommandExecuted, CanAuthorizationWindowCommandExecuted);
-            #endregion
-
             #endregion
 
             #region команда кнопки Save

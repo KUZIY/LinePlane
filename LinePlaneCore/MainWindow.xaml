@@ -19,9 +19,9 @@
          d:DesignWidth="1264.864" d:DesignHeight="1020.166"
         >
 
-        <Window.DataContext>
-            <vm:MainWindowShell/>
-        </Window.DataContext>
+    <Window.DataContext>
+        <vm:MainWindowShell/>
+    </Window.DataContext>
 
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Display_Area">
@@ -65,11 +65,11 @@
 
 
 
-        <Border BorderBrush="#FFA6A39D" BorderThickness="0" Grid.Row="0" Grid.ColumnSpan="4">
+        <Border BorderBrush="#FFA6A39D" BorderThickness="0" CornerRadius="0" Grid.Row="0" Grid.ColumnSpan="4">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC1C1C1" Offset="0"/>
-                    <GradientStop Color="#FF938F89" Offset="1"/>
+                    <GradientStop Color="#FF868097" Offset="0"/>
+                    <GradientStop Color="#FF44414B" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -79,9 +79,14 @@
         </Border>
 
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Click="Cancel_button" Cursor="Hand">
+        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Margin="60,10,0,15" Grid.Column="0" VerticalAlignment="Center"  Cursor="Hand">
 
 
+            <Button.InputBindings>
+                <KeyBinding Command="{Binding DeleteLastCanvasObjCmommand}" Gesture="CTRL+Z"/>
+                <MouseBinding Command="{Binding DeleteLastCanvasObjCmommand}" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+            
             <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
 
 
@@ -97,12 +102,17 @@
         </Button>
 
 
-        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Click="Button_Next" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
+        <Button Background="{x:Null}"  HorizontalAlignment="Left" Width="60" Height="35" Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="0" Margin="120,10,0,15" VerticalAlignment="Center" Cursor="Hand">
+
+            <Button.InputBindings>
+                <KeyBinding Command="{Binding BackDeleteCanvasObjCmommand}" Gesture="CTRL+Y"/>
+                <MouseBinding Command="{Binding BackDeleteCanvasObjCmommand}" MouseAction="LeftClick"/>
+            </Button.InputBindings>
 
             <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
 
         </Button>
-        
+
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" Cursor="Hand" >
             <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
             <Button.InputBindings>
@@ -159,8 +169,8 @@
 
 
 
-        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2">
-            <Border BorderThickness="0" BorderBrush="Black" Background="#FFA6A39D" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
+        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">
+            <Border BorderThickness="0,5" BorderBrush="Black" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
 
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
@@ -169,8 +179,8 @@
                 <Grid>
 
                     <!--#region button of panel-->
-                    <Button Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand">
-                        <Image Source="/Resources/cursor.png" Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
+                    <Button  Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand" >
+                        <Image Source="/Resources/cursor.png"  Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
                     <Button Width="50" Height="50" Click="Button_Hand" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
@@ -202,6 +212,9 @@
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Диван двухместный"/>
+                                <Button.InputBindings
+                                    <MouseBinding Command="{Binding }" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
                             <Button Click="sofa3" Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Top" Margin="0,40,0,0"  >
@@ -487,7 +500,7 @@
 
                     <!--#region button bathroom-->
 
-                    <Button x:Name="ButBath"  Width="50" Height="50" VerticalAlignment="Top" Background="#FFA6A39D" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Bathroom" Margin="0,400,0,0" Cursor="Hand">
+                    <Button x:Name="ButBath"  Width="50" Height="50" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Bathroom" Margin="0,400,0,0" Cursor="Hand">
                         <Image  Source="/Resources/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
@@ -544,7 +557,7 @@
                     <!--#endregion-->
 
                     <!--#region button interior-->
-                    <Button x:Name="ButInterior"  Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Interior" Background="#FFA6A39D"  Margin="0,450,0,0" BorderBrush="#FFB8AFC9" Cursor="Hand">
+                    <Button x:Name="ButInterior"  Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Interior"  Margin="0,450,0,0" BorderBrush="#FFB8AFC9" Cursor="Hand">
 
                         <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
                     </Button>
@@ -655,6 +668,6 @@
             <i:InvokeCommandAction Command="{Binding CanvasTransportCommand}" CommandParameter="{Binding ElementName=canvas}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    
-    
+
+
 </Window>

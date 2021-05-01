@@ -28,7 +28,6 @@ namespace LinePlaneCore
     {
 
         private IDraw a;
-        private readonly List<UIElement> object_memory = new List<UIElement>();
         private List<Border> borders = new List<Border>();
         private List<Button> buttons = new List<Button>();
 
@@ -99,49 +98,14 @@ namespace LinePlaneCore
 
         }
 
+        private void CanvasLeftMouseClickDown(object sender, MouseEventArgs e) { }
+        private void CanvasLeftMouseClickUp(object sender, MouseEventArgs e) { }
+        private void CanvasRightMouseClick(object sender, MouseEventArgs e) { }
+        private void CanvasDragMouse(object sender, MouseEventArgs e) { }
+
+
         #endregion
 
-        #region Tollstrip
-
-       
-        private void Button_Next(object sender, RoutedEventArgs e)
-        {
-            Enable_Shapes(false);
-            Remove_last_Changes();
-        }
-        private void Cancel(object sender, KeyEventArgs e)
-        {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
-            {
-                if (e.Key == Key.Z)
-                {
-                    Delete_last_canvas_Obj();
-                }
-            }
-        }
-
-        private void Delete_last_canvas_Obj()
-        {
-            int cnt = canvas.Children.Count;
-
-            if (cnt > 0)
-
-            {
-                object_memory.Add(canvas.Children[cnt - 1]);
-                canvas.Children.RemoveAt(cnt - 1);
-            }
-        }
-        private void Remove_last_Changes()
-        {
-            if (object_memory.Count > 0)
-            {
-                canvas.Children.Add(object_memory[object_memory.Count - 1]);
-                object_memory.RemoveAt(object_memory.Count - 1);
-            }
-        }
-
-        private void Cancel_button(object sender, EventArgs e) => Delete_last_canvas_Obj();
-        #endregion
 
         #region Toolbar
 

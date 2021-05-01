@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:WW="clr-namespace:LinePlaneCore.Control"
       xmlns:local="clr-namespace:LinePlaneCore"
       mc:Ignorable="d" 
       d:DesignWidth="1264.864" d:DesignHeight="1020.166" 
@@ -10,8 +11,13 @@
       Width="1020.166" WindowStyle="ThreeDBorderWindow"
       ResizeMode="NoResize"
       Icon="/Resources/Icon.png"
-      Title="LinePlane" FontFamily="Poiret One">
+      Title="LinePlane" FontFamily="Poiret One"
+        WindowStartupLocation="CenterScreen"
+        >
 
+    <Window.DataContext>
+        <WW:WelcomeWindowShell/>
+    </Window.DataContext>
 
     <Grid Visibility="Visible">
         <Grid.Background>
@@ -33,8 +39,14 @@
 
         <Grid  Visibility="Visible">
             <Button Content="Вход" Margin="0,400,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="40" Width="180" FontSize="27" Background="#99B88FDA" Foreground="Black" BorderBrush="Black" Cursor="Hand">
+                <Button.InputBindings>
+                    <MouseBinding Command="{Binding AuthorizationWindowCommand}" MouseAction="LeftClick"/>
+                </Button.InputBindings>
             </Button>
             <Button Content="Регистрация" Background="#99B88FDA" Foreground="Black" BorderBrush="Black" Margin="0,510,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="180" FontSize="27" Cursor="Hand">
+                <Button.InputBindings>
+                    <MouseBinding Command="{Binding RegistrationWindowCommand}" MouseAction="LeftClick"/>
+                </Button.InputBindings>
             </Button>
         </Grid>
 
