@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinePlaneCore.Migrations
 {
-    [DbContext(typeof(FurnitureContext))]
+    [DbContext(typeof(LinePlaneContext))]
     [Migration("20210421030906_FurnitureTableCreated3")]
     partial class FurnitureTableCreated3
     {

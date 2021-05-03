@@ -15,6 +15,6 @@ namespace LinePlaneCore
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _Id { get; set; }
         [Required]
-        public string FurnitureTipeName {  get; set;  }
+        public string FurnitureTipe {  get; set;  }
     }
 }

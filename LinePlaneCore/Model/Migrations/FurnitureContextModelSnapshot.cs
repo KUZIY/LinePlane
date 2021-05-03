@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinePlaneCore.Migrations
 {
-    [DbContext(typeof(FurnitureContext))]
+    [DbContext(typeof(LinePlaneContext))]
     partial class FurnitureContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

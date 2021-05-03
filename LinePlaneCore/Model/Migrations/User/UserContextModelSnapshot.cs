@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinePlaneCore.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(Wall))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

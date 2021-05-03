@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinePlaneCore.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(Wall))]
     [Migration("20210421022807_UserTableCreated")]
     partial class UserTableCreated
     {
