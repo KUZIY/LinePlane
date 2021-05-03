@@ -61,6 +61,7 @@
             </Canvas.Background>
             <Canvas.InputBindings>
                 <MouseBinding Command="{Binding InteractShapeCommand}" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding CancelShapeCommand}" MouseAction="RightClick"/>
             </Canvas.InputBindings>
         </Canvas>
 
@@ -295,7 +296,7 @@
                     <!--#endregion-->
 
                     <!--#region button bedroom-->
-                    <Button x:Name="ButBedroom"  Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bedroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
+                    <Button x:Name="ButBedroom" Width="50" Height="50" VerticalAlignment="Top" Click="Button_Bedroom" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
 
                         <Image  Source="/Resources/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
                     </Button>
@@ -309,33 +310,45 @@
 
                         <Grid>
 
-                            <Button Click="bed1" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Кровать односпальная"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="bed2" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button  Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Кровать двухспальная"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="bedsidetable" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button  Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Прикроватная тумбочка"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="cosmetictable" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Косметический столик"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
                         </Grid>
@@ -357,50 +370,68 @@
 
                         <Grid>
 
-                            <Button Click="kitchencabinet" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Кухонная тумба"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="cabinetwithsink" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Тумба с раковиной"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="squaretable" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Стол квадратный(мал)"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="rectangulartable" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Стол прямоугольный(бол)"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
 
 
-                            <Button Click="roundtable" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Стол круглый"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="chair" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Стул стандартный"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
                         </Grid>
                     </Border>
@@ -421,43 +452,59 @@
 
                         <Grid>
 
-                            <Button Click="TV" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Телевизор"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="freezer1" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Холодильник"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="freezer2" Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="218"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="218"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Холодильник двухдверный"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="stove" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Плита"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
 
 
-                            <Button Click="washingmashing" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Стиральная машина"/>
+
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
                         </Grid>
@@ -480,41 +527,56 @@
 
                         <Grid>
 
-                            <Button Click="wardrobe1" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Гардероб"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="wardrobekype" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Шкаф купе"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="bookswardrobe" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Книжный шкаф"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="sideboard" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Сервант"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
 
-                            <Button Click="shoespedestal" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Тумба для обуви"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
                         </Grid>
@@ -536,43 +598,58 @@
 
                         <Grid>
 
-                            <Button Click="sinq" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Раковина"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="bath" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Ванная"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="shower" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Душ"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="toilet" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Унитаз"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
 
 
-                            <Button Click="hottub" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Джакузи"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
                         </Grid>
@@ -594,49 +671,67 @@
 
                         <Grid>
 
-                            <Button Click="mirror" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Зеркало"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="plant" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Растения"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="fireplace" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Камин"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="ikonostas" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Иконостас"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
 
-                            <Button Click="aquarium" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
                                 <TextBlock Text="Аквариум"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
 
-                            <Button Click="piano" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
 
                                 <TextBlock Text="Пианино"/>
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                </Button.InputBindings>
                             </Button>
                         </Grid>
                     </Border>

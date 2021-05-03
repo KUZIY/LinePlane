@@ -146,6 +146,8 @@ namespace LinePlaneCore.Control
 
         #endregion
 
+        #region Рисование объектов
+
         #region команда спавна примитива
 
         public ICommand SpawnShapeCommand { get; }
@@ -154,10 +156,11 @@ namespace LinePlaneCore.Control
         {
             //(double,double)size = SearchDBClass.Search_in_DB(p);
 
-            var Square = new Logic.SpawnShape.Draw_Square(500, 500);
+            var Square = new Logic.SpawnShape.Draw_Square(200, 200);
 
             _MainCanvas.Children.Add(Square.shape);
             Move.dragObject = Square.shape;
+            _MoveShapeObj = Square.shape;
 
         }
 
@@ -165,7 +168,7 @@ namespace LinePlaneCore.Control
 
         #endregion
 
-        #region команда выставления\взятия обЪекта
+        #region команда выставление\взятие обЪекта
         public ICommand InteractShapeCommand { get; }
 
         private void OnInteractShapeCommandExecuted(object p)
@@ -177,12 +180,30 @@ namespace LinePlaneCore.Control
         private bool CanInteractShapeCommandExecuted(object p) => true;
         #endregion
 
+        #region Прервать рисование предмета
+
+        public ICommand CancelShapeCommand { get; }
+
+        private void OnCancelShapeCommandExecuted(object p)
+        {
+            if (_MoveShapeObj != null)
+            {
+                Move.ArgsClear();
+                OnDeleteLastCanvasObjExecuted(null);
+            }
+        }
+
+        private bool CanCancelShapeCommandExecuted(object p) => true;
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         public MainWindowShell()
         {
             CanvasTransportCommand = new ActionCommand(OnCanvasTransportCommandExecuted, CanCanvasTransportCommandExecuted);
-
             DeleteLastCanvasObjCmommand = new ActionCommand(OnDeleteLastCanvasObjExecuted, CanDeleteLastCanvasObjExecuted);
             BackDeleteCanvasObjCmommand = new ActionCommand(OnBackDeleteCanvasObjExecuted, CanBackDeleteCanvasObjExecuted);
 
@@ -197,6 +218,7 @@ namespace LinePlaneCore.Control
 
             SpawnShapeCommand = new ActionCommand(OnSpawnShapeCommandExecuted, CanSpawnShapeCommandExecuted);
             InteractShapeCommand = new ActionCommand(OnInteractShapeCommandExecuted, CanInteractShapeCommandExecuted);
+            CancelShapeCommand = new ActionCommand(OnCancelShapeCommandExecuted, CanCancelShapeCommandExecuted);
         }
 
     }

@@ -150,22 +150,8 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(bedroom, ButBedroom);
         }
-        private void bed1(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void bed2(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void bedsidetable(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void cosmetictable(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        
         #endregion
 
         #region kitchen
@@ -176,30 +162,6 @@ namespace LinePlaneCore
             ChangeButtonBackcolorToolbar(ButKitchen);
             SetBorder();
             ChangeBorderVisibilityToolbar(kitchen, ButKitchen);
-        }
-        private void kitchencabinet(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void cabinetwithsink(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void squaretable(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void rectangulartable(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void roundtable(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void chair(object sender, RoutedEventArgs e)
-        {
-
         }
         #endregion
 
@@ -212,26 +174,6 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(appliances, ButAppl);
         }
-        private void TV(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void freezer1(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void freezer2(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void stove(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void washingmashing(object sender, RoutedEventArgs e)
-        {
-
-        }
         #endregion
 
         #region wardrobe
@@ -242,27 +184,7 @@ namespace LinePlaneCore
             ChangeButtonBackcolorToolbar(ButGard);
             SetBorder();
             ChangeBorderVisibilityToolbar(wardrobe, ButGard);
-        }
-        private void wardrobe1(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void wardrobekype(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void bookswardrobe(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void sideboard(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void shoespedestal(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
         #endregion
 
         #region bathroom
@@ -273,26 +195,6 @@ namespace LinePlaneCore
             ChangeButtonBackcolorToolbar(ButBath);
             SetBorder();
             ChangeBorderVisibilityToolbar(bathroom, ButBath);
-        }
-        private void sinq(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void bath(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void shower(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void toilet(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void hottub(object sender, RoutedEventArgs e)
-        {
-
         }
         #endregion
 
@@ -305,41 +207,9 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(interior, ButInterior);
         }
-        private void mirror(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void plant(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void fireplace(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void ikonostas(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void aquarium(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void piano(object sender, RoutedEventArgs e)
-        {
-
-        }
         #endregion
         private void ChangeButtonBackcolorToolbar(Button item)
         {
-            ButMainroom.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButBedroom.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButKitchen.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButAppl.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButGard.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButBath.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            ButInterior.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
-            item.Background = new SolidColorBrush(Color.FromArgb(255, 142, 123, 166));
         }
 
         #endregion
@@ -360,8 +230,7 @@ namespace LinePlaneCore
                 i.Visibility = Visibility.Hidden;
             }
 
-            if(itemBr.Visibility == Visibility.Hidden)
-                itemBtn.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
+            if (itemBr.Visibility == Visibility.Hidden) ;
         }
 
         private void Enable_Shapes (bool swith)

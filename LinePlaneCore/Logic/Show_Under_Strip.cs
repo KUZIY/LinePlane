@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace LinePlaneCore
 {
-    internal static class Show_Ander_Strip
+    internal static class Show_Under_Strip
     {
 
         static internal UIElement Object
