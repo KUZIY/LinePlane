@@ -13,7 +13,6 @@ namespace LinePlaneCore.Control
 {
     internal class MainWindowShell : Base
     {
-        
 
         #region UserButton
         private Visibility _UserButton = Visibility.Hidden;
@@ -30,12 +29,23 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region CanvasData
-        Canvas _MainCanvas;
+        private Canvas _MainCanvas;
+
+        private static UIElement _MoveShapeObj = null;
+        static internal void TakeShape(UIElement value) 
+        {
+            _MoveShapeObj = value;
+            if (value == null) Move.ArgsClear();
+        }
 
         public Canvas MainCanvas
         {
             get => _MainCanvas;
-            set => Set(ref _MainCanvas, value);
+            set 
+            {
+                Set(ref _MainCanvas, value);
+                Move.canvas = value;
+            }
         }
 
         private List<UIElement> ShapeMemory = new List<UIElement>();
@@ -109,8 +119,6 @@ namespace LinePlaneCore.Control
 
         #endregion
 
-        №
-
         #endregion
 
         #region команда кнопки Save
@@ -138,19 +146,36 @@ namespace LinePlaneCore.Control
 
         #endregion
 
-        #region команда спавна предмета
+        #region команда спавна примитива
 
         public ICommand SpawnShapeCommand { get; }
 
         private void OnSpawnShapeCommandExecuted(object p)
         {
-            a = new Draw_Square(widith, height);
+            //(double,double)size = SearchDBClass.Search_in_DB(p);
+
+            var Square = new Logic.SpawnShape.Draw_Square(500, 500);
+
+            _MainCanvas.Children.Add(Square.shape);
+            Move.dragObject = Square.shape;
+
         }
 
         private bool CanSpawnShapeCommandExecuted(object p) => true;
 
         #endregion
 
+        #region команда выставления\взятия обЪекта
+        public ICommand InteractShapeCommand { get; }
+
+        private void OnInteractShapeCommandExecuted(object p)
+        {
+            if (_MoveShapeObj == null)Move.ArgsClear();
+            else Move.dragObject = _MoveShapeObj;
+        }
+
+        private bool CanInteractShapeCommandExecuted(object p) => true;
+        #endregion
 
         #endregion
 
@@ -170,6 +195,8 @@ namespace LinePlaneCore.Control
             #endregion
 
 
+            SpawnShapeCommand = new ActionCommand(OnSpawnShapeCommandExecuted, CanSpawnShapeCommandExecuted);
+            InteractShapeCommand = new ActionCommand(OnInteractShapeCommandExecuted, CanInteractShapeCommandExecuted);
         }
 
     }

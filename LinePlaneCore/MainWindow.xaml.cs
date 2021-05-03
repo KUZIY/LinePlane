@@ -128,6 +128,7 @@ namespace LinePlaneCore
             Display_Area.Cursor = Cursors.SizeAll;
             a = null;
         }
+
         #region mainroom
         private void Button_Mainroom(object sender, RoutedEventArgs e)
         {
@@ -137,46 +138,6 @@ namespace LinePlaneCore
             SetBorder();
             ChangeBorderVisibilityToolbar(mainroom, ButMainroom);
             
-        }
-        private void sofa2(object sender, RoutedEventArgs e)
-        {
-           //(double,double)size = SearchDBClass.Search_in_DB("Hall", "sofa2");
-            square(100, 100);
-        }
-        private void sofa3(object sender, RoutedEventArgs e)
-        {
-            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "sofa3");
-            square(100, 100);
-        }
-        private void sofacorner(object sender, RoutedEventArgs e)
-        {
-            //(double, double) size = SearchDBClass.Search_in_DB("Hall", "SofaAngle");
-            square(100, 100);
-        }
-        private void armchar(object sender, RoutedEventArgs e)
-        {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Armchair");
-            square(size.Item1, size.Item2);
-        }
-        private void coffeetable(object sender, RoutedEventArgs e)
-        {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Bookcase");
-            square(size.Item1, size.Item2);
-        }
-        private void TVstand(object sender, RoutedEventArgs e)
-        {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "TV stand");
-            square(size.Item1, size.Item2);
-        }
-        private void desctop(object sender, RoutedEventArgs e)
-        {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Desktop");
-            square(size.Item1, size.Item2);
-        }
-        private void officechair(object sender, RoutedEventArgs e)
-        {
-            (double, double) size = SearchDBClass.Search_in_DB("Hall", "Office chair");
-            ellipse(size.Item1, size.Item2);
         }
         #endregion
 
@@ -403,27 +364,12 @@ namespace LinePlaneCore
                 itemBtn.Background = new SolidColorBrush(Color.FromArgb(255, 166, 163, 157));
         }
 
-        private void square(double widith, double height)
-        {
-            
-            a = new Draw_Square(this, widith, height);
-        }
-
-        private void ellipse(double widith, double height)
-        {
-           
-            a = new Draw_Ellipse(this, widith, height);
-        }
-
         private void Enable_Shapes (bool swith)
         {
             Display_Area.Cursor = Cursors.Arrow;
             var s = new Enable(canvas, swith);
         }
-        private void Take_elipse (Border g) {
-            Enable_Shapes(false);
-            a = new Draw_Ellipse(this, 100, 100);
-        }
+       
 
     }
 }

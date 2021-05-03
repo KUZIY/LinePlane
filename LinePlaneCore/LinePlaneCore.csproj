@@ -14,11 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Server\Class1.cs" />
-    <Compile Remove="Server\Class2.cs" />
-    <Compile Remove="Server\Class3.cs" />
-    <Compile Remove="Server\Class4.cs" />
-    <Compile Remove="Server\Measurments.cs" />
+    <Compile Remove="Model\Server\Class1.cs" />
+    <Compile Remove="Model\Server\Class2.cs" />
+    <Compile Remove="Model\Server\Class3.cs" />
+    <Compile Remove="Model\Server\Class4.cs" />
+    <Compile Remove="Model\Server\Measurments.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,7 +56,7 @@
     <None Remove="Resources\USER2-removebg-preview.png" />
     <None Remove="Resources\wardrobe.png" />
     <None Remove="Save.png" />
-    <None Remove="Server\Room" />
+    <None Remove="Model\Server\Room" />
     <None Remove="USER2-removebg-preview.png" />
   </ItemGroup>
 
