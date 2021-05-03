@@ -202,7 +202,7 @@
                     </Button>
 
 
-                    <Border Background="#FFA6A39D" x:Name="mainroom"  CornerRadius="11" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="mainroom"  CornerRadius="11" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -301,7 +301,7 @@
                         <Image  Source="/Resources/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="bedroom"  CornerRadius="11" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="bedroom"  CornerRadius="11" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -361,7 +361,7 @@
                         <Image Source="/Resources/kitchen.png"  RenderOptions.BitmapScalingMode="Fant" Height="20" Width="19"/>
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="kitchen"  CornerRadius="11" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="kitchen"  CornerRadius="11" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -443,7 +443,7 @@
                         <Image  Source="/Resources/electrical.png" RenderOptions.BitmapScalingMode="Fant" Height="25" Width="20"/>
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="appliances"  CornerRadius="11" Visibility="Hidden" Margin="55,280,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="appliances"  CornerRadius="11" Visibility="Hidden" Margin="55,280,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -518,7 +518,7 @@
 
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="wardrobe"  CornerRadius="11" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="wardrobe"  CornerRadius="11" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -589,7 +589,7 @@
                         <Image  Source="/Resources/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="bathroom"  CornerRadius="11" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="bathroom"  CornerRadius="11" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -662,7 +662,7 @@
                         <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
                     </Button>
 
-                    <Border Background="#FFA6A39D" x:Name="interior"  CornerRadius="11" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="215" BorderThickness="0" BorderBrush="Black" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="interior"  CornerRadius="11" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="215" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
