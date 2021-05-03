@@ -184,15 +184,21 @@
                     <!--#region button of panel-->
                     <Button  Width="50" Height="50"  Click="Button_Cursor" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand" >
                         <Image Source="/Resources/cursor.png"  Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Button.InputBindings>
+                            <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Arrow" MouseAction="LeftClick"/>
+                        </Button.InputBindings>
                     </Button>
 
                     <Button Width="50" Height="50" Click="Button_Hand" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
                         <Image Source="/Resources/hand.png" Height="22" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Button.InputBindings>
+                            <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Hand" MouseAction="LeftClick"/>
+                        </Button.InputBindings>
                     </Button>
 
                     <Button Width="50" Height="50" Click="Button_Edit" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
                         <Image Source="/Resources/edit.png" Height="22" Width="18" RenderOptions.BitmapScalingMode="Fant"/>
-
+                    
                     </Button>
                     <!--#endregion-->
 

@@ -235,8 +235,8 @@ namespace LinePlaneCore
 
         private void Enable_Shapes (bool swith)
         {
-            Display_Area.Cursor = Cursors.Arrow;
-            var s = new Enable(canvas, swith);
+           /* Display_Area.Cursor = Cursors.Arrow;
+            var s = new Enable(canvas, swith);*/
         }
        
 

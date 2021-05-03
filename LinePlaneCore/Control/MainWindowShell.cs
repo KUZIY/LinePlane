@@ -1,4 +1,5 @@
 ﻿using LinePlaneCore.Control.Commands;
+using LinePlaneCore.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -198,6 +199,24 @@ namespace LinePlaneCore.Control
 
         #endregion
 
+        #region команды кнопок
+        public ICommand EventButtonCommand { get; }
+
+        private void OnEventButtonCommandExecuted(object p)
+        {
+            SwitchStateShapes.ChangeShapeState(_MainCanvas,false);
+
+            switch (p as string)
+            {
+                case "Arrow": { break; }
+                case "Hand": {SwitchStateShapes.ChangeShapeState(_MainCanvas, true); break; }
+                case "": { break; }
+            }
+        }
+
+        private bool CanEventButtonCommandExecuted(object p) => true;
+        #endregion
+
         #endregion
 
         public MainWindowShell()
@@ -218,6 +237,8 @@ namespace LinePlaneCore.Control
             SpawnShapeCommand = new ActionCommand(OnSpawnShapeCommandExecuted, CanSpawnShapeCommandExecuted);
             InteractShapeCommand = new ActionCommand(OnInteractShapeCommandExecuted, CanInteractShapeCommandExecuted);
             CancelShapeCommand = new ActionCommand(OnCancelShapeCommandExecuted, CanCancelShapeCommandExecuted);
+
+            EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
         }
 
