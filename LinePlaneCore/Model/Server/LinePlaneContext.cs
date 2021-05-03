@@ -14,10 +14,9 @@ namespace LinePlaneCore
         public DbSet<TipeFurniture> TipeFurnitures { get; set; }
         public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<Measurements> Measurments { get; set; }
-        public DbSet<Project> Projects { get; set; }
         public DbSet<Conservation> Conservations { get; set; }
-        public DbSet<User> Userss { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
 
 
