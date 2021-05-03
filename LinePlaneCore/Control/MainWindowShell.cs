@@ -160,7 +160,6 @@ namespace LinePlaneCore.Control
 
             _MainCanvas.Children.Add(Square.shape);
             Move.dragObject = Square.shape;
-            _MoveShapeObj = Square.shape;
 
         }
 
@@ -186,7 +185,7 @@ namespace LinePlaneCore.Control
 
         private void OnCancelShapeCommandExecuted(object p)
         {
-            if (_MoveShapeObj != null)
+            if (_MoveShapeObj == null && Move.dragObject!=null)
             {
                 Move.ArgsClear();
                 OnDeleteLastCanvasObjExecuted(null);
@@ -215,10 +214,11 @@ namespace LinePlaneCore.Control
             SaveCommand = new ActionCommand(OnSaveCommandExecuted, CanSaveCommandExecuted);
             #endregion
 
-
+            #region Команды для рисование объектов
             SpawnShapeCommand = new ActionCommand(OnSpawnShapeCommandExecuted, CanSpawnShapeCommandExecuted);
             InteractShapeCommand = new ActionCommand(OnInteractShapeCommandExecuted, CanInteractShapeCommandExecuted);
             CancelShapeCommand = new ActionCommand(OnCancelShapeCommandExecuted, CanCancelShapeCommandExecuted);
+            #endregion
         }
 
     }
