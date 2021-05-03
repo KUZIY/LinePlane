@@ -124,13 +124,21 @@
             </Button.InputBindings>
         </Button>
 
+        <Border Grid.Row="1" Grid.Column="0" Background="#19404045"  CornerRadius="10" Visibility="Visible" Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
+            <StackPanel>
+                <Button Background="#99B88FDA"  Margin="10" Height="29" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Сохранить картинкой" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
+                    </StackPanel>
+                </Button>
+                <Button Background="#99B88FDA" VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Сохранить в аккаунт" TextAlignment="Center" FontFamily="Poiret One" Foreground="Black"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
 
-        <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="50"  Style="{StaticResource MaterialDesignFlatButton}" Grid.Column="3" Margin="0,10,0,10" VerticalAlignment="Center" Cursor="Hand" >
-
-            <Image Source="/Resources/moon.png" RenderOptions.BitmapScalingMode="Fant"  RenderTransformOrigin="-0.047,0.522" HorizontalAlignment="Center" />
-
-
-        </Button>
 
 
         <Ellipse Stroke="#673AB7" RenderOptions.BitmapScalingMode="Fant"  Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -146,23 +154,23 @@
 
 
 
-        <Border Grid.Row="1" Grid.Column="3" Background="#66292929"  CornerRadius="10" Visibility="{Binding UserButton}" >
+        <Border Grid.Row="1" Grid.Column="3" Background="#19404045"  CornerRadius="10" Visibility="{Binding UserButton}"  Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
             <StackPanel>
-                <Button Background="#FF292929"  Margin="10" Height="29" FontSize="16" Style="{StaticResource MaterialDesignFlatButton}">
+                <Button  Background="#99B88FDA"  Margin="10" Height="29" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" BorderBrush="Black" BorderThickness="0.5" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Вход" Width="37" TextAlignment="Center"/>
+                        <TextBlock Text="Новый проект" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
                     </StackPanel>
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding AuthorizationWindowCommand}" MouseAction="LeftClick"/>
                     </Button.InputBindings>
                 </Button>
-                <Button Background="#FF292929"   VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand">
+                <Button  Background="#99B88FDA"  VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding RegistrationWindowCommand}" MouseAction="LeftClick"/>
                     </Button.InputBindings>
                     <StackPanel Orientation="Horizontal">
 
-                        <TextBlock Text="Регистрация" TextAlignment="Center"/>
+                        <TextBlock Text="Открыть проект" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -172,8 +180,8 @@
 
 
 
-        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">
-            <Border BorderThickness="0,5" BorderBrush="Black" x:Name="ToolBAr_Border" Width="50" Height="500" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
+        <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="515" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">
+            <Border BorderThickness="0,5" BorderBrush="Black" x:Name="ToolBAr_Border" Width="50" Height="505" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
 
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="30" Color="#FF673AB7" ShadowDepth="0"/>
@@ -208,7 +216,7 @@
                     </Button>
 
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="mainroom"  CornerRadius="11" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="mainroom"  CornerRadius="11" Visibility="Hidden" Margin="55,100,-205,0" Grid.Row="1" Width="200" Height="300" ClipToBounds="True" Grid.ColumnSpan="2">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
                         </Border.Effect>
@@ -307,7 +315,7 @@
                         <Image  Source="/Resources/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="bedroom"  CornerRadius="11" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="bedroom"  CornerRadius="11" Visibility="Hidden" Margin="55,45,-205,0" Grid.Row="1" Width="200" Height="146" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -367,7 +375,7 @@
                         <Image Source="/Resources/kitchen.png"  RenderOptions.BitmapScalingMode="Fant" Height="20" Width="19"/>
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="kitchen"  CornerRadius="11" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="kitchen"  CornerRadius="11" Visibility="Hidden" Margin="55,215,-205,0" Grid.Row="1" Width="200" Height="215" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -449,7 +457,7 @@
                         <Image  Source="/Resources/electrical.png" RenderOptions.BitmapScalingMode="Fant" Height="25" Width="20"/>
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="appliances"  CornerRadius="11" Visibility="Hidden" Margin="55,280,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="appliances"  CornerRadius="11" Visibility="Hidden" Margin="55,280,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -524,7 +532,7 @@
 
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="wardrobe"  CornerRadius="11" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="wardrobe"  CornerRadius="11" Visibility="Hidden" Margin="55,120,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -595,7 +603,7 @@
                         <Image  Source="/Resources/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="bathroom"  CornerRadius="11" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="bathroom"  CornerRadius="11" Visibility="Hidden" Margin="55,220,-205,0" Grid.Row="1" Width="200" Height="182" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -668,7 +676,7 @@
                         <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
                     </Button>
 
-                    <Border BorderThickness="0,5" BorderBrush="Black" x:Name="interior"  CornerRadius="11" Visibility="Hidden" Margin="55,285,-205,0" Grid.Row="1" Width="200" Height="215" ClipToBounds="True" Grid.ColumnSpan="2">
+                    <Border Background="#19404045" BorderThickness="0,5" BorderBrush="Black" x:Name="interior"  CornerRadius="11" Visibility="Hidden" Margin="55,280,-205,0" Grid.Row="1" Width="200" Height="216" ClipToBounds="True" Grid.ColumnSpan="2">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" Color="black" Direction="235" Opacity=".3" RenderingBias="Performance"  ShadowDepth="4" />
@@ -677,7 +685,7 @@
 
                         <Grid>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,5,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,0,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
@@ -687,7 +695,7 @@
                                 </Button.InputBindings>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,40,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,35,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
@@ -697,7 +705,7 @@
                                 </Button.InputBindings>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,75,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,70,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
@@ -707,7 +715,7 @@
                                 </Button.InputBindings>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,110,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,105,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
@@ -719,7 +727,7 @@
                             </Button>
 
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,145,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,140,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
@@ -729,7 +737,7 @@
                                 </Button.InputBindings>
                             </Button>
 
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,180,0,0"  >
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Top" Margin="0,175,0,0"  >
                                 <Button.Effect>
                                     <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="1" RenderingBias="Performance" Opacity="1"/>
                                 </Button.Effect>
