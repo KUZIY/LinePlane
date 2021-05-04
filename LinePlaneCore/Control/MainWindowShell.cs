@@ -8,12 +8,21 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace LinePlaneCore.Control
 {
     internal class MainWindowShell : Base
     {
+        #region Cursor
+        private Cursor _WindowCursor = Cursors.Arrow;
+        public Cursor WindowCursor
+        {
+            get => _WindowCursor;
+            set => Set(ref _WindowCursor, value);
+        }
+        #endregion
 
         #region UserButton
         private Visibility _UserButton = Visibility.Hidden;
@@ -52,6 +61,153 @@ namespace LinePlaneCore.Control
         private List<UIElement> ShapeMemory = new List<UIElement>();
         #endregion
 
+        #region Toolbar Background
+
+        Brush _MainroomBrush = Brushes.Transparent;
+        Brush _BedroomBrush = Brushes.Transparent;
+        Brush _KitchenBrush = Brushes.Transparent;
+        Brush _ApplBrush = Brushes.Transparent;
+        Brush _GarderobeBrush = Brushes.Transparent;
+        Brush _BathBrush = Brushes.Transparent;
+        Brush _InteriorBrush = Brushes.Transparent;
+
+
+        #region привязка цветов
+
+        private void SetTransparentBrush()
+        {
+            MainroomBrush = Brushes.Transparent;
+            BedroomBrush = Brushes.Transparent;
+            KitchenBrush = Brushes.Transparent;
+            ApplBrush = Brushes.Transparent;
+            GarderobeBrush = Brushes.Transparent;
+            BathBrush = Brushes.Transparent;
+            InteriorBrush = Brushes.Transparent;
+
+        }
+        private Brush ChangeColor(Brush value)
+        {
+            SetTransparentBrush();
+            if (value == Brushes.Transparent) return (Brush)(new BrushConverter().ConvertFrom("#99673AB7"));
+            else return Brushes.Transparent;
+        }
+
+         public Brush MainroomBrush
+        {
+            get => _MainroomBrush;
+            set => Set(ref _MainroomBrush, value);
+        }
+
+        public Brush BedroomBrush
+        {
+            get => _BedroomBrush;
+            set => Set(ref _BedroomBrush, value);
+        }
+
+        public Brush KitchenBrush
+        {
+            get => _KitchenBrush;
+            set => Set(ref _KitchenBrush, value);
+        }
+
+        public Brush ApplBrush
+        {
+            get => _ApplBrush;
+            set => Set(ref _ApplBrush, value);
+        }
+
+        public Brush GarderobeBrush
+        {
+            get => _GarderobeBrush;
+            set => Set(ref _GarderobeBrush, value);
+        }
+
+        public Brush BathBrush
+        {
+            get => _BathBrush;
+            set => Set(ref _BathBrush, value);
+        }
+
+        public Brush InteriorBrush
+        {
+            get => _InteriorBrush;
+            set => Set(ref _InteriorBrush, value);
+        }
+        #endregion
+        #endregion
+
+        #region Toolbar Border Visibility
+
+        Visibility _MainroomBoder = Visibility.Hidden;
+        Visibility _BedroomBoder = Visibility.Hidden;
+        Visibility _KitchenBoder = Visibility.Hidden;
+        Visibility _ApplBoder = Visibility.Hidden;
+        Visibility _GarderobeBoder = Visibility.Hidden;
+        Visibility _BathBoder = Visibility.Hidden;
+        Visibility _InteriorBoder = Visibility.Hidden;
+
+        private void ReshowBorders()
+        {
+            MainroomBoder = Visibility.Hidden;
+            BedroomBoder = Visibility.Hidden;
+            KitchenBoder = Visibility.Hidden;
+            ApplBoder = Visibility.Hidden;
+            GarderobeBoder = Visibility.Hidden;
+            BathBoder = Visibility.Hidden;
+            InteriorBoder = Visibility.Hidden;
+
+            if (_MainroomBrush != Brushes.Transparent) MainroomBoder = Visibility.Visible;
+            if (_BedroomBrush != Brushes.Transparent) BedroomBoder = Visibility.Visible;
+            if (_KitchenBrush != Brushes.Transparent) KitchenBoder = Visibility.Visible;
+            if (_ApplBrush != Brushes.Transparent) ApplBoder = Visibility.Visible;
+            if (_GarderobeBrush != Brushes.Transparent) GarderobeBoder = Visibility.Visible;
+            if (_BathBrush != Brushes.Transparent) BathBoder = Visibility.Visible;
+            if (_InteriorBrush != Brushes.Transparent) InteriorBoder = Visibility.Visible;
+        }
+
+        public Visibility MainroomBoder
+        {
+            get => _MainroomBoder;
+            set => Set(ref _MainroomBoder, value);
+        }
+
+        public Visibility BedroomBoder
+        {
+            get => _BedroomBoder;
+            set => Set(ref _BedroomBoder, value);
+        }
+
+        public Visibility KitchenBoder
+        {
+            get => _KitchenBoder;
+            set => Set(ref _KitchenBoder, value);
+        }
+
+        public Visibility ApplBoder
+        {
+            get => _ApplBoder;
+            set => Set(ref _ApplBoder, value);
+        }
+
+        public Visibility GarderobeBoder
+        {
+            get => _GarderobeBoder;
+            set => Set(ref _GarderobeBoder, value);
+        }
+
+        public Visibility BathBoder
+        {
+            get => _BathBoder;
+            set => Set(ref _BathBoder, value);
+        }
+
+        public Visibility InteriorBoder
+        {
+            get => _InteriorBoder;
+            set => Set(ref _InteriorBoder, value);
+        }
+        #endregion
+
         #region Команды
 
         #region User Interactions
@@ -62,10 +218,6 @@ namespace LinePlaneCore.Control
         {
             if (_UserButton == Visibility.Hidden) UserButton = Visibility.Visible;
             else UserButton = Visibility.Hidden;
-            Rectangle a=new Rectangle();
-            a.Width = 100;
-            a.Height = 1000;
-            //CanvasObject.Add(a);
         }
 
         private bool CanShowUserPanelCommandExecuted(object p) => true;
@@ -205,13 +357,24 @@ namespace LinePlaneCore.Control
         private void OnEventButtonCommandExecuted(object p)
         {
             SwitchStateShapes.ChangeShapeState(_MainCanvas,false);
+            WindowCursor = Cursors.Arrow;
+
 
             switch (p as string)
             {
                 case "Arrow": { break; }
-                case "Hand": {SwitchStateShapes.ChangeShapeState(_MainCanvas, true); break; }
-                case "": { break; }
+                case "Hand": {SwitchStateShapes.ChangeShapeState(_MainCanvas, true); WindowCursor = Cursors.SizeAll; break; }
+                case "Edit": { WindowCursor = Cursors.Cross; break; }
+                case "Mainroom": { MainroomBrush=ChangeColor(MainroomBrush) ; break; }
+                case "Bedroom": { BedroomBrush = ChangeColor(BedroomBrush); break; }
+                case "Kitchen": { KitchenBrush = ChangeColor(KitchenBrush); break; }
+                case "Appl": { ApplBrush = ChangeColor(ApplBrush); break; }
+                case "Garderobe": { GarderobeBrush = ChangeColor(GarderobeBrush); break; }
+                case "Bath": { BathBrush = ChangeColor(BathBrush); break; }
+                case "Interior": { InteriorBrush = ChangeColor(InteriorBrush); break; }
             }
+
+            ReshowBorders();
         }
 
         private bool CanEventButtonCommandExecuted(object p) => true;
@@ -221,9 +384,11 @@ namespace LinePlaneCore.Control
 
         public MainWindowShell()
         {
+            #region Canvas Control Command
             CanvasTransportCommand = new ActionCommand(OnCanvasTransportCommandExecuted, CanCanvasTransportCommandExecuted);
             DeleteLastCanvasObjCmommand = new ActionCommand(OnDeleteLastCanvasObjExecuted, CanDeleteLastCanvasObjExecuted);
             BackDeleteCanvasObjCmommand = new ActionCommand(OnBackDeleteCanvasObjExecuted, CanBackDeleteCanvasObjExecuted);
+            #endregion
 
             #region команда для кнопки User
             ShowUserPanelCommand = new ActionCommand(OnShowUserPanelCommandExecuted, CanShowUserPanelCommandExecuted);
@@ -233,13 +398,14 @@ namespace LinePlaneCore.Control
             SaveCommand = new ActionCommand(OnSaveCommandExecuted, CanSaveCommandExecuted);
             #endregion
 
-            #region Команды для рисование объектов
+            #region Команды для рисования объектов
             SpawnShapeCommand = new ActionCommand(OnSpawnShapeCommandExecuted, CanSpawnShapeCommandExecuted);
             InteractShapeCommand = new ActionCommand(OnInteractShapeCommandExecuted, CanInteractShapeCommandExecuted);
             CancelShapeCommand = new ActionCommand(OnCancelShapeCommandExecuted, CanCancelShapeCommandExecuted);
 
             EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
+
         }
 
     }

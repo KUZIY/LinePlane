@@ -5,10 +5,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace LinePlaneCore.Control
 {
-    internal abstract class Base: INotifyPropertyChanged
+    internal abstract class Base : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -24,7 +25,5 @@ namespace LinePlaneCore.Control
             OnPropertyChanged(PropertyName);
             return true;
         }
-
-
     }
 }

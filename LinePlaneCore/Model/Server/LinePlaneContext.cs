@@ -24,7 +24,7 @@ namespace LinePlaneCore
         {
             //Connection string
 
-            optionsBuilder.UseSqlServer(@"Data Source=WIN-G4RME6E5PVS\LINEPLANESERVER;Initial Catalog=LPlane;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseSqlServer(@"Data Source=WIN-NN38URCCGPE;Initial Catalog=Project;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             base.OnConfiguring(optionsBuilder);
 
         }
