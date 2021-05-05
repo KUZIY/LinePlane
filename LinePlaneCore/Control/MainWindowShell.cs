@@ -33,7 +33,7 @@ namespace LinePlaneCore.Control
         public Visibility UserButton
         {
             get => _UserButton;
-            set=> Set(ref _UserButton, value);
+            set => Set(ref _UserButton, value);
         }
 
         #endregion
@@ -41,12 +41,26 @@ namespace LinePlaneCore.Control
         #region CanvasData
         private Canvas _MainCanvas;
 
+        private DrawWalls _Wall = null;
+
+        private DrawWalls Wall
+        {
+            get => _Wall;
+            set
+            {
+                _Wall = value;
+                Move.Wall = value;
+            }
+        }
+
+        #region прорисовка мебели
         private static UIElement _MoveShapeObj = null;
         static internal void TakeShape(UIElement value) 
         {
             _MoveShapeObj = value;
             if (value == null) Move.ArgsClear();
         }
+        #endregion
 
         public Canvas MainCanvas
         {
@@ -88,7 +102,7 @@ namespace LinePlaneCore.Control
         private Brush ChangeColor(Brush value)
         {
             SetTransparentBrush();
-            if (value == Brushes.Transparent) return (Brush)(new BrushConverter().ConvertFrom("#99673AB7"));
+            if (value == Brushes.Transparent) return (Brush)(new BrushConverter().ConvertFrom("#77673AB7"));
             else return Brushes.Transparent;
         }
 
@@ -205,6 +219,15 @@ namespace LinePlaneCore.Control
         {
             get => _InteriorBoder;
             set => Set(ref _InteriorBoder, value);
+        }
+        #endregion
+
+        #region border Save
+        private Visibility _SaveBorder = Visibility.Hidden;
+        public Visibility SaveBorder
+        {
+            get => _SaveBorder;
+            set => Set(ref _SaveBorder, value);
         }
         #endregion
 
@@ -327,12 +350,13 @@ namespace LinePlaneCore.Control
         {
             if (_MoveShapeObj == null)Move.ArgsClear();
             else Move.dragObject = _MoveShapeObj;
+            if (Wall != null) { Wall.StartEndWall(); }
         }
 
         private bool CanInteractShapeCommandExecuted(object p) => true;
         #endregion
 
-        #region Прервать рисование предмета
+        #region Команда прервания рисования предмета
 
         public ICommand CancelShapeCommand { get; }
 
@@ -343,6 +367,13 @@ namespace LinePlaneCore.Control
                 Move.ArgsClear();
                 OnDeleteLastCanvasObjExecuted(null);
             }
+            if (Wall != null)
+            {
+                if (Wall.BrakePaint())
+                {
+                    OnDeleteLastCanvasObjExecuted(null);
+                }
+            }
         }
 
         private bool CanCancelShapeCommandExecuted(object p) => true;
@@ -351,20 +382,20 @@ namespace LinePlaneCore.Control
 
         #endregion
 
-        #region команды кнопок
+        #region команды кнопок Toolbar
         public ICommand EventButtonCommand { get; }
 
         private void OnEventButtonCommandExecuted(object p)
         {
             SwitchStateShapes.ChangeShapeState(_MainCanvas,false);
             WindowCursor = Cursors.Arrow;
-
+            Wall = null;
 
             switch (p as string)
             {
                 case "Arrow": { break; }
-                case "Hand": {SwitchStateShapes.ChangeShapeState(_MainCanvas, true); WindowCursor = Cursors.SizeAll; break; }
-                case "Edit": { WindowCursor = Cursors.Cross; break; }
+                case "Hand": { SetTransparentBrush(); SwitchStateShapes.ChangeShapeState(_MainCanvas, true); WindowCursor = Cursors.SizeAll; break; }
+                case "Edit": { SetTransparentBrush(); Wall = new DrawWalls(_MainCanvas); WindowCursor = Cursors.Cross; break; }
                 case "Mainroom": { MainroomBrush=ChangeColor(MainroomBrush) ; break; }
                 case "Bedroom": { BedroomBrush = ChangeColor(BedroomBrush); break; }
                 case "Kitchen": { KitchenBrush = ChangeColor(KitchenBrush); break; }
@@ -380,6 +411,18 @@ namespace LinePlaneCore.Control
         private bool CanEventButtonCommandExecuted(object p) => true;
         #endregion
 
+        #region команда кнопки Save
+        public ICommand SaveButtonCommand { get; }
+
+        private void OnSaveButtonCommandExecuted(object p)
+        {
+            if (SaveBorder == Visibility.Hidden) SaveBorder = Visibility.Visible;
+            else SaveBorder = Visibility.Hidden;
+        }
+
+        private bool CanSaveButtonCommandExecuted(object p) => true;
+        #endregion
+
         #endregion
 
         public MainWindowShell()
@@ -388,6 +431,7 @@ namespace LinePlaneCore.Control
             CanvasTransportCommand = new ActionCommand(OnCanvasTransportCommandExecuted, CanCanvasTransportCommandExecuted);
             DeleteLastCanvasObjCmommand = new ActionCommand(OnDeleteLastCanvasObjExecuted, CanDeleteLastCanvasObjExecuted);
             BackDeleteCanvasObjCmommand = new ActionCommand(OnBackDeleteCanvasObjExecuted, CanBackDeleteCanvasObjExecuted);
+            SaveButtonCommand = new ActionCommand(OnSaveButtonCommandExecuted, CanSaveButtonCommandExecuted);
             #endregion
 
             #region команда для кнопки User
@@ -405,7 +449,6 @@ namespace LinePlaneCore.Control
 
             EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
-
         }
 
     }

@@ -45,7 +45,7 @@
 
 
 
-        <Canvas  x:Name="canvas"  MouseMove="Canvas_MouseMove" PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown" Grid.ColumnSpan="4" Grid.RowSpan="4" PreviewMouseRightButtonDown="Abort_Paint" Margin="0,0,0,0"   >
+        <Canvas  x:Name="canvas"  MouseMove="Canvas_MouseMove" Grid.ColumnSpan="4" Grid.RowSpan="4" Margin="0,0,0,0"   >
             <Canvas.Background>
                 <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
                     <DrawingBrush.Drawing>
@@ -120,17 +120,19 @@
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" Cursor="Hand" >
             <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
             <Button.InputBindings>
-                <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick"/>
-                <KeyBinding  Command="{Binding SaveCommand}" Gesture="CTRL+S"/>
+                <MouseBinding Command="{Binding SaveButtonCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
         </Button>
 
-        <Border Grid.Row="1" Grid.Column="0" Background="#19404045"  CornerRadius="10" Visibility="Visible" Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
+        <Border Grid.Row="1" Grid.Column="0" Background="#19404045"  CornerRadius="10" Visibility="{Binding SaveBorder}" Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
             <StackPanel>
                 <Button Background="#99B88FDA"  Margin="10" Height="29" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Сохранить картинкой" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
                     </StackPanel>
+                    <Button.InputBindings>
+                        <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick"/>
+                    </Button.InputBindings>
                 </Button>
                 <Button Background="#99B88FDA" VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
                     <StackPanel Orientation="Horizontal">

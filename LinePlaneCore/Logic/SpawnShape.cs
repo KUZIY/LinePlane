@@ -82,12 +82,11 @@ namespace LinePlaneCore.Logic
             {
                 MainWindowShell.TakeShape(null);
             }
-
             public void Shape_Menu(object sender, MouseButtonEventArgs e)
             {
-                Binding myBinding = new Binding("MyDataProperty") ;
-                myBinding.Source = _shape;
+              
             }
+
             #endregion
 
         }

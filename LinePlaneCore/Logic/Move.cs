@@ -25,6 +25,12 @@ namespace LinePlaneCore
             set;
         }
 
+        static internal Logic.DrawWalls Wall
+        {
+            get;
+            set;
+        }
+
         static private bool FirstEnter = true;
 
         private static Point GetOffset(MouseEventArgs e)
@@ -42,7 +48,6 @@ namespace LinePlaneCore
         {
             if (dragObject != null)
             {
-                dragObject.IsEnabled = true;
                 dragObject.Opacity = 1;
             }
             dragObject = null;
@@ -51,8 +56,14 @@ namespace LinePlaneCore
 
         static internal void Move_shape(object sender, MouseEventArgs e)
         {
-            if (dragObject == null)
+            if (Wall!=null)
+            {
+                Wall.Cursor = e.GetPosition(canvas);
+                Wall.MouseMove(e);
                 return;
+            }
+
+            if (dragObject == null) return;
 
             Point Offset = new Point();
 
