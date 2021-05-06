@@ -15,9 +15,9 @@ namespace LinePlaneCore
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public string _Length { get; set; }
+        public int _Length { get; set; }
         [Required]
-        public string _Width { get; set; }
+        public int _Width { get; set; }
         
         [Required]
         public int _IdFurniture { get; set; }
