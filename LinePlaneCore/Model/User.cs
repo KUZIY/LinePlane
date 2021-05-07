@@ -14,7 +14,7 @@ namespace LinePlaneCore
         [Required]
         public string _Login { get; set; }
         [Required]
-        public int _Password { get; set; }
+        public string _Password { get; set; }
         [Required]
         public string _Email { get; set; }
     }

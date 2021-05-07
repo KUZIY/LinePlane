@@ -8,7 +8,7 @@ namespace LinePlaneCore.Manger
 {
     static internal class UserManager
     {
-        static internal bool AddUser(string login, int password, string email)
+        static internal bool AddUser(string login, string password, string email)
         {
             using (var DBContext = new LinePlaneContext())
             {
@@ -31,6 +31,19 @@ namespace LinePlaneCore.Manger
                     return true;
                 }
                  else return false;
+            }
+        }
+
+        static internal bool SearchUser(string login, string password)
+        {
+            using (var DBContext = new LinePlaneContext())
+            {
+                foreach (var x in DBContext.Users)
+                {
+                    if (x._Login == login && x._Password == password) return true;
+                }
+
+                 return false;
             }
         }
 

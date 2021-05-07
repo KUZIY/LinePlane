@@ -1,4 +1,5 @@
 ﻿using LinePlaneCore.Control.Commands;
+using LinePlaneCore.Logic;
 using LinePlaneCore.Manger;
 using System;
 using System.Collections.Generic;
@@ -138,9 +139,9 @@ namespace LinePlaneCore.Control
                 EmailError = "";
                 EmailBrush = Brushes.Transparent;
 
-                int HashPassword = password.GetHashCode();
+                string HashPassword = PasswordHash.GetHashCode(password);
 
-                if (UserManager.AddUser(login, HashPassword, email))
+                if (UserManager.AddUser(login, HashPassword , email))
                 {
                     var MainWindow = new MainWindow();
                     MainWindow.Show();

@@ -56,8 +56,8 @@ namespace LinePlaneCore.Logic
                 shape.IsEnabled = false;
             }
 
-      
-            public Draw_Square(double widith, double height, BitmapImage _shape_png = null)
+
+            public Draw_Square(double widith, double height, BitmapImage _shape_png = null, int ID=0)
             {
 
                 _shape = new Rectangle();
@@ -66,7 +66,10 @@ namespace LinePlaneCore.Logic
 
                 shape.Height = height;
                 shape.Width = widith;
+                shape.Tag = ID;
+
                 var brash = new BrushConverter();
+
                 if (_shape_png == null) shape.Fill = new SolidColorBrush(Colors.Black);
                 else shape.Fill= new ImageBrush(_shape_png);
 
@@ -117,7 +120,7 @@ namespace LinePlaneCore.Logic
             }
 
 
-            public Draw_Ellipse(double widith, double height, BitmapImage _shape_png = null)
+            public Draw_Ellipse(double widith, double height, BitmapImage _shape_png = null, int ID= 0)
             {
 
                 _shape = new Ellipse();
@@ -126,6 +129,8 @@ namespace LinePlaneCore.Logic
 
                 shape.Height = height;
                 shape.Width = widith;
+                shape.Tag = ID;
+
                 var brash = new BrushConverter();
                 if (_shape_image == null) shape.Fill = new SolidColorBrush(Colors.Black);
                 else shape.Fill = new ImageBrush(_shape_png);

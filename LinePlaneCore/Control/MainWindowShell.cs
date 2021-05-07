@@ -334,7 +334,7 @@ namespace LinePlaneCore.Control
 
         private void OnSpawnShapeCommandExecuted(object p)
         {
-            (string,Point,string)parametrs = ShapeManager.SearchShape(p as string);
+            (string ,Point,string)parametrs = ShapeManager.SearchShape(p as string);
 
             var Shape=new FrameworkElement();
 

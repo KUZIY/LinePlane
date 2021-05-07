@@ -1,4 +1,6 @@
 ﻿using LinePlaneCore.Control.Commands;
+using LinePlaneCore.Logic;
+using LinePlaneCore.Manger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,35 +111,26 @@ namespace LinePlaneCore.Control
                 PasswordError = "";
                 PasswordBrush = Brushes.Transparent;
 
-                int HashPassword = password.GetHashCode();
+                var HashPassword = PasswordHash.GetHashCode(password);
 
-                User AuthUser = null;
-
-
-                /*using (UserContext User_DB = new UserContext())
+                if (UserManager.SearchUser(login, HashPassword))
                 {
-                    AuthUser = User_DB.Users.Where(b => b._Login == login && b._Password == HashPassword).FirstOrDefault();
-                }
+                    var MainWindow = new MainWindow();
+                    MainWindow.Show();
 
-                if (AuthUser != null)
-                {
-                    MessageBox.Show("Вход произведён");
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window is EnterWindow or WelcomeWindow)
+                        {
+                            window.Close();
+                        }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Пользователь не найден");
-                }*/
-               
-                var MainWindow = new MainWindow();
-                MainWindow.Show();
-
-                foreach (Window window in Application.Current.Windows)
-                {
-                    if (window is EnterWindow or WelcomeWindow)
-                    {
-                        window.Close();
-                    }
+                    MessageBox.Show("Такого пользователя не существует");
                 }
+
 
             }
         }
