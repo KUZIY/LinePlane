@@ -1,5 +1,6 @@
 ﻿using LinePlaneCore.Control.Commands;
 using LinePlaneCore.Logic;
+using LinePlaneCore.Manger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.IO;
+using System.Windows.Media.Imaging;
+using System.Reflection;
 
 namespace LinePlaneCore.Control
 {
@@ -330,12 +334,46 @@ namespace LinePlaneCore.Control
 
         private void OnSpawnShapeCommandExecuted(object p)
         {
-            //(double,double)size = SearchDBClass.Search_in_DB(p);
+            (string,Point,string)parametrs = ShapeManager.SearchShape(p as string);
 
-            var Square = new Logic.SpawnShape.Draw_Square(200, 200);
+            var Shape=new FrameworkElement();
 
-            _MainCanvas.Children.Add(Square.shape);
-            Move.dragObject = Square.shape;
+            BitmapImage Image = null;
+            var dir = AppDomain.CurrentDomain.BaseDirectory;
+            dir = dir.Remove(dir.IndexOf("\\bin\\Debug\\net5.0-windows")) + parametrs.Item3;
+
+            try
+            {
+                 Image = new BitmapImage(new Uri(dir, UriKind.RelativeOrAbsolute));
+            }
+            catch
+            {
+                Image = null;
+            }
+
+
+            if (parametrs.Item1 == null)
+            {
+                var Square = new Logic.SpawnShape.Draw_Square(30, 30);
+                Shape = Square.shape;
+            }
+            else
+            {
+                if (parametrs.Item1.ToLower() == "square")
+                {
+                    var Square = new Logic.SpawnShape.Draw_Square(parametrs.Item2.X, parametrs.Item2.Y, Image);
+                    Shape = Square.shape;
+                }
+                else if (parametrs.Item1.ToLower() == "ellipse")
+                {
+                    var Ellipse = new Logic.SpawnShape.Draw_Ellipse(parametrs.Item2.X, parametrs.Item2.Y, Image);
+                    Shape = Ellipse.shape;
+                }
+            }
+
+
+            _MainCanvas.Children.Add(Shape);
+            Move.dragObject = Shape;
 
         }
 

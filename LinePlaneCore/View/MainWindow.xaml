@@ -238,7 +238,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Диван двухместный"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="Sofa2" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 
@@ -248,7 +248,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Диван трехместный"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="Sofa3" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 
@@ -268,7 +268,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Кресло"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="armchair" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 

@@ -67,7 +67,7 @@ namespace LinePlaneCore.Logic
                 shape.Height = height;
                 shape.Width = widith;
                 var brash = new BrushConverter();
-                if (_shape_image==null) shape.Fill = new SolidColorBrush(Colors.Black);
+                if (_shape_png == null) shape.Fill = new SolidColorBrush(Colors.Black);
                 else shape.Fill= new ImageBrush(_shape_png);
 
             }

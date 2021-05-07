@@ -1,4 +1,5 @@
 ﻿using LinePlaneCore.Control.Commands;
+using LinePlaneCore.Manger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -139,36 +140,20 @@ namespace LinePlaneCore.Control
 
                 int HashPassword = password.GetHashCode();
 
-                User client = new User();
-
-                client._Email = email;
-                client._Password = HashPassword;
-                client._Login = login;
-
-                MessageBox.Show("Зареистрированно");
-
-                /*try
+                if (UserManager.AddUser(login, HashPassword, email))
                 {
-                    UserDB.Add(client);
-                    UserDB.SaveChanges();
-                    this.Close();
-                }
-                catch
-                {
-                    MessageBox.Show("Такой пользователь уже существует");
+                    var MainWindow = new MainWindow();
+                    MainWindow.Show();
 
-                }*/
-
-                var MainWindow = new MainWindow();
-                MainWindow.Show();
-
-                foreach (Window window in Application.Current.Windows)
-                {
-                    if (window is EnterWindow or WelcomeWindow)
+                    foreach (Window window in Application.Current.Windows)
                     {
-                        window.Close();
+                        if (window is RegistrationWindow or WelcomeWindow)
+                        {
+                            window.Close();
+                        }
                     }
                 }
+                else MessageBox.Show("Такой пользователь уже существует");
 
             }
         }
