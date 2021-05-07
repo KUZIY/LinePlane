@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace LinePlaneCore
 {
-    public class Room
+    public class Сoordinates
     {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _Id { get; set; }
         [Required]
-        public string _NameRoom { get; set; }
+        public int _X { get; set; }
+        [Required]
+        public int _Y { get; set; }
 
     }
 }
