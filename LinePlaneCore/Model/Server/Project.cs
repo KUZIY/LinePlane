@@ -13,7 +13,7 @@ namespace LinePlaneCore.Model.Server
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int _Id { get; set; }
 
         [Required]
         public int _IdConservation { get; set; }
@@ -31,5 +31,10 @@ namespace LinePlaneCore.Model.Server
         public int _IdWall { get; set; }
         [ForeignKey(nameof(_IdWall))]
         public Wall _Wall { get; set; }
+
+        public int _IdСoordinates
+        { get; set; }
+        [ForeignKey(nameof(_IdСoordinates))]
+        public Сoordinates _Сoordinates { get; set; }
     }
 }
