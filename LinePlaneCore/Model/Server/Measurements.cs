@@ -22,6 +22,6 @@ namespace LinePlaneCore
         [Required]
         public int _IdFurniture { get; set; }
         [ForeignKey(nameof(_IdFurniture))]
-        public TipeFurniture _Furniture { get; set; }
+        public Furniture _Furniture { get; set; }
     }
 }
