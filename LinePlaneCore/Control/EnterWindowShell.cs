@@ -113,24 +113,28 @@ namespace LinePlaneCore.Control
 
                 var HashPassword = PasswordHash.GetHashCode(password);
 
-                if (UserManager.SearchUser(login, HashPassword))
-                {
+    /*            if (UserManager.SearchUser(login, HashPassword))
+                {*/
+
+                    MainWindowShell._Username = login;
                     var MainWindow = new MainWindow();
                     MainWindow.Show();
 
-                    foreach (Window window in Application.Current.Windows)
+                
+
+                foreach (Window window in Application.Current.Windows)
                     {
                         if (window is EnterWindow or WelcomeWindow)
                         {
                             window.Close();
                         }
                     }
-                }
+               /* }
                 else
                 {
                     MessageBox.Show("Такого пользователя не существует");
                 }
-
+*/
 
             }
         }

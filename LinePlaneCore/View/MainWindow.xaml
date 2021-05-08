@@ -90,7 +90,7 @@
                 <KeyBinding Command="{Binding DeleteLastCanvasObjCmommand}" Gesture="CTRL+Z"/>
                 <MouseBinding Command="{Binding DeleteLastCanvasObjCmommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
-            
+
             <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
 
 
@@ -144,7 +144,7 @@
 
 
 
-        <Ellipse Stroke="#673AB7" RenderOptions.BitmapScalingMode="Fant"  Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Ellipse Stroke="#673AB7" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="Fant"  Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Ellipse.Fill>
 
                 <ImageBrush Stretch="Uniform"  ImageSource="/Resources/USER2-removebg-preview.png" />
@@ -155,31 +155,125 @@
             </Ellipse.InputBindings>
         </Ellipse>
 
+        <TextBlock Text="{Binding Username}" 
+                   Grid.Column="3" 
+                   Grid.Row="0"
+                   MinHeight="35"
+                   MinWidth="220"
+                   Margin="70,0,5,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   FontFamily="Poiret One" 
+                   Foreground="#FF0A0A0A"
+                   TextAlignment="Left"
+                   FontSize="30" 
+                   FontWeight="Bold"
+                   />
 
 
-        <Border Grid.Row="1" Grid.Column="3" Background="#19404045"  CornerRadius="10" Visibility="{Binding UserButton}"  Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
+
+        <Border Grid.Row="1" Grid.Column="3" Background="#19404045"  CornerRadius="10" Visibility="{Binding UserButton}"  Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,0,0">
             <StackPanel>
                 <Button  Background="#99B88FDA"  Margin="10" Height="29" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" BorderBrush="Black" BorderThickness="0.5" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Новый проект" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
+                        <TextBlock Text="Cписок сохранений" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
                     </StackPanel>
                     <Button.InputBindings>
-                        <MouseBinding Command="{Binding AuthorizationWindowCommand}" MouseAction="LeftClick"/>
+                        <MouseBinding Command="{Binding SwithVisibilitySavebarCommand}" MouseAction="LeftClick"/>
                     </Button.InputBindings>
                 </Button>
                 <Button  Background="#99B88FDA"  VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
                     <Button.InputBindings>
-                        <MouseBinding Command="{Binding RegistrationWindowCommand}" MouseAction="LeftClick"/>
+                        <MouseBinding Command="{Binding ExitCommand}" MouseAction="LeftClick"/>
                     </Button.InputBindings>
                     <StackPanel Orientation="Horizontal">
 
-                        <TextBlock Text="Открыть проект" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
+                        <TextBlock Text="Выход из аккаунта" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
         </Border>
 
 
+        <ListBox
+            SelectionMode="Extended"
+            Visibility="{Binding SaveBar}"
+            HorizontalContentAlignment="Stretch"
+            Background="#CC8772C1"
+            BorderThickness="0"
+            MinHeight="200"
+            MinWidth="300"
+            MaxWidth="400"
+            HorizontalAlignment="Right"
+            ItemsSource="{Binding VideosView}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             SelectedItem="{Binding SelectedVideo}"
+            Grid.ColumnSpan="4" 
+            Grid.Row="2"/>
+
+        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                Visibility="{Binding SaveBar}"
+                Grid.Row="3"
+                Grid.Column="3"
+                Background="#CC8772C1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                MinHeight="70"
+                MinWidth="70"
+                Margin="0,5,5,0"
+                UseLayoutRounding="False" Cursor="Hand" >
+            <Button.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+        </Button>
+        
+        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                Visibility="{Binding SaveBar}"
+                Grid.Row="3"
+                Grid.Column="3"
+                Background="#CC8772C1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                MinHeight="70"
+                MinWidth="70"
+                Margin="0,5,80,0"
+                UseLayoutRounding="False" Cursor="Hand" >
+            <Button.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+        </Button>
+        
+        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                Visibility="{Binding SaveBar}"
+                Grid.Row="3"
+                Grid.Column="3"
+                Background="#CC8772C1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                MinHeight="70"
+                MinWidth="70"
+                Margin="0,5,155,0"
+                UseLayoutRounding="False" Cursor="Hand" >
+            <Button.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+        </Button>
+        
+        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                Visibility="{Binding SaveBar}"
+                Grid.Row="3"
+                Grid.Column="3"
+                Background="#CC8772C1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                MinHeight="70"
+                MinWidth="70"
+                Margin="0,5,230,0"
+                UseLayoutRounding="False" Cursor="Hand" >
+            <Button.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+        </Button>
 
 
 

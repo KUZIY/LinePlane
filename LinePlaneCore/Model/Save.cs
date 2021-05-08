@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LinePlaneCore.Model.Server
 {
-    public class Conservation
+    public class Save
     {
         [Key]
         [Required]

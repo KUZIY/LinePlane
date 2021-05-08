@@ -18,7 +18,7 @@ namespace LinePlaneCore.Model.Server
         [Required]
         public int _IdConservation { get; set; }
         [ForeignKey(nameof(_IdConservation))]
-        public Conservation _Conservation { get; set; }
+        public Save _Conservation { get; set; }
 
         public int _IdFurniture { get; set; }
         [ForeignKey(nameof(_IdFurniture))]

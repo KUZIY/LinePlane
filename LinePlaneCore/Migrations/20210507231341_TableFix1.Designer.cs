@@ -3,14 +3,16 @@ using LinePlaneCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinePlaneCore.Migrations
 {
     [DbContext(typeof(LinePlaneContext))]
-    partial class LinePlaneContextModelSnapshot : ModelSnapshot
+    [Migration("20210507231341_TableFix1")]
+    partial class TableFix1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

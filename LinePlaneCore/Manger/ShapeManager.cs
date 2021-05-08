@@ -32,14 +32,11 @@ namespace LinePlaneCore.Manger
                     Type = f.FurnitureTipe;
                 }
 
-                /*foreach (var x in DBFurniture.Measurments.Where(v=> v._IdFurniture == IdFurniture))
+                foreach (var x in DBFurniture.Measurments.Where(v=> v._IdFurniture == IdFurniture))
                 {
                     ShapeSize.X = x._Width;
                     ShapeSize.Y = x._Length;
-                }*/
-
-                ShapeSize.X = 100;
-                ShapeSize.Y = 100;
+                }
 
                 return (Type, ShapeSize,Image);
             }
