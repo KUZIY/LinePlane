@@ -28,6 +28,9 @@ namespace LinePlaneCore.Manger
                 {
                     DBContext.Users.Add(NewPeople);
                     DBContext.SaveChanges();
+
+                    //SetUserID(null);
+
                     return true;
                 }
                  else return false;
@@ -40,11 +43,21 @@ namespace LinePlaneCore.Manger
             {
                 foreach (var x in DBContext.Users)
                 {
-                    if (x._Login == login && x._Password == password) return true;
+                    if (x._Login == login && x._Password == password)
+                    {
+                        //SetUserID(null);
+                        return true;
+                    }
+
                 }
 
                  return false;
             }
+        }
+
+        internal static void SetUserID(int? ID)
+        {
+            UserData.UserID = ID ?? 0;
         }
 
     }

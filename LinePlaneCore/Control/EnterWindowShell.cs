@@ -113,10 +113,10 @@ namespace LinePlaneCore.Control
 
                 var HashPassword = PasswordHash.GetHashCode(password);
 
-    /*            if (UserManager.SearchUser(login, HashPassword))
-                {*/
+                /*            if (UserManager.SearchUser(login, HashPassword))
+                            {*/
 
-                    MainWindowShell._Username = login;
+                    UserData.Username = login;
                     var MainWindow = new MainWindow();
                     MainWindow.Show();
 

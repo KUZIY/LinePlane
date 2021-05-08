@@ -57,7 +57,7 @@ namespace LinePlaneCore.Logic
             }
 
 
-            public Draw_Square(double widith, double height, BitmapImage _shape_png = null, int ID=0)
+            public Draw_Square(double widith, double height, BitmapImage _shape_png = null, int ID=-1)
             {
 
                 _shape = new Rectangle();
@@ -120,7 +120,7 @@ namespace LinePlaneCore.Logic
             }
 
 
-            public Draw_Ellipse(double widith, double height, BitmapImage _shape_png = null, int ID= 0)
+            public Draw_Ellipse(double widith, double height, BitmapImage _shape_png = null, int ID= -1)
             {
 
                 _shape = new Ellipse();

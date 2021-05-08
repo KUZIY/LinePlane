@@ -205,17 +205,25 @@
             MinWidth="300"
             MaxWidth="400"
             HorizontalAlignment="Right"
-            ItemsSource="{Binding VideosView}"
+            ItemsSource="{Binding UserSaveView}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-             SelectedItem="{Binding SelectedVideo}"
+             SelectedItem="{Binding SelectedSave}"
             Grid.ColumnSpan="4" 
-            Grid.Row="2"/>
+            Grid.Row="2">
 
-        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template" Value="{StaticResource SaveListItems}" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
+        </ListBox>
+
+        <Button x:Name="Delete" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
-                Background="#CC8772C1"
+                Background="#CCB86B63"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 MinHeight="70"
@@ -227,7 +235,7 @@
             </Button.InputBindings>
         </Button>
         
-        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+        <Button x:Name="Save" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
@@ -243,7 +251,7 @@
             </Button.InputBindings>
         </Button>
         
-        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+        <Button x:Name="Load" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
@@ -259,7 +267,7 @@
             </Button.InputBindings>
         </Button>
         
-        <Button Style="{StaticResource MaterialDesignFlatButton}" 
+        <Button x:Name="Add" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"

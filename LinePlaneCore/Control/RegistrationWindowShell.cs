@@ -143,7 +143,7 @@ namespace LinePlaneCore.Control
 
                 if (UserManager.AddUser(login, HashPassword , email))
                 {
-                    MainWindowShell._Username = login;
+                    UserData.Username = login;
                     var MainWindow = new MainWindow();
                     MainWindow.Show();
 

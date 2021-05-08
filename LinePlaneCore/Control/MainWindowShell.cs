@@ -10,6 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.ComponentModel;
 using LinePlaneCore.Model.Server;
+using System.Windows.Data;
+using System.Collections.ObjectModel;
+using LinePlaneCore.Model;
 
 namespace LinePlaneCore.Control
 {
@@ -25,7 +28,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region UserButton
-        private Visibility _UserButton = Visibility.Visible;
+        private Visibility _UserButton = Visibility.Hidden;
 
         /// <summary>
         /// UserButtonClick
@@ -36,9 +39,9 @@ namespace LinePlaneCore.Control
             set => Set(ref _UserButton, value);
         }
 
-        static internal string _Username = "User";
+        static internal string _Username = UserData.Username;
 
-         public string Username
+        public string Username
         {
             get => _Username;
             set => Set(ref _Username, value);
@@ -47,7 +50,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Savebar visibility
-        private Visibility _SaveBar = Visibility.Hidden;
+        private Visibility _SaveBar = Visibility.Visible;
 
         public Visibility SaveBar
         {
@@ -73,7 +76,7 @@ namespace LinePlaneCore.Control
 
         #region прорисовка мебели
         private static UIElement _MoveShapeObj = null;
-        static internal void TakeShape(UIElement value) 
+        static internal void TakeShape(UIElement value)
         {
             _MoveShapeObj = value;
             if (value == null) Move.ArgsClear();
@@ -83,7 +86,7 @@ namespace LinePlaneCore.Control
         public Canvas MainCanvas
         {
             get => _MainCanvas;
-            set 
+            set
             {
                 Set(ref _MainCanvas, value);
                 Move.canvas = value;
@@ -124,7 +127,7 @@ namespace LinePlaneCore.Control
             else return Brushes.Transparent;
         }
 
-         public Brush MainroomBrush
+        public Brush MainroomBrush
         {
             get => _MainroomBrush;
             set => Set(ref _MainroomBrush, value);
@@ -241,12 +244,14 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region border Save
+        #region Видимость
         private Visibility _SaveBorder = Visibility.Hidden;
         public Visibility SaveBorder
         {
             get => _SaveBorder;
             set => Set(ref _SaveBorder, value);
         }
+        #endregion 
 
         private ICollectionView _UserSaveView;
         public ICollectionView UserSaveView
@@ -255,19 +260,30 @@ namespace LinePlaneCore.Control
             set => Set(ref _UserSaveView, value);
         }
 
-        private Save _SelectedSave;
-        public Save SelectedSave
+        private SaveView _SelectedSave;
+        public SaveView SelectedSave
         {
             get => _SelectedSave;
             set => Set(ref _SelectedSave, value);
         }
 
-        #endregion
+        private ObservableCollection<SaveView> _SaveList = new ObservableCollection<SaveView>()
+        {
+            new SaveView(){ SaveName="111"}
+        };
 
-        #region Команды
+        internal ObservableCollection <SaveView> SaveList
+        {
+            get => _SaveList;
+            set => _SaveList = value; 
+        }
 
-        #region User Interactions
-        #region команда кнопки User
+    #endregion
+
+    #region Команды
+
+    #region User Interactions
+    #region команда кнопки User
         public ICommand ShowUserPanelCommand { get; }
 
         private void OnShowUserPanelCommandExecuted(object p)
@@ -289,6 +305,7 @@ namespace LinePlaneCore.Control
         {
             var WelcomeWindow = new WelcomeWindow();
             WelcomeWindow.Show();
+            UserManager.SetUserID(null);
 
             foreach (Window window in Application.Current.Windows)
             {
@@ -352,11 +369,13 @@ namespace LinePlaneCore.Control
 
         #endregion
 
-        #region 
+        #region Видимость меню сохранений
         public ICommand SwithVisibilitySavebarCommand { get; }
 
         private void OnSwithVisibilitySavebarCommandExecuted(object p)
         {
+            
+
             if (SaveBar == Visibility.Visible) SaveBar = Visibility.Hidden;
             else SaveBar = Visibility.Visible;
         }
@@ -399,7 +418,7 @@ namespace LinePlaneCore.Control
 
         private void OnSpawnShapeCommandExecuted(object p)
         {
-            (string TypeShape,Point Size,string LocalURIImage)parametrs = ShapeManager.SearchShape(p as string);
+            (string TypeShape,Point Size,string LocalURIImage, int ID)parametrs = ShapeManager.SearchShape(p as string);
 
             var Shape=new FrameworkElement();
 
@@ -426,12 +445,12 @@ namespace LinePlaneCore.Control
             {
                 if (parametrs.TypeShape.ToLower() == "square")
                 {
-                    var Square = new Logic.SpawnShape.Draw_Square(parametrs.Size.X, parametrs.Size.Y, Image);
+                    var Square = new Logic.SpawnShape.Draw_Square(parametrs.Size.X, parametrs.Size.Y, Image, parametrs.ID);
                     Shape = Square.shape;
                 }
                 else if (parametrs.TypeShape.ToLower() == "ellipse")
                 {
-                    var Ellipse = new Logic.SpawnShape.Draw_Ellipse(parametrs.Size.X, parametrs.Size.Y, Image);
+                    var Ellipse = new Logic.SpawnShape.Draw_Ellipse(parametrs.Size.X, parametrs.Size.Y, Image, parametrs.ID);
                     Shape = Ellipse.shape;
                 }
             }
@@ -554,6 +573,9 @@ namespace LinePlaneCore.Control
 
             EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
+
+
+            UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
         }
 
     }

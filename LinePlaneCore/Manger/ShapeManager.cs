@@ -9,12 +9,13 @@ namespace LinePlaneCore.Manger
 {
     static internal class ShapeManager
     {
-        static internal (string, Point, string) SearchShape (string Name)
+        static internal (string, Point, string, int) SearchShape (string Name)
         {
             Point ShapeSize = new Point();
             string Type = null;
             string Image = null;
             int IdType = 0;
+            int shapeID = -1;
 
             using (var DBFurniture = new LinePlaneContext())
             {
@@ -25,6 +26,7 @@ namespace LinePlaneCore.Manger
                     IdFurniture = x._Id;
                     IdType = x._IdTipeFurniture;
                     Image = x._Picture;
+                    shapeID = x._Id;
                 }
 
                 foreach (var f in DBFurniture.TipeFurnitures.Where(n => n._Id == IdType))
@@ -38,7 +40,7 @@ namespace LinePlaneCore.Manger
                     ShapeSize.Y = x._Length;
                 }
 
-                return (Type, ShapeSize,Image);
+                return (Type, ShapeSize,Image,shapeID);
             }
         }
 

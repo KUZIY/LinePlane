@@ -82,6 +82,7 @@ namespace LinePlaneCore.Logic
                     Y2 =  Cursor.Y
                 };
 
+                line.Tag = 0;
                 set_events(line);
                 line.IsEnabled = false;
 
