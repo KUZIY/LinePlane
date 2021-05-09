@@ -194,6 +194,8 @@
             </StackPanel>
         </Border>
 
+        
+        
 
         <ListBox
             SelectionMode="Extended"
@@ -307,7 +309,44 @@
             </Button.InputBindings>
         </Button>
 
+        <Button  Style="{StaticResource MaterialDesignFlatButton}" 
+                Visibility="Visible"
+                Grid.Row="0"
+                Grid.Column="2"
+                Background="#CC8772C1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                MinHeight="70"
+                MinWidth="70"
+                UseLayoutRounding="False" Cursor="Hand" >
+            <Button.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Button.InputBindings>
+        </Button>
 
+        <ListBox
+            SelectionMode="Extended"
+            Visibility="Hidden"
+            HorizontalContentAlignment="Stretch"
+            Background="#CC8772C1"
+            BorderThickness="0"
+            MinHeight="700"
+            MinWidth="500"
+            MaxWidth="400"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding UserSaveView}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+             SelectedItem="{Binding SelectedSave}"
+            Grid.Column="1" 
+            Grid.RowSpan="4">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template" Value="{StaticResource SaveListItems}" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
 
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="515" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">
             <Border BorderThickness="0,5" BorderBrush="Black" x:Name="ToolBAr_Border" Width="50" Height="505" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">

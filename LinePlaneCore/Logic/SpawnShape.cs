@@ -68,13 +68,28 @@ namespace LinePlaneCore.Logic
                 shape.Width = widith;
                 shape.Tag = ID;
 
-                var brash = new BrushConverter();
-
                 if (_shape_png == null) shape.Fill = new SolidColorBrush(Colors.Black);
                 else shape.Fill= new ImageBrush(_shape_png);
 
             }
 
+            internal Draw_Square(double widith, double height, Point Margin, BitmapImage _shape_png = null, int ID=-1)
+            {
+                Rectangle shape = new Rectangle();
+
+                set_events(shape);
+
+                shape.Height = height;
+                shape.Width = widith;
+                shape.Tag = ID;
+
+                if (_shape_png == null) shape.Fill = new SolidColorBrush(Colors.Black);
+                else shape.Fill = new ImageBrush(_shape_png);
+
+                Canvas.SetTop(shape, Margin.Y);
+                Canvas.SetLeft(shape, Margin.X);
+
+            }
 
             #region исполнение ISelectable
             public void Choise_Shape(object sender, MouseButtonEventArgs e)
