@@ -16,7 +16,6 @@ namespace LinePlaneCore
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _Id { get; set; }
-        [Required]
         public string _Picture { get; set; }
         [Required]
         public string _Link { get; set; }

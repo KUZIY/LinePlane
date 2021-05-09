@@ -15,15 +15,15 @@ namespace LinePlaneCore.Manger
         {
             ObservableCollection<SaveView> Colection = new ObservableCollection<SaveView>();
 
-            using (var DBContext = new LinePlaneContext())
-            {
-                foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
-                {
-                    SaveView DbSave = new SaveView() { SaveName = x._FurnitureName };
-                    Colection.Add(DbSave);
-                }
-
-            }
+         // using (var DBContext = new LinePlaneContext())
+         // {
+         //     foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
+         //     {
+         //         SaveView DbSave = new SaveView() { SaveName = x._FurnitureName };
+         //         Colection.Add(DbSave);
+         //     }
+         //
+         // }
             return Colection;
         }
 
@@ -32,9 +32,22 @@ namespace LinePlaneCore.Manger
 
         }
 
-        internal static void DeleteSave(string NameSave)
-        {
-
-        }
-    }
+   //    internal static void DeleteSave(string NameSave)
+   //    {
+   //        try
+   //        {
+   //            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+   //            SqlConnection con = new SqlConnection(connectionString);
+   //            SqlCommand cmd = new SqlCommand("DELETE  from [course] where cid IN ('" + cids.Text + "')", con);
+   //            con.Open();
+   //            cmd.ExecuteNonQuery();
+   //            Response.Redirect("done.aspx");
+   //            con.Close();
+   //        }
+   //        catch (SqlException)
+   //        {
+   //            Label1.Text = "error";
+   //        }
+   //    }
+   }
 }

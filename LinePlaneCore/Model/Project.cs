@@ -23,13 +23,5 @@ namespace LinePlaneCore.Model.Server
         public int _IdFurniture { get; set; }
         [ForeignKey(nameof(_IdFurniture))]
         public Furniture _Furniture { get; set; }
-
-        public int _IdMeasurements { get; set; }
-        [ForeignKey(nameof(_IdMeasurements))]
-        public Measurements _Measurements { get; set; }
-
-        public int _IdWall { get; set; }
-        [ForeignKey(nameof(_IdWall))]
-        public Wall _Wall { get; set; }
     }
 }
