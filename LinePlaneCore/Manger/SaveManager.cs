@@ -17,19 +17,69 @@ namespace LinePlaneCore.Manger
 
             using (var DBContext = new LinePlaneContext())
             {
-                foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
+                /*foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
                 {
                     SaveView DbSave = new SaveView() { SaveName = x._FurnitureName };
                     Colection.Add(DbSave);
-                }
+                }*/
 
             }
             return Colection;
         }
 
-        internal static void SetSave (Canvas canvas)
+        internal static bool SetSave (Canvas canvas, string SaveName)
         {
+            using (var DBContext=new LinePlaneContext())
+            {
+                int? SaveID = null;
 
+                foreach( var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                {
+                    SaveID = x._Id;
+                }
+
+                if (SaveID == null) return false;
+                else
+                {
+                    //foreach
+                }
+
+            }
+            return true;
+        }
+
+        internal static void LoadSave(ref Canvas canvas, string SaveName)
+        {
+            using (var DBContext = new LinePlaneContext())
+            {
+                int? SaveID = null;
+
+                foreach (var x in DBContext.Conservations.Where(obj => obj._FurnitureName == SaveName))
+                {
+                    SaveID = x._Id;
+                }
+
+                if (SaveID == null) return;
+                else
+                {
+                    //foreach
+                }
+
+            }
+        }  
+
+        internal static bool NewSave(ref ObservableCollection<SaveView> SaveList, string SaveName)
+        {
+            using (LinePlaneContext DBContext = new LinePlaneContext())
+            {
+                foreach (var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                {
+                    return false;
+                }
+                SaveView NewSave = new SaveView() { SaveName = SaveName };
+                SaveList.Add(NewSave);
+                return true;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsSelected" Value="true">
-                <Setter TargetName="brd" Property="Background" Value="Black" />
+                <Setter TargetName="brd" Property="Background" Value="#CC474646" />
                 <Setter TargetName="txt" Property="Foreground" Value="White" />
             </Trigger>
 
