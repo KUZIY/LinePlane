@@ -201,7 +201,9 @@
             SelectionMode="Extended"
             Visibility="{Binding SaveBar}"
             HorizontalContentAlignment="Stretch"
-            Background="#CC8772C1"
+
+            Background="#19404045"
+
             BorderThickness="0"
             MinHeight="200"
             MinWidth="300"
@@ -235,13 +237,19 @@
             <Button.InputBindings>
                 <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
             </Button.InputBindings>
+
+            <Image Source="/Resources/trash.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            </Image>
+
         </Button>
         
         <Button x:Name="Save" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
-                Background="#CC8772C1"
+
+                Background="#99B88FDA"
+
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 MinHeight="70"
@@ -251,13 +259,19 @@
             <Button.InputBindings>
                 <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
             </Button.InputBindings>
+
+            <Image Source="/Resources/add.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            </Image>
+
         </Button>
         
         <Button x:Name="Load" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
-                Background="#CC8772C1"
+
+                Background="#99B88FDA"
+
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 MinHeight="70"
@@ -267,19 +281,29 @@
             <Button.InputBindings>
                 <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
             </Button.InputBindings>
+
+            <Image Source="/Resources/download.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            </Image>
+
         </Button>
         
         <Button x:Name="Add" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
                 Grid.Column="3"
-                Background="#CC8772C1"
+
+                Background="#99B88FDA"
+
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 MinHeight="70"
                 MinWidth="70"
                 Margin="0,5,230,0"
                 UseLayoutRounding="False" Cursor="Hand" >
+
+            <Image Source="/Resources/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            </Image>
+
             <Button.InputBindings>
                 <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
             </Button.InputBindings>
