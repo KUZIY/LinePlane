@@ -6,7 +6,9 @@
             <Border
                 Name="brd"
                 Margin="10,5"
+
                 Background="#99B88FDA"
+
                 CornerRadius="2"
                 Height="60"
                 >
@@ -25,12 +27,16 @@
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsSelected" Value="true">
+
                 <Setter TargetName="brd" Property="Background" Value="#99997DB0" />
+
                 <Setter TargetName="txt" Property="Foreground" Value="White" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="true">
+
                 <Setter TargetName="brd" Property="Background" Value="#99B88FDA" />
+
                 <Setter TargetName="txt" Property="Foreground" Value="White" />
             </Trigger>
         </ControlTemplate.Triggers>
