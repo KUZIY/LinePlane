@@ -31,5 +31,10 @@ namespace LinePlaneCore.Manger
         {
 
         }
+
+        internal static void DeleteSave(string NameSave)
+        {
+
+        }
     }
 }
