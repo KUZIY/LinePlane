@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+
 namespace LinePlaneCore
 {
     static internal class Move
@@ -19,6 +20,12 @@ namespace LinePlaneCore
         }
 
         static internal UIElement dragObject
+        {
+            get;
+            set;
+        }
+
+        static internal Logic.DrawWalls Wall
         {
             get;
             set;
@@ -41,7 +48,6 @@ namespace LinePlaneCore
         {
             if (dragObject != null)
             {
-                dragObject.IsEnabled = true;
                 dragObject.Opacity = 1;
             }
             dragObject = null;
@@ -50,8 +56,14 @@ namespace LinePlaneCore
 
         static internal void Move_shape(object sender, MouseEventArgs e)
         {
-            if (dragObject == null)
+            if (Wall!=null)
+            {
+                Wall.Cursor = e.GetPosition(canvas);
+                Wall.MouseMove(e);
                 return;
+            }
+
+            if (dragObject == null) return;
 
             Point Offset = new Point();
 

@@ -14,20 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Model\Server\Class1.cs" />
-    <Compile Remove="Model\Server\Class2.cs" />
-    <Compile Remove="Model\Server\Class3.cs" />
-    <Compile Remove="Model\Server\Class4.cs" />
-    <Compile Remove="Model\Server\Measurments.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="cursor.png" />
     <None Remove="edit.png" />
     <None Remove="hand.png" />
     <None Remove="Icon.png" />
     <None Remove="moon.png" />
     <None Remove="next.png" />
+    <None Remove="Resources\add.png" />
     <None Remove="Resources\appliances.png" />
     <None Remove="Resources\bath.png" />
 
@@ -37,6 +30,7 @@
     <None Remove="Resources\closet.png" />
     <None Remove="Resources\cursor.png" />
     <None Remove="Resources\delete.png" />
+    <None Remove="Resources\download.png" />
     <None Remove="Resources\edit.png" />
     <None Remove="Resources\electrical.png" />
     <None Remove="Resources\grid.png" />
@@ -44,20 +38,23 @@
     <None Remove="Resources\Icon.png" />
     <None Remove="Resources\kitchen.png" />
     <None Remove="Resources\livingroom.png" />
+    <None Remove="Resources\logo.png" />
     <None Remove="Resources\mainroom.png" />
     <None Remove="Resources\moon.png" />
     <None Remove="Resources\next.png" />
     <None Remove="Resources\phon.png" />
     <None Remove="Resources\plumbing.png" />
     <None Remove="Resources\Save.png" />
+    <None Remove="Resources\trash.png" />
     <None Remove="Resources\turn-right.png" />
     <None Remove="Resources\undo-arrow.png" />
+    <None Remove="Resources\upload %281%29.png" />
 
     <None Remove="Resources\USER2-removebg-preview.png" />
     <None Remove="Resources\wardrobe.png" />
     <None Remove="Save.png" />
-    <None Remove="Model\Server\Room" />
     <None Remove="USER2-removebg-preview.png" />
+    <None Remove="View\upload %281%29.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,6 +75,8 @@
 
   <ItemGroup>
 
+    <Resource Include="Resources\add.png" />
+
     <Resource Include="Resources\bed.png" />
     <Resource Include="Resources\cactus.png" />
     <Resource Include="Resources\closet.png" />
@@ -86,6 +85,8 @@
     <Resource Include="Resources\delete.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+
+    <Resource Include="Resources\download.png" />
 
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\electrical.png" />
@@ -97,12 +98,20 @@
     <Resource Include="Resources\moon.png" />
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\phon.png" />
-    <SplashScreen Include="Resources\plumbing.png" />
+    <Resource Include="Resources\trash.png" />
+    <Resource Include="Resources\upload (1).png" />
+    <Resource Include="View\upload (1).png" />
+    <SplashScreen Include="Resources\logo.png" />
+    <Resource Include="Resources\plumbing.png" />
     <Resource Include="Resources\Save.png" />
     <Resource Include="Resources\undo-arrow.png" />
     <Resource Include="Resources\USER2-removebg-preview.png" />
 
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\ShapeResourse\" />
   </ItemGroup>
 
 </Project>
