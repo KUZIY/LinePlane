@@ -10,6 +10,7 @@ namespace LinePlaneCore.Logic
         internal static ObservableCollection<FurnitureView> GetFurnitureOnCanvas(Canvas canvas)
         {
             ObservableCollection<FurnitureView> CanvasFurniture = new();
+            
 
             foreach (System.Windows.FrameworkElement x in canvas.Children)
             {
@@ -19,12 +20,18 @@ namespace LinePlaneCore.Logic
                     {
                         foreach (var o in DBContext.Furnitures.Where(obj => obj._Id == (int)x.Tag))
                         {
-
+                            bool AllreadyHave = false;
+                            int index = 0;
 
                             FurnitureView NewObj = new() { Amount=1 ,NameFurniture = o._FurnitureName, FurnitureURI = o._Link, Price = o._Price };
-                            if (CanvasFurniture.Contains(NewObj))
+                            foreach( var obj in CanvasFurniture.Where(obj=> obj.NameFurniture == o._FurnitureName))
                             {
-                                int index = CanvasFurniture.IndexOf(NewObj);
+                                AllreadyHave = true;
+                                index = CanvasFurniture.IndexOf(obj);
+                            }
+
+                            if (AllreadyHave)
+                            {
                                 CanvasFurniture[index].Amount++;
                                 CanvasFurniture[index].Price = o._Price;
                             }

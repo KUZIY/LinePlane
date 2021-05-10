@@ -120,27 +120,9 @@
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" Cursor="Hand" >
             <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
             <Button.InputBindings>
-                <MouseBinding Command="{Binding SaveButtonCommand}" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
         </Button>
-
-        <Border Grid.Row="1" Grid.Column="0" Background="#19404045"  CornerRadius="10" Visibility="{Binding SaveBorder}" Width="200" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="3,3,0,0">
-            <StackPanel>
-                <Button Background="#99B88FDA"  Margin="10" Height="29" FontSize="15" Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Сохранить картинкой" TextAlignment="Center" FontFamily="Poiret One" Foreground="#FF0A0A0A"/>
-                    </StackPanel>
-                    <Button.InputBindings>
-                        <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick"/>
-                    </Button.InputBindings>
-                </Button>
-                <Button Background="#99B88FDA" VerticalAlignment="Bottom" Margin="10,0,10,10" Height="29" FontSize="15"  Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand" BorderBrush="Black" BorderThickness="0.5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Сохранить в аккаунт" TextAlignment="Center" FontFamily="Poiret One" Foreground="Black"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-        </Border>
 
 
 
@@ -223,6 +205,24 @@
             
         </ListBox>
 
+        <Border Background="#CCE9E9EB" Grid.Column="1" Grid.Row="2" Width="550" Height="40" Visibility="{Binding AddSaveNameBarVisibility}">
+            <Grid>
+                <TextBox Text="Введите имя сохранения:  " FontFamily="Poiret One" FontSize="20" Width="220" HorizontalAlignment="Left" Margin="10,0,0,0" Cursor="IBeam" BorderThickness="0,0,0,0" IsHitTestVisible="False" VerticalContentAlignment="Center"/>
+                <TextBox Width="240" Height="40" HorizontalAlignment="Right" Margin="0,0,75,0"
+                            Tag="Введите название"
+                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                           Text="{Binding NewSaveName, UpdateSourceTrigger=PropertyChanged}" Cursor="IBeam" />
+
+                <Image Source="/Resources/close.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                <Button  Style="{StaticResource MaterialDesignFlatButton}" Background="#66B88FDA" Height="30" Width="30" Margin="0,0,5,0" HorizontalAlignment="Right" Command="{Binding CloseAddSaveNameBarCommand}" Cursor="Hand"/>
+                
+                <Image Source="/Resources/check.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,45,0"/>
+                <Button  Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding AddSaveCommand}" Background="#66B88FDA" Height="30" Width="30" Margin="0,0,40,0" HorizontalAlignment="Right" Cursor="Hand"/>
+            </Grid>
+
+
+        </Border>
+
         <Button x:Name="Delete" Style="{StaticResource MaterialDesignFlatButton}" 
                 Visibility="{Binding SaveBar}"
                 Grid.Row="3"
@@ -257,7 +257,7 @@
                 Margin="0,5,80,0"
                 UseLayoutRounding="False" Cursor="Hand" >
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding ShowAddNameSaveBarCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
             <Image Source="/Resources/add.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
@@ -301,9 +301,7 @@
                 Margin="0,5,230,0"
                 UseLayoutRounding="False" Cursor="Hand" >
 
-            <Image Source="/Resources/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
-            </Image>
-
+            <Image Source="/Resources/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
             <Button.InputBindings>
                 <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
             </Button.InputBindings>
@@ -313,12 +311,13 @@
                 Visibility="Visible"
                 Grid.Row="0"
                 Grid.Column="2"
-                Background="#CC8772C1"
+                Background="#008772C1"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 MinHeight="70"
                 MinWidth="70"
                 UseLayoutRounding="False" Cursor="Hand" >
+            <Image Source="/Resources/mine-cart.png" Width="38" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
             <Button.InputBindings>
                 <MouseBinding Command="{Binding ShowCartListCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
@@ -333,9 +332,9 @@
             SelectionMode="Extended"
             Visibility="{Binding CartList}"
             HorizontalContentAlignment="Stretch"
-            Background="#FFD2D2D3"
+            Background="#FFEEEEF0"
             BorderThickness="0"
-            MinHeight="500"
+            MinHeight="520"
             MinWidth="500"
             MaxWidth="400"
             HorizontalAlignment="Center"
@@ -353,10 +352,10 @@
 
         </ListBox>
 
-            <Border Background="#FFB9B9C5" Height="25" VerticalAlignment="Bottom"  Visibility="{Binding CartList}" >
+            <Border Background="#FFB9B9C5" Height="35" VerticalAlignment="Bottom"  Visibility="{Binding CartList}" >
                 <Grid>
-                    <TextBox Text="Сумма покупок" Margin="10,0,0,0" Width="100" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="14" BorderThickness="0,0,0,0"/>
-                    <TextBox Text="{Binding SummPrice}" Margin="0,0,10,0" Width="90" FontFamily="Poiret One" HorizontalAlignment="Right" FontSize="14" TextAlignment="Right" BorderThickness="0,0,0,0"/>
+                    <TextBox Text="Сумма покупок" Margin="10,0,0,0" Width="150" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="20" BorderThickness="0,0,0,0" IsHitTestVisible="False" Cursor="IBeam" />
+                    <TextBox Text="{Binding SummPrice}" Margin="0,0,10,0" Width="90" FontFamily="Poiret One" HorizontalAlignment="Right" FontSize="20" TextAlignment="Right" BorderThickness="0,0,0,0"/>
                 </Grid>
         </Border>
            

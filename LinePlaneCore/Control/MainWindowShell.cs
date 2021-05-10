@@ -51,7 +51,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Savebar visibility
-        private Visibility _SaveBar = Visibility.Visible;
+        private Visibility _SaveBar = Visibility.Hidden;
 
         public Visibility SaveBar
         {
@@ -252,8 +252,8 @@ namespace LinePlaneCore.Control
             get => _SaveBorder;
             set => Set(ref _SaveBorder, value);
         }
-        #endregion 
-
+        #endregion
+        #region Данные списка с сохранениями
         private ICollectionView _UserSaveView;
         public ICollectionView UserSaveView
         {
@@ -268,16 +268,19 @@ namespace LinePlaneCore.Control
             set => Set(ref _SelectedSave, value);
         }
 
-        private ObservableCollection<SaveView> _SaveList = new ObservableCollection<SaveView>()
-        {
-            new SaveView(){ SaveName="111"}
-        };
+        private ObservableCollection<SaveView> _SaveList = new ObservableCollection<SaveView>();
 
         internal ObservableCollection <SaveView> SaveList
         {
             get => _SaveList;
             set => _SaveList = value; 
         }
+        #endregion
+
+
+        private Visibility _AddSaveNameBarVisibility = Visibility.Hidden;
+        public Visibility AddSaveNameBarVisibility { get => _AddSaveNameBarVisibility; set => Set(ref _AddSaveNameBarVisibility, value); }
+        public string NewSaveName { get; set; }
 
         #endregion
 
@@ -610,6 +613,72 @@ namespace LinePlaneCore.Control
         private bool CanShowCartListCommandExecuted(object p) => true;
         #endregion
 
+        #region команды кнопок Save border
+
+        #region Кнопка добавления сохранения
+
+        #region Видимиость бара введения названия сохранения
+        public ICommand ShowAddNameSaveBarCommand { get; }
+
+        private void OnShowAddNameSaveBarCommandExecuted(object p)
+        {
+            if (AddSaveNameBarVisibility == Visibility.Hidden) AddSaveNameBarVisibility = Visibility.Visible;
+            else AddSaveNameBarVisibility = Visibility.Hidden;
+        }
+
+        private bool CanShowAddNameSaveBarCommandExecuted(object p) => true;
+        #endregion
+
+        #region Команды кнопок бара введения названия сохранения
+
+        #region Закрыть бар
+        public ICommand CloseAddSaveNameBarCommand { get; }
+
+        private void OnCloseAddSaveNameBarCommandExecuted(object p)
+        {
+            AddSaveNameBarVisibility = Visibility.Hidden;
+        }
+
+        private bool CanCloseAddSaveNameBarCommandExecuted(object p) => true;
+        #endregion
+
+        #region Добавить сохранение
+        public ICommand AddSaveCommand { get; }
+
+        private void OnAddSaveCommandExecuted(object p)
+        {
+            
+
+            if (SaveManager.NewSave(ref _SaveList, NewSaveName))
+            {
+                SaveList = _SaveList;
+                OnCloseAddSaveNameBarCommandExecuted(null);
+            }
+            else
+            {
+                MessageBox.Show("Сохранение с таким именем уже существует");
+            }
+        }
+
+        private bool CanAddSaveCommandExecuted(object p) => true;
+        #endregion 
+
+        #endregion
+
+        #endregion
+
+
+
+        #region команда добавления сохранения
+
+
+
+        #endregion
+
+        #endregion
+
+
+
         #endregion
 
         public MainWindowShell()
@@ -648,6 +717,10 @@ namespace LinePlaneCore.Control
             ShowCartListCommand = new ActionCommand(OnShowCartListCommandExecuted, CanShowCartListCommandExecuted);
             BindingOperations.EnableCollectionSynchronization(FurnitureObserverList, new object());
             #endregion
+
+            ShowAddNameSaveBarCommand = new ActionCommand(OnShowAddNameSaveBarCommandExecuted, CanShowAddNameSaveBarCommandExecuted);
+            CloseAddSaveNameBarCommand = new ActionCommand(OnCloseAddSaveNameBarCommandExecuted, CanCloseAddSaveNameBarCommandExecuted);
+            AddSaveCommand = new ActionCommand(OnAddSaveCommandExecuted, CanAddSaveCommandExecuted);
         }
 
     }

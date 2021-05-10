@@ -27,6 +27,8 @@
     <None Remove="Resources\bed.png" />
     <None Remove="Resources\bedroom.png" />
     <None Remove="Resources\cactus.png" />
+    <None Remove="Resources\check.png" />
+    <None Remove="Resources\close.png" />
     <None Remove="Resources\closet.png" />
     <None Remove="Resources\cursor.png" />
     <None Remove="Resources\delete.png" />
@@ -40,11 +42,13 @@
     <None Remove="Resources\livingroom.png" />
     <None Remove="Resources\logo.png" />
     <None Remove="Resources\mainroom.png" />
+    <None Remove="Resources\mine-cart.png" />
     <None Remove="Resources\moon.png" />
     <None Remove="Resources\next.png" />
     <None Remove="Resources\phon.png" />
     <None Remove="Resources\plumbing.png" />
     <None Remove="Resources\Save.png" />
+    <None Remove="Resources\shopping-cart.png" />
     <None Remove="Resources\trash.png" />
     <None Remove="Resources\turn-right.png" />
     <None Remove="Resources\undo-arrow.png" />
@@ -79,6 +83,8 @@
 
     <Resource Include="Resources\bed.png" />
     <Resource Include="Resources\cactus.png" />
+    <Resource Include="Resources\check.png" />
+    <Resource Include="Resources\close.png" />
     <Resource Include="Resources\closet.png" />
     <Resource Include="Resources\cursor.png" />
 
@@ -95,9 +101,11 @@
     <Resource Include="Resources\Icon.png" />
     <Resource Include="Resources\kitchen.png" />
     <Resource Include="Resources\livingroom.png" />
+    <Resource Include="Resources\mine-cart.png" />
     <Resource Include="Resources\moon.png" />
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\phon.png" />
+    <Resource Include="Resources\shopping-cart.png" />
 
     <Resource Include="Resources\trash.png" />
     <Resource Include="Resources\upload (1).png" />
