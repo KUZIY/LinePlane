@@ -21,7 +21,7 @@ namespace LinePlaneCore.Logic
                         {
 
 
-                            FurnitureView NewObj = new() { NameFurniture = o._FurnitureName, FurnitureURI = o._Link, Price = o._Price };
+                            FurnitureView NewObj = new() { Amount=1 ,NameFurniture = o._FurnitureName, FurnitureURI = o._Link, Price = o._Price };
                             if (CanvasFurniture.Contains(NewObj))
                             {
                                 int index = CanvasFurniture.IndexOf(NewObj);

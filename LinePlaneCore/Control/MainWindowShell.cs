@@ -282,7 +282,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Кнопка корзины предметов в комнате
-        private Visibility _CartList = Visibility.Visible;
+        private Visibility _CartList = Visibility.Hidden;
 
         public Visibility CartList
         {
@@ -299,19 +299,22 @@ namespace LinePlaneCore.Control
             set => Set(ref _FurnitureList, value);
         }
 
-        private ObservableCollection<FurnitureView> _FurnitureObserverList = new()
-        {
-
-            new FurnitureView() { Amount = 1, NameFurniture = "Аквариум", FurnitureURI = "www.ikea/ssilka_na_mebel/", Price = 777 },
-            new FurnitureView() { Amount = 2, NameFurniture = "Холодильник двухдверный", FurnitureURI = "NETU", Price = 777 }
-
-        };
+        private ObservableCollection<FurnitureView> _FurnitureObserverList = new();
 
         internal ObservableCollection<FurnitureView> FurnitureObserverList
         {
             get => _FurnitureObserverList;
-            set => _FurnitureObserverList = value;
+            set => Set(ref _FurnitureObserverList,value);
         }
+
+        #region Сумма стоимости предметов
+        private int _SummPrice = 0;
+        public int SummPrice
+        {
+            get => _SummPrice;
+            set => Set(ref _SummPrice, value);
+        }
+        #endregion
 
         #endregion
 
@@ -583,23 +586,30 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region показать список предметов на канвасе
-
-        #endregion
         public ICommand ShowCartListCommand { get; }
 
         private void OnShowCartListCommandExecuted(object p)
         {
-            if (CartList == Visibility.Hidden) 
+            if (CartList == Visibility.Hidden)
             {
+                FurnitureObserverList=GetAllFurniture.GetFurnitureOnCanvas(MainCanvas);
+                FurnitureList = CollectionViewSource.GetDefaultView(FurnitureObserverList);
+                SummPrice = 0;
+                int Summ = 0;
+                foreach (var x in FurnitureObserverList)
+                {
+                    Summ += x.Price;
+                }
+                SummPrice = Summ;
 
-                FurnitureObserverList = GetAllFurniture.GetFurnitureOnCanvas(MainCanvas);
-
-                CartList = Visibility.Visible; 
+                CartList = Visibility.Visible;
             }
             else CartList = Visibility.Hidden;
         }
 
         private bool CanShowCartListCommandExecuted(object p) => true;
+        #endregion
+
         #endregion
 
         public MainWindowShell()
@@ -629,13 +639,15 @@ namespace LinePlaneCore.Control
             EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
 
+            #region список сохранений
             BindingOperations.EnableCollectionSynchronization(SaveList, new object());
             UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
+            #endregion
 
+            #region Список покупок
             ShowCartListCommand = new ActionCommand(OnShowCartListCommandExecuted, CanShowCartListCommandExecuted);
-
             BindingOperations.EnableCollectionSynchronization(FurnitureObserverList, new object());
-            FurnitureList = CollectionViewSource.GetDefaultView(FurnitureObserverList);
+            #endregion
         }
 
     }
