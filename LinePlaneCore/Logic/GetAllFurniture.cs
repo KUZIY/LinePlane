@@ -17,18 +17,18 @@ namespace LinePlaneCore.Logic
                 {
                     if ((int)x.Tag != 0)
                     {
-                        foreach (var o in DBContext.Furnitures.Where(obj=> obj._Id == (int)x.Tag))     
+                        foreach (var o in DBContext.Furnitures.Where(obj => obj._Id == (int)x.Tag))
                         {
-                            
 
-                            FurnitureView NewObj = new () { nameFurniture = o._FurnitureName, furnitureURI = o._Link, price = o._Price };
-                           if (CanvasFurniture.Contains(NewObj))
+
+                            FurnitureView NewObj = new() { NameFurniture = o._FurnitureName, FurnitureURI = o._Link, Price = o._Price };
+                            if (CanvasFurniture.Contains(NewObj))
                             {
                                 int index = CanvasFurniture.IndexOf(NewObj);
-                                CanvasFurniture[index].amount++;
-                                CanvasFurniture[index].price = o._Price;
+                                CanvasFurniture[index].Amount++;
+                                CanvasFurniture[index].Price = o._Price;
                             }
-                           else CanvasFurniture.Add(NewObj);
+                            else CanvasFurniture.Add(NewObj);
                         }
                     }
                 }

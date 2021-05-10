@@ -342,9 +342,11 @@
 
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Template" Value="{StaticResource FrnitureListStyle}" />
+                    <Setter Property="Template" Value="{StaticResource FurnitureListItems}" />
                 </Style>
             </ListBox.ItemContainerStyle>
+            
+
         </ListBox>
 
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="515" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">

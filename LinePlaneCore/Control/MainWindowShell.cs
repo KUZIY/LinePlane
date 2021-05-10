@@ -282,7 +282,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Кнопка корзины предметов в комнате
-        private Visibility _CartList = Visibility.Hidden;
+        private Visibility _CartList = Visibility.Visible;
 
         public Visibility CartList
         {
@@ -301,7 +301,7 @@ namespace LinePlaneCore.Control
 
         private ObservableCollection<FurnitureView> _FurnitureObserverList = new()
         {
-            new FurnitureView() { nameFurniture = "777", furnitureURI = "NETU", price = 777 }
+           new FurnitureView() { Amount = 1, NameFurniture = "777", FurnitureURI = "NETU", Price = 777 }
         };
 
         internal ObservableCollection<FurnitureView> FurnitureObserverList
@@ -589,7 +589,7 @@ namespace LinePlaneCore.Control
             if (CartList == Visibility.Hidden) 
             {
 
-                FurnitureList = CollectionViewSource.GetDefaultView(GetAllFurniture.GetFurnitureOnCanvas(MainCanvas));
+                FurnitureObserverList = GetAllFurniture.GetFurnitureOnCanvas(MainCanvas);
 
                 CartList = Visibility.Visible; 
             }
@@ -626,10 +626,13 @@ namespace LinePlaneCore.Control
             EventButtonCommand = new ActionCommand(OnEventButtonCommandExecuted, CanEventButtonCommandExecuted);
             #endregion
 
-
+            BindingOperations.EnableCollectionSynchronization(SaveList, new object());
             UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
 
             ShowCartListCommand = new ActionCommand(OnShowCartListCommandExecuted, CanShowCartListCommandExecuted);
+
+            BindingOperations.EnableCollectionSynchronization(FurnitureObserverList, new object());
+            FurnitureList = CollectionViewSource.GetDefaultView(FurnitureObserverList);
         }
 
     }
