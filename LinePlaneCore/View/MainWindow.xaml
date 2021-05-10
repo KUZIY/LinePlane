@@ -72,8 +72,8 @@
         <Border BorderBrush="#FFA6A39D" BorderThickness="0" CornerRadius="0" Grid.Row="0" Grid.ColumnSpan="4">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF868097" Offset="0"/>
-                    <GradientStop Color="#FF44414B" Offset="1"/>
+                    <GradientStop Color="#FFC1B8DC" Offset="0"/>
+                    <GradientStop Color="#995B5076" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -320,13 +320,13 @@
                 MinWidth="70"
                 UseLayoutRounding="False" Cursor="Hand" >
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding ShowCartListCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
         </Button>
 
         <ListBox
             SelectionMode="Extended"
-            Visibility="Hidden"
+            Visibility="{Binding CartList}"
             HorizontalContentAlignment="Stretch"
             Background="#CC8772C1"
             BorderThickness="0"
@@ -335,15 +335,14 @@
             MaxWidth="400"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            ItemsSource="{Binding UserSaveView}"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-             SelectedItem="{Binding SelectedSave}"
+            ItemsSource="{Binding FurnitureList}"
+            ScrollViewer.HorizontalScrollBarVisibility="Visible"
             Grid.Column="1" 
             Grid.RowSpan="4">
 
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Template" Value="{StaticResource SaveListItems}" />
+                    <Setter Property="Template" Value="{StaticResource FrnitureListStyle}" />
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>

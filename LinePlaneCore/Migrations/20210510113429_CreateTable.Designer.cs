@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinePlaneCore.Migrations
 {
     [DbContext(typeof(LinePlaneContext))]
-    [Migration("20210503210152_TableCreated3")]
-    partial class TableCreated3
+    [Migration("20210510113429_CreateTable")]
+    partial class CreateTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace LinePlaneCore.Migrations
 
             modelBuilder.Entity("LinePlaneCore.Measurements", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -62,37 +62,32 @@ namespace LinePlaneCore.Migrations
                     b.Property<int>("_IdFurniture")
                         .HasColumnType("int");
 
-                    b.Property<string>("_Length")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("_Length")
+                        .HasColumnType("int");
 
-                    b.Property<string>("_Width")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("_Width")
+                        .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("_IdFurniture");
+                    b.HasKey("_Id");
 
                     b.ToTable("Measurments");
                 });
 
-            modelBuilder.Entity("LinePlaneCore.Model.Server.Conservation", b =>
+            modelBuilder.Entity("LinePlaneCore.Model.Server.Conservations", b =>
                 {
                     b.Property<int>("_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("_FurnitureName")
+                    b.Property<int>("_IdUser")
+                        .HasColumnType("int");
+
+                    b.Property<string>("_Picture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("_IdUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("_Picture")
+                    b.Property<string>("_SaveName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -105,7 +100,7 @@ namespace LinePlaneCore.Migrations
 
             modelBuilder.Entity("LinePlaneCore.Model.Server.Project", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -116,19 +111,14 @@ namespace LinePlaneCore.Migrations
                     b.Property<int>("_IdFurniture")
                         .HasColumnType("int");
 
-                    b.Property<int>("_IdMeasurements")
+                    b.Property<int>("_IdСoordinates")
                         .HasColumnType("int");
 
-                    b.Property<int>("_IdWall")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("_Id");
 
                     b.HasIndex("_IdConservation");
 
-                    b.HasIndex("_IdMeasurements");
-
-                    b.HasIndex("_IdWall");
+                    b.HasIndex("_IdСoordinates");
 
                     b.ToTable("Projects");
                 });
@@ -151,17 +141,24 @@ namespace LinePlaneCore.Migrations
 
             modelBuilder.Entity("LinePlaneCore.User", b =>
                 {
-                    b.Property<string>("_Login")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("_Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("_Password")
-                        .HasColumnType("int");
+                    b.Property<string>("_Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("_Login");
+                    b.Property<string>("_Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("_Id");
 
                     b.ToTable("Users");
                 });
@@ -172,6 +169,9 @@ namespace LinePlaneCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("_IdConservation")
+                        .HasColumnType("int");
 
                     b.Property<int>("_X1")
                         .HasColumnType("int");
@@ -187,7 +187,27 @@ namespace LinePlaneCore.Migrations
 
                     b.HasKey("_Id");
 
+                    b.HasIndex("_IdConservation");
+
                     b.ToTable("Walls");
+                });
+
+            modelBuilder.Entity("LinePlaneCore.Сoordinates", b =>
+                {
+                    b.Property<int>("_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("_X")
+                        .HasColumnType("int");
+
+                    b.Property<int>("_Y")
+                        .HasColumnType("int");
+
+                    b.HasKey("_Id");
+
+                    b.ToTable("Сoordinates");
                 });
 
             modelBuilder.Entity("LinePlaneCore.Furniture", b =>
@@ -201,18 +221,7 @@ namespace LinePlaneCore.Migrations
                     b.Navigation("_TipeFurniture");
                 });
 
-            modelBuilder.Entity("LinePlaneCore.Measurements", b =>
-                {
-                    b.HasOne("LinePlaneCore.TipeFurniture", "_Furniture")
-                        .WithMany()
-                        .HasForeignKey("_IdFurniture")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("_Furniture");
-                });
-
-            modelBuilder.Entity("LinePlaneCore.Model.Server.Conservation", b =>
+            modelBuilder.Entity("LinePlaneCore.Model.Server.Conservations", b =>
                 {
                     b.HasOne("LinePlaneCore.User", "_User")
                         .WithMany()
@@ -225,29 +234,32 @@ namespace LinePlaneCore.Migrations
 
             modelBuilder.Entity("LinePlaneCore.Model.Server.Project", b =>
                 {
-                    b.HasOne("LinePlaneCore.Model.Server.Conservation", "_Conservation")
+                    b.HasOne("LinePlaneCore.Model.Server.Conservations", "_Conservation")
                         .WithMany()
                         .HasForeignKey("_IdConservation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LinePlaneCore.Measurements", "_Measurements")
+                    b.HasOne("LinePlaneCore.Сoordinates", "_Сoordinates")
                         .WithMany()
-                        .HasForeignKey("_IdMeasurements")
+                        .HasForeignKey("_IdСoordinates")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LinePlaneCore.Wall", "_Wall")
+                    b.Navigation("_Сoordinates");
+
+                    b.Navigation("_Conservation");
+                });
+
+            modelBuilder.Entity("LinePlaneCore.Wall", b =>
+                {
+                    b.HasOne("LinePlaneCore.Model.Server.Conservations", "_Conservation")
                         .WithMany()
-                        .HasForeignKey("_IdWall")
+                        .HasForeignKey("_IdConservation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("_Conservation");
-
-                    b.Navigation("_Measurements");
-
-                    b.Navigation("_Wall");
                 });
 #pragma warning restore 612, 618
         }

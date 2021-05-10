@@ -18,6 +18,7 @@ namespace LinePlaneCore.Control
 {
     internal class MainWindowShell : Base
     {
+        #region данные и их привязка
         #region Cursor
         private Cursor _WindowCursor = Cursors.Arrow;
         public Cursor WindowCursor
@@ -278,12 +279,45 @@ namespace LinePlaneCore.Control
             set => _SaveList = value; 
         }
 
-    #endregion
+        #endregion
 
-    #region Команды
+        #region Кнопка корзины предметов в комнате
+        private Visibility _CartList = Visibility.Hidden;
 
-    #region User Interactions
-    #region команда кнопки User
+        public Visibility CartList
+        {
+            get => _CartList;
+            set => Set(ref _CartList, value);
+        }
+        #endregion
+
+        #region данные о предметах на канвасе
+        private ICollectionView _FurnitureList;
+        public ICollectionView FurnitureList
+        {
+            get => _FurnitureList;
+            set => Set(ref _FurnitureList, value);
+        }
+
+        private ObservableCollection<FurnitureView> _FurnitureObserverList = new()
+        {
+            new FurnitureView() { nameFurniture = "777", furnitureURI = "NETU", price = 777 }
+        };
+
+        internal ObservableCollection<FurnitureView> FurnitureObserverList
+        {
+            get => _FurnitureObserverList;
+            set => _FurnitureObserverList = value;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Команды
+
+        #region User Interactions
+        #region команда кнопки User
         public ICommand ShowUserPanelCommand { get; }
 
         private void OnShowUserPanelCommandExecuted(object p)
@@ -545,6 +579,24 @@ namespace LinePlaneCore.Control
         private bool CanSaveButtonCommandExecuted(object p) => true;
         #endregion
 
+        #region показать список предметов на канвасе
+
+        #endregion
+        public ICommand ShowCartListCommand { get; }
+
+        private void OnShowCartListCommandExecuted(object p)
+        {
+            if (CartList == Visibility.Hidden) 
+            {
+
+                FurnitureList = CollectionViewSource.GetDefaultView(GetAllFurniture.GetFurnitureOnCanvas(MainCanvas));
+
+                CartList = Visibility.Visible; 
+            }
+            else CartList = Visibility.Hidden;
+        }
+
+        private bool CanShowCartListCommandExecuted(object p) => true;
         #endregion
 
         public MainWindowShell()
@@ -576,6 +628,8 @@ namespace LinePlaneCore.Control
 
 
             UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
+
+            ShowCartListCommand = new ActionCommand(OnShowCartListCommandExecuted, CanShowCartListCommandExecuted);
         }
 
     }

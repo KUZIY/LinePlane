@@ -36,7 +36,7 @@ namespace LinePlaneCore.Manger
             {
                 int? SaveID = null;
 
-                foreach( var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                foreach( var x in DBContext.Conservations.Where(obj=>obj._SaveName==SaveName))
                 {
                     SaveID = x._Id;
                 }
@@ -57,7 +57,7 @@ namespace LinePlaneCore.Manger
             {
                 int? SaveID = null;
 
-                foreach (var x in DBContext.Conservations.Where(obj => obj._FurnitureName == SaveName))
+                foreach (var x in DBContext.Conservations.Where(obj => obj._SaveName == SaveName))
                 {
                     SaveID = x._Id;
                 }
@@ -75,7 +75,7 @@ namespace LinePlaneCore.Manger
         {
             using (LinePlaneContext DBContext = new LinePlaneContext())
             {
-                foreach (var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                foreach (var x in DBContext.Conservations.Where(obj=>obj._SaveName == SaveName))
                 {
                     return false;
                 }

@@ -116,4 +116,11 @@
     <Folder Include="Resources\ShapeResourse\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Style\FurnitureListStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

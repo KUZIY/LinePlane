@@ -2,10 +2,39 @@
 
 namespace LinePlaneCore.Migrations
 {
-    public partial class TableCreated3 : Migration
+    public partial class CreateTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Сoordinates",
+                columns: table => new
+                {
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _X = table.Column<int>(type: "int", nullable: false),
+                    _Y = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Сoordinates", x => x._Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Measurments",
+                columns: table => new
+                {
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _Length = table.Column<int>(type: "int", nullable: false),
+                    _Width = table.Column<int>(type: "int", nullable: false),
+                    _IdFurniture = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Measurments", x => x._Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "TipeFurnitures",
                 columns: table => new
@@ -23,29 +52,15 @@ namespace LinePlaneCore.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    _Login = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    _Password = table.Column<int>(type: "int", nullable: false),
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     _Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x._Login);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Walls",
-                columns: table => new
-                {
-                    _Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    _X1 = table.Column<int>(type: "int", nullable: false),
-                    _Y1 = table.Column<int>(type: "int", nullable: false),
-                    _X2 = table.Column<int>(type: "int", nullable: false),
-                    _Y2 = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Walls", x => x._Id);
+                    table.PrimaryKey("PK_Users", x => x._Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,35 +87,14 @@ namespace LinePlaneCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Measurments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    _Length = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    _Width = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    _IdFurniture = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Measurments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Measurments_TipeFurnitures__IdFurniture",
-                        column: x => x._IdFurniture,
-                        principalTable: "TipeFurnitures",
-                        principalColumn: "_Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Conservations",
                 columns: table => new
                 {
                     _Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     _Picture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    _IdUser = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    _FurnitureName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    _IdUser = table.Column<int>(type: "int", nullable: false),
+                    _SaveName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,7 +103,7 @@ namespace LinePlaneCore.Migrations
                         name: "FK_Conservations_Users__IdUser",
                         column: x => x._IdUser,
                         principalTable: "Users",
-                        principalColumn: "_Login",
+                        principalColumn: "_Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -117,32 +111,48 @@ namespace LinePlaneCore.Migrations
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    _Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     _IdConservation = table.Column<int>(type: "int", nullable: false),
                     _IdFurniture = table.Column<int>(type: "int", nullable: false),
-                    _IdMeasurements = table.Column<int>(type: "int", nullable: false),
-                    _IdWall = table.Column<int>(type: "int", nullable: false)
+                    _IdСoordinates = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.PrimaryKey("PK_Projects", x => x._Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Сoordinates__IdСoordinates",
+                        column: x => x._IdСoordinates,
+                        principalTable: "Сoordinates",
+                        principalColumn: "_Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Projects_Conservations__IdConservation",
                         column: x => x._IdConservation,
                         principalTable: "Conservations",
                         principalColumn: "_Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Walls",
+                columns: table => new
+                {
+                    _Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    _X1 = table.Column<int>(type: "int", nullable: false),
+                    _Y1 = table.Column<int>(type: "int", nullable: false),
+                    _X2 = table.Column<int>(type: "int", nullable: false),
+                    _Y2 = table.Column<int>(type: "int", nullable: false),
+                    _IdConservation = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Walls", x => x._Id);
                     table.ForeignKey(
-                        name: "FK_Projects_Measurments__IdMeasurements",
-                        column: x => x._IdMeasurements,
-                        principalTable: "Measurments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Projects_Walls__IdWall",
-                        column: x => x._IdWall,
-                        principalTable: "Walls",
+                        name: "FK_Walls_Conservations__IdConservation",
+                        column: x => x._IdConservation,
+                        principalTable: "Conservations",
                         principalColumn: "_Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -158,9 +168,9 @@ namespace LinePlaneCore.Migrations
                 column: "_IdTipeFurniture");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Measurments__IdFurniture",
-                table: "Measurments",
-                column: "_IdFurniture");
+                name: "IX_Projects__IdСoordinates",
+                table: "Projects",
+                column: "_IdСoordinates");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects__IdConservation",
@@ -168,14 +178,9 @@ namespace LinePlaneCore.Migrations
                 column: "_IdConservation");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects__IdMeasurements",
-                table: "Projects",
-                column: "_IdMeasurements");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects__IdWall",
-                table: "Projects",
-                column: "_IdWall");
+                name: "IX_Walls__IdConservation",
+                table: "Walls",
+                column: "_IdConservation");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -184,22 +189,25 @@ namespace LinePlaneCore.Migrations
                 name: "Furnitures");
 
             migrationBuilder.DropTable(
-                name: "Projects");
-
-            migrationBuilder.DropTable(
-                name: "Conservations");
-
-            migrationBuilder.DropTable(
                 name: "Measurments");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Walls");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "TipeFurnitures");
 
             migrationBuilder.DropTable(
-                name: "TipeFurnitures");
+                name: "Сoordinates");
+
+            migrationBuilder.DropTable(
+                name: "Conservations");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
