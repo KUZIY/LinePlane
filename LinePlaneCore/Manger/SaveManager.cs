@@ -84,5 +84,28 @@ namespace LinePlaneCore.Manger
                 return true;
             }
         }
+
+     //  internal static void DeleteSave(string SaveName)
+     //  {
+     //      var deleteOrderDetails =
+     //          from details in db.OrderDetails
+     //          where details.OrderID == 11000
+     //          select details;
+     //
+     //      foreach (var detail in deleteOrderDetails)
+     //      {
+     //          db.OrderDetails.DeleteOnSubmit(detail);
+     //      }
+     //
+     //      try
+     //      {
+     //          db.SubmitChanges();
+     //      }
+     //      catch (Exception e)
+     //      {
+     //          Console.WriteLine(e);
+     //          // Provide for exceptions.
+     //      }
+     //  }
     }
 }

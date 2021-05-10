@@ -25,6 +25,6 @@ namespace LinePlaneCore.Model.Server
         public User _User { get; set; }
 
         [Required]
-        public string _FurnitureName { get; set; }
+        public string _SaveName { get; set; }
     }
 }
