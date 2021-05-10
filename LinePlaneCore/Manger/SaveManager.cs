@@ -36,7 +36,7 @@ namespace LinePlaneCore.Manger
             {
                 int? SaveID = null;
 
-                foreach( var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                foreach( var x in DBContext.Conservations.Where(obj=>obj._SaveName==SaveName))
                 {
                     SaveID = x._Id;
                 }
@@ -57,7 +57,7 @@ namespace LinePlaneCore.Manger
             {
                 int? SaveID = null;
 
-                foreach (var x in DBContext.Conservations.Where(obj => obj._FurnitureName == SaveName))
+                foreach (var x in DBContext.Conservations.Where(obj => obj._SaveName == SaveName))
                 {
                     SaveID = x._Id;
                 }
@@ -75,7 +75,7 @@ namespace LinePlaneCore.Manger
         {
             using (LinePlaneContext DBContext = new LinePlaneContext())
             {
-                foreach (var x in DBContext.Conservations.Where(obj=>obj._FurnitureName==SaveName))
+                foreach (var x in DBContext.Conservations.Where(obj=>obj._SaveName == SaveName))
                 {
                     return false;
                 }
@@ -84,5 +84,28 @@ namespace LinePlaneCore.Manger
                 return true;
             }
         }
+
+     //  internal static void DeleteSave(string SaveName)
+     //  {
+     //      var deleteOrderDetails =
+     //          from details in db.OrderDetails
+     //          where details.OrderID == 11000
+     //          select details;
+     //
+     //      foreach (var detail in deleteOrderDetails)
+     //      {
+     //          db.OrderDetails.DeleteOnSubmit(detail);
+     //      }
+     //
+     //      try
+     //      {
+     //          db.SubmitChanges();
+     //      }
+     //      catch (Exception e)
+     //      {
+     //          Console.WriteLine(e);
+     //          // Provide for exceptions.
+     //      }
+     //  }
     }
 }

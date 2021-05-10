@@ -4,9 +4,14 @@ namespace LinePlaneCore.Model
 {
     internal class FurnitureView
     {
-        internal BitmapImage FurniyureImage { get; set; }
-        internal string nameFurniture { get; set; }
-        internal string furnitureURI { get; set; }
-        internal int price { get; set; }
+        protected int _Amount = 0;
+        public int Amount { get => _Amount; set => _Amount = value; }
+
+        //internal BitmapImage FurniyureImage { get; set; }
+        public string NameFurniture { get; set; }
+        public string FurnitureURI { get; set; }
+
+        private int _Price = 0;
+        public int Price { get => _Price; set=> _Price = _Amount * value; }
     }
 }

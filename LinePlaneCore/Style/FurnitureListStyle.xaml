@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate x:Key="FurnitureListItems" TargetType="ListBoxItem">
+        <Grid>
+            <Border 
+                Margin="10,5"
+
+                Background="#99B88FDA"
+
+                CornerRadius="2"
+                Height="60"
+                >
+                <Grid>
+                    <TextBox Text="{Binding Amount}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontFamily="Poiret One" FontSize="14"/>
+                    <TextBox Text="{Binding NameFurniture}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" FontFamily="Poiret One" FontSize="14"/>
+                    <TextBox Text="{Binding FurnitureURI}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="220,0,0,0" FontFamily="Poiret One" FontSize="14"/>
+                    <TextBox Text="{Binding Price}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="Poiret One" FontSize="14"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+       
+    </ControlTemplate>
+
+</ResourceDictionary>

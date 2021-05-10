@@ -19,12 +19,12 @@ namespace LinePlaneCore.Model.Server
         public string _Picture { get; set; }
 
         [Required]
-        public string _IdUser { get; set; }
+        public int _IdUser { get; set; }
 
         [ForeignKey(nameof(_IdUser))]
         public User _User { get; set; }
 
         [Required]
-        public string _FurnitureName { get; set; }
+        public string _SaveName { get; set; }
     }
 }

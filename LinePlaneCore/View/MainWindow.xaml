@@ -72,8 +72,8 @@
         <Border BorderBrush="#FFA6A39D" BorderThickness="0" CornerRadius="0" Grid.Row="0" Grid.ColumnSpan="4">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF868097" Offset="0"/>
-                    <GradientStop Color="#FF44414B" Offset="1"/>
+                    <GradientStop Color="#FFC1B8DC" Offset="0"/>
+                    <GradientStop Color="#995B5076" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -320,34 +320,48 @@
                 MinWidth="70"
                 UseLayoutRounding="False" Cursor="Hand" >
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding ShowCartListCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
         </Button>
 
+        <Grid VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Grid.Column="1" 
+              Grid.RowSpan="4"
+              Height="550">
         <ListBox
             SelectionMode="Extended"
-            Visibility="Hidden"
+            Visibility="{Binding CartList}"
             HorizontalContentAlignment="Stretch"
-            Background="#CC8772C1"
+            Background="#FFD2D2D3"
             BorderThickness="0"
-            MinHeight="700"
+            MinHeight="500"
             MinWidth="500"
             MaxWidth="400"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            ItemsSource="{Binding UserSaveView}"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-             SelectedItem="{Binding SelectedSave}"
+            ItemsSource="{Binding FurnitureList}"
+            ScrollViewer.HorizontalScrollBarVisibility="Visible"
             Grid.Column="1" 
             Grid.RowSpan="4">
 
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Template" Value="{StaticResource SaveListItems}" />
+                    <Setter Property="Template" Value="{StaticResource FurnitureListItems}" />
                 </Style>
             </ListBox.ItemContainerStyle>
-        </ListBox>
+            
 
+        </ListBox>
+        <Border Background="#FFB9B9C5" Height="25" VerticalAlignment="Bottom">
+                <Grid>
+                    <TextBox Text="Сумма покупок" Margin="10,0,0,0" Width="100" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="14"/>
+                    <TextBox Text="777" Margin="0,0,10,0" Width="90" FontFamily="Poiret One" HorizontalAlignment="Right" FontSize="14" TextAlignment="Right"/>
+                </Grid>
+        </Border>
+           
+        </Grid>
+ 
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="515" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">
             <Border BorderThickness="0,5" BorderBrush="Black" x:Name="ToolBAr_Border" Width="50" Height="505" CornerRadius="11" Visibility="Visible" Grid.Row="2" RenderTransformOrigin="0.48,0.038" Grid.RowSpan="2">
 

@@ -17,6 +17,7 @@ namespace LinePlaneCore
         public DbSet<Conservations> Conservations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Сoordinates> Сoordinates { get; set; }
 
 
 

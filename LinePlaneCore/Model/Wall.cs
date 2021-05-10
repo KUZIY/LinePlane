@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using LinePlaneCore.Model.Server;
 
 namespace LinePlaneCore
 {
@@ -24,5 +25,9 @@ namespace LinePlaneCore
         public int _X2 { get; set; }
         [Required]
         public int _Y2 { get; set; }
+        [Required]
+        public int _IdConservation { get; set; }
+        [ForeignKey(nameof(_IdConservation))]
+        public Conservations _Conservation { get; set; }
     }
 }
