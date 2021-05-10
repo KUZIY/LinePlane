@@ -301,7 +301,10 @@ namespace LinePlaneCore.Control
 
         private ObservableCollection<FurnitureView> _FurnitureObserverList = new()
         {
-           new FurnitureView() { Amount = 1, NameFurniture = "777", FurnitureURI = "NETU", Price = 777 }
+
+            new FurnitureView() { Amount = 1, NameFurniture = "Аквариум", FurnitureURI = "www.ikea/ssilka_na_mebel/", Price = 777 },
+            new FurnitureView() { Amount = 2, NameFurniture = "Холодильник двухдверный", FurnitureURI = "NETU", Price = 777 }
+
         };
 
         internal ObservableCollection<FurnitureView> FurnitureObserverList
