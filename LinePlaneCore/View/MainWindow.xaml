@@ -350,7 +350,8 @@
                     <Setter Property="Template" Value="{StaticResource FurnitureListItems}" />
                 </Style>
             </ListBox.ItemContainerStyle>
-            
+
+        </ListBox>
 
         </ListBox>
         <Border Background="#FFB9B9C5" Height="25" VerticalAlignment="Bottom">
