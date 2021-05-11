@@ -113,8 +113,8 @@ namespace LinePlaneCore.Control
 
                 var HashPassword = PasswordHash.GetHashCode(password);
 
-                /*            if (UserManager.SearchUser(login, HashPassword))
-                            {*/
+                if (UserManager.SearchUser(login, HashPassword))
+                {
 
                     UserData.Username = login;
                     var MainWindow = new MainWindow();
@@ -129,15 +129,15 @@ namespace LinePlaneCore.Control
                             window.Close();
                         }
                     }
-               /* }
-                else
-                {
-                    MessageBox.Show("Такого пользователя не существует");
-                }
-*/
-
             }
+                else
+            {
+                MessageBox.Show("Такого пользователя не существует");
+            }
+
+
         }
+    }
 
         private bool CanEnterCommandExecuted(object p) => true;
 

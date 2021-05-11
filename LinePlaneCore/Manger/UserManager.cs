@@ -29,7 +29,7 @@ namespace LinePlaneCore.Manger
                     DBContext.Users.Add(NewPeople);
                     DBContext.SaveChanges();
 
-                    //SetUserID(null);
+                    SetUserID(DBContext.Users.Find(NewPeople)._Id);
 
                     return true;
                 }
@@ -45,13 +45,13 @@ namespace LinePlaneCore.Manger
                 {
                     if (x._Login == login && x._Password == password)
                     {
-                        //SetUserID(null);
+                        SetUserID(x._Id);
                         return true;
                     }
 
                 }
-
-                 return false;
+                SetUserID(null);
+                return false;
             }
         }
 

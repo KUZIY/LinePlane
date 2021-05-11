@@ -1,11 +1,14 @@
 ﻿using LinePlaneCore.Model;
+using LinePlaneCore.Model.Server;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace LinePlaneCore.Manger
 {
@@ -34,17 +37,40 @@ namespace LinePlaneCore.Manger
         {
             using (var DBContext=new LinePlaneContext())
             {
-                int? SaveID = null;
 
-                foreach( var x in DBContext.Conservations.Where(obj=>obj._SaveName==SaveName))
+
+                /*foreach( var x in DBContext.Conservations.Where(obj=>obj._SaveName==SaveName))
                 {
                     SaveID = x._Id;
                 }
 
-                if (SaveID == null) return false;
-                else
+                if (SaveID == null) return false;*/
+
+                Conservations AddSave = new Conservations() { _IdUser = UserData.UserID, _SaveName = SaveName };
+
+                DBContext.Conservations.Add(AddSave);
+
+                int ConservationID = DBContext.Conservations.Find(AddSave)._Id;
+
+                foreach (FrameworkElement shape in canvas.Children)
                 {
-                    //foreach
+                    int FurnitureID = (int)shape.Tag;
+
+                    if (FurnitureID == 0)
+                    {
+                        Wall AddWall = new() { _IdConservation = ConservationID, _X1 = ((Line)shape).X1, _Y1 = ((Line)shape).Y1, _X2 = ((Line)shape).X2, _Y2 = ((Line)shape).Y2 };
+                        DBContext.Walls.Add(AddWall);
+                    }
+                    else
+                    {
+                        Сoordinates coordinates = new() { _X = Canvas.GetLeft(shape), _Y = Canvas.GetLeft(shape) };
+                        DBContext.Сoordinates.Add(coordinates);
+                        DBContext.SaveChanges();
+
+                        Project AddSaveProject = new() { _IdConservation = ConservationID, _IdFurniture = FurnitureID, _IdСoordinates = DBContext.Сoordinates.Find(coordinates)._Id };
+                        DBContext.Projects.Add(AddSaveProject);
+                        DBContext.SaveChanges();
+                    }
                 }
 
             }
