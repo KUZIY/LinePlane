@@ -205,27 +205,114 @@ namespace LinePlaneCore.Manger
             }
         }
 
-     //  internal static void DeleteSave(string SaveName)
-     //  {
-     //      var deleteOrderDetails =
-     //          from details in db.OrderDetails
-     //          where details.OrderID == 11000
-     //          select details;
-     //
-     //      foreach (var detail in deleteOrderDetails)
-     //      {
-     //          db.OrderDetails.DeleteOnSubmit(detail);
-     //      }
-     //
-     //      try
-     //      {
-     //          db.SubmitChanges();
-     //      }
-     //      catch (Exception e)
-     //      {
-     //          Console.WriteLine(e);
-     //          // Provide for exceptions.
-     //      }
-     //  }
+        internal static void DeleteSave(string SaveName)
+        {
+            LinePlaneContext m = new LinePlaneContext();
+            int IdConservation = 0;
+            foreach (var x in m.Conservations.Where(obj => obj._SaveName == SaveName))
+            {
+                IdConservation = x._Id;
+            }
+            LinePlaneContext db = new LinePlaneContext();
+
+            var deleteWalls =
+            from t in db.Walls
+            where t._IdConservation == IdConservation
+            select t;
+
+            foreach (var t in deleteWalls)
+            {
+                db.Walls.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+
+
+            // foreach (var x in m.Projects.Where(obj => obj._IdConservation == IdConservation))
+            // {
+            // IdConservation = x._Id;
+            //
+            // var deleteСoordinates =
+            // from t in db.Сoordinates
+            // where t._Id == x._IdСoordinates
+            // select t;
+            //
+            // foreach (var t in deleteСoordinates)
+            // {
+            // db.Сoordinates.Remove(t);
+            //
+            // }
+            //
+            // try
+            // {
+            // db.SaveChanges();
+            // }
+            // catch
+            // {
+            // }
+            //
+            // }
+            //
+
+            var deleteProject =
+            from t in db.Projects
+            where t._IdConservation == IdConservation
+            select t;
+
+            foreach (var t in deleteProject)
+            {
+                var deleteСoordinates =
+                from q in db.Сoordinates
+                where q._Id == t._IdСoordinates
+                select q;
+
+                foreach (var q in deleteСoordinates)
+                {
+                    db.Сoordinates.Remove(q);
+
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                }
+                db.Projects.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+
+            var deleteConservation =
+            from t in db.Conservations
+            where t._Id == IdConservation
+            select t;
+
+            foreach (var t in deleteConservation)
+            {
+                db.Conservations.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+        }
     }
 }
