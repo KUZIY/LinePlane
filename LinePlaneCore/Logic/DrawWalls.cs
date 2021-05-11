@@ -49,9 +49,12 @@ namespace LinePlaneCore.Logic
             wall.X1 = FirstPoint.X;
             wall.Y1 = FirstPoint.Y;
             wall.X2 = SecondPoint.X;
-            wall.Y2 = SecondPoint.X;
+            wall.Y2 = SecondPoint.Y;
 
-            canvas.Tag = 0;
+            wall.Stroke = new SolidColorBrush(Colors.Black);
+            wall.StrokeThickness = 10;
+            wall.Tag = 0;
+
             canvas.Children.Add(wall);
         }
 

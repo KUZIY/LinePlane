@@ -73,7 +73,7 @@ namespace LinePlaneCore.Manger
                     }
                     else
                     {
-                        Сoordinates coordinates = new() { _X = Canvas.GetLeft(shape), _Y = Canvas.GetLeft(shape) };
+                        Сoordinates coordinates = new() { _X = Canvas.GetLeft(shape), _Y = Canvas.GetTop(shape) };
                         DBContext.Сoordinates.Add(coordinates);
                         DBContext.SaveChanges();
 
@@ -90,6 +90,7 @@ namespace LinePlaneCore.Manger
 
         internal static void LoadSave(ref Canvas canvas, string SaveName)
         {
+            canvas.Children.Clear();
             using (var DBContext = new LinePlaneContext())
             {
                 int SaveID = 0;
@@ -104,9 +105,7 @@ namespace LinePlaneCore.Manger
                     Point FirstPoint = new() { X = x._X1, Y = x._Y1 };
                     Point SecondPoint = new() { X = x._X2, Y = x._Y2 };
 
-                    Line obj = new();
-                    object a = new DrawWalls(ref obj, FirstPoint, SecondPoint);
-                    canvas.Children.Add(obj);
+                    object a = new DrawWalls(ref canvas, FirstPoint, SecondPoint);
                 }
 
                 foreach (var x in DBContext.Projects.Where(obj => obj._IdConservation == SaveID))

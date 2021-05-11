@@ -109,7 +109,6 @@
 
     <Resource Include="Resources\trash.png" />
     <Resource Include="Resources\upload (1).png" />
-    <Resource Include="View\upload (1).png" />
 
     <SplashScreen Include="Resources\logo.png" />
     <Resource Include="Resources\plumbing.png" />
