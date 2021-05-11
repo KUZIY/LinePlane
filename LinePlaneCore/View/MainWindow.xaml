@@ -303,7 +303,7 @@
 
             <Image Source="/Resources/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding LoadSaveSlotCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
         </Button>
 
@@ -327,14 +327,14 @@
               HorizontalAlignment="Center"
               Grid.Column="1" 
               Grid.RowSpan="4"
-              Height="550">
+              Height="585">
         <ListBox
             SelectionMode="Extended"
             Visibility="{Binding CartList}"
             HorizontalContentAlignment="Stretch"
             Background="#FFEEEEF0"
             BorderThickness="0"
-            MinHeight="520"
+            MinHeight="530"
             MinWidth="500"
             MaxWidth="400"
             HorizontalAlignment="Center"
@@ -358,7 +358,16 @@
                     <TextBox Text="{Binding SummPrice}" Margin="0,0,10,0" Width="90" FontFamily="Poiret One" HorizontalAlignment="Right" FontSize="20" TextAlignment="Right" BorderThickness="0,0,0,0"/>
                 </Grid>
         </Border>
-           
+
+            <Border Background="#7FB9B9C5" Height="25" VerticalAlignment="Top" Visibility="{Binding CartList}" Width="480" CornerRadius="5">
+                <Grid>
+                    <TextBox Text="Кол-во" Margin="10,0,0,0" Width="150" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="17" BorderThickness="0,0,0,0" IsHitTestVisible="False" Cursor="IBeam" VerticalAlignment="Top"/>
+                    <TextBox Text="Наименование" Margin="80,0,0,0" Width="120" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="17" BorderThickness="0,0,0,0" IsHitTestVisible="False" Cursor="IBeam" VerticalAlignment="Top"/>
+                    <TextBox Text="Ссылка" Margin="240,0,0,0" Width="60" FontFamily="Poiret One" HorizontalAlignment="Left" FontSize="17" BorderThickness="0,0,0,0" IsHitTestVisible="False" Cursor="IBeam" VerticalAlignment="Top"/>
+                    <TextBox Text="Цена" Margin="0,0,5,0" Width="50" FontFamily="Poiret One" HorizontalAlignment="Right" FontSize="17" BorderThickness="0,0,0,0" IsHitTestVisible="False" Cursor="IBeam" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
         </Grid>
  
         <Grid  Grid.Column="0" Grid.Row="2" Width="50" Height="515" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="Tool_grid" Margin="5,0,0,50" Grid.RowSpan="2" Background="#19404045">

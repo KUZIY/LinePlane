@@ -14,8 +14,8 @@
                 <Grid>
 
                     <TextBox Text="{Binding Amount}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontFamily="Poiret One" FontSize="20"/>
-                    <TextBox Text="{Binding NameFurniture}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" FontFamily="Poiret One" FontSize="20"/>
-                    <TextBox Text="{Binding FurnitureURI}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="220,0,0,0" FontFamily="Poiret One" FontSize="20"/>
+                    <TextBox Text="{Binding NameFurniture}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0" FontFamily="Poiret One" FontSize="20"/>
+                    <TextBox Text="{Binding FurnitureURI}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="240,0,0,0" FontFamily="Poiret One" FontSize="20"/>
                     <TextBox Text="{Binding Price}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" FontFamily="Poiret One" FontSize="20"/>
                 </Grid>
             </Border>

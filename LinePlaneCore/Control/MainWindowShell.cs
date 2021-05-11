@@ -51,7 +51,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Savebar visibility
-        private Visibility _SaveBar = Visibility.Hidden;
+        private Visibility _SaveBar = Visibility.Visible;
 
         public Visibility SaveBar
         {
@@ -245,14 +245,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region border Save
-        #region Видимость
-        private Visibility _SaveBorder = Visibility.Hidden;
-        public Visibility SaveBorder
-        {
-            get => _SaveBorder;
-            set => Set(ref _SaveBorder, value);
-        }
-        #endregion
+
         #region Данные списка с сохранениями
         private ICollectionView _UserSaveView;
         public ICollectionView UserSaveView
@@ -576,18 +569,6 @@ namespace LinePlaneCore.Control
         private bool CanEventButtonCommandExecuted(object p) => true;
         #endregion
 
-        #region команда кнопки Save
-        public ICommand SaveButtonCommand { get; }
-
-        private void OnSaveButtonCommandExecuted(object p)
-        {
-            if (SaveBorder == Visibility.Hidden) SaveBorder = Visibility.Visible;
-            else SaveBorder = Visibility.Hidden;
-        }
-
-        private bool CanSaveButtonCommandExecuted(object p) => true;
-        #endregion
-
         #region показать список предметов на канвасе
         public ICommand ShowCartListCommand { get; }
 
@@ -653,6 +634,7 @@ namespace LinePlaneCore.Control
             {
                 SaveList = _SaveList;
                 OnCloseAddSaveNameBarCommandExecuted(null);
+                UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
             }
             else
             {
@@ -661,7 +643,18 @@ namespace LinePlaneCore.Control
         }
 
         private bool CanAddSaveCommandExecuted(object p) => true;
-        #endregion 
+        #endregion
+
+        #region Нагрузить слот сохранения
+        public ICommand LoadSaveSlotCommand { get; }
+
+        private void OnLoadSaveSlotCommandExecuted(object p)
+        {
+            if (SelectedSave!=null) SaveManager.SetSave(MainCanvas, SelectedSave.SaveName);
+        }
+
+        private bool CanLoadSaveSlotCommandExecuted(object p) => true;
+        #endregion
 
         #endregion
 
@@ -687,7 +680,6 @@ namespace LinePlaneCore.Control
             CanvasTransportCommand = new ActionCommand(OnCanvasTransportCommandExecuted, CanCanvasTransportCommandExecuted);
             DeleteLastCanvasObjCmommand = new ActionCommand(OnDeleteLastCanvasObjExecuted, CanDeleteLastCanvasObjExecuted);
             BackDeleteCanvasObjCmommand = new ActionCommand(OnBackDeleteCanvasObjExecuted, CanBackDeleteCanvasObjExecuted);
-            SaveButtonCommand = new ActionCommand(OnSaveButtonCommandExecuted, CanSaveButtonCommandExecuted);
             #endregion
 
             #region команда для кнопки User
@@ -718,9 +710,12 @@ namespace LinePlaneCore.Control
             BindingOperations.EnableCollectionSynchronization(FurnitureObserverList, new object());
             #endregion
 
+            UserSaveView = CollectionViewSource.GetDefaultView(SaveManager.GetSaveList());
+
             ShowAddNameSaveBarCommand = new ActionCommand(OnShowAddNameSaveBarCommandExecuted, CanShowAddNameSaveBarCommandExecuted);
             CloseAddSaveNameBarCommand = new ActionCommand(OnCloseAddSaveNameBarCommandExecuted, CanCloseAddSaveNameBarCommandExecuted);
             AddSaveCommand = new ActionCommand(OnAddSaveCommandExecuted, CanAddSaveCommandExecuted);
+            LoadSaveSlotCommand = new ActionCommand(OnLoadSaveSlotCommandExecuted, CanLoadSaveSlotCommandExecuted);
         }
 
     }

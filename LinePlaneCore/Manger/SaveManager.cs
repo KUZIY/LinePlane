@@ -21,11 +21,11 @@ namespace LinePlaneCore.Manger
             using (var DBContext = new LinePlaneContext())
             {
 
-                /*foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
+                foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
                 {
-                    SaveView DbSave = new SaveView() { SaveName = x._FurnitureName };
+                    SaveView DbSave = new SaveView() { SaveName = x._SaveName };
                     Colection.Add(DbSave);
-                }*/
+                }
 
 
 
@@ -33,7 +33,7 @@ namespace LinePlaneCore.Manger
             return Colection;
         }
 
-        internal static bool SetSave (Canvas canvas, string SaveName)
+        internal static void SetSave (Canvas canvas, string SaveName)
         {
             using (var DBContext=new LinePlaneContext())
             {
@@ -46,11 +46,17 @@ namespace LinePlaneCore.Manger
 
                 if (SaveID == null) return false;*/
 
-                Conservations AddSave = new Conservations() { _IdUser = UserData.UserID, _SaveName = SaveName };
+                Conservations AddSave = new Conservations() { _Picture="asd" ,_IdUser = UserData.UserID, _SaveName = SaveName };
 
                 DBContext.Conservations.Add(AddSave);
+                DBContext.SaveChanges();
 
-                int ConservationID = DBContext.Conservations.Find(AddSave)._Id;
+                int ConservationID = 0;
+
+                foreach (var g in DBContext.Conservations.Where(obj => obj._SaveName == SaveName))
+                {
+                    ConservationID = g._Id;
+                }
 
                 foreach (FrameworkElement shape in canvas.Children)
                 {
@@ -60,6 +66,7 @@ namespace LinePlaneCore.Manger
                     {
                         Wall AddWall = new() { _IdConservation = ConservationID, _X1 = ((Line)shape).X1, _Y1 = ((Line)shape).Y1, _X2 = ((Line)shape).X2, _Y2 = ((Line)shape).Y2 };
                         DBContext.Walls.Add(AddWall);
+                        DBContext.SaveChanges();
                     }
                     else
                     {
@@ -67,14 +74,15 @@ namespace LinePlaneCore.Manger
                         DBContext.Сoordinates.Add(coordinates);
                         DBContext.SaveChanges();
 
-                        Project AddSaveProject = new() { _IdConservation = ConservationID, _IdFurniture = FurnitureID, _IdСoordinates = DBContext.Сoordinates.Find(coordinates)._Id };
+                        int _IdСoordinates = DBContext.Сoordinates.OrderBy(Coord=>Coord._Id).Last()._Id;
+
+                        Project AddSaveProject = new() { _IdConservation = ConservationID, _IdFurniture = FurnitureID, _IdСoordinates = _IdСoordinates};
                         DBContext.Projects.Add(AddSaveProject);
-                        DBContext.SaveChanges();
+                        
                     }
                 }
 
             }
-            return true;
         }
 
         internal static void LoadSave(ref Canvas canvas, string SaveName)
