@@ -214,27 +214,27 @@ namespace LinePlaneCore.Manger
             {
                 IdConservation = x._Id;
             }
-            LinePlaneContext db = new LinePlaneContext();
-
-            var deleteWalls =
-            from t in db.Walls
-            where t._IdConservation == IdConservation
-            select t;
-
-            foreach (var t in deleteWalls)
+            using (LinePlaneContext db = new LinePlaneContext())
             {
-                db.Walls.Remove(t);
-            }
+                var deleteWalls =
+                from t in db.Walls
+                where t._IdConservation == IdConservation
+                select t;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch
-            {
-            }
+                foreach (var t in deleteWalls)
+                {
+                    db.Walls.Remove(t);
+                }
 
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                }
 
+            }
             // foreach (var x in m.Projects.Where(obj => obj._IdConservation == IdConservation))
             // {
             // IdConservation = x._Id;
@@ -260,23 +260,37 @@ namespace LinePlaneCore.Manger
             //
             // }
             //
-
-            var deleteProject =
+            using (LinePlaneContext db = new LinePlaneContext())
+            {
+                var deleteProject =
             from t in db.Projects
             where t._IdConservation == IdConservation
             select t;
 
-            foreach (var t in deleteProject)
-            {
-                var deleteСoordinates =
-                from q in db.Сoordinates
-                where q._Id == t._IdСoordinates
-                select q;
-
-                foreach (var q in deleteСoordinates)
+                foreach (var t in deleteProject)
                 {
-                    db.Сoordinates.Remove(q);
+                    using (LinePlaneContext db1 = new LinePlaneContext())
+                    {
+                        var deleteСoordinates =
+                    from q in db1.Сoordinates
+                    where q._Id == t._IdСoordinates
+                    select q;
 
+                        foreach (var q in deleteСoordinates)
+                        {
+                            db1.Сoordinates.Remove(q);
+
+                        }
+
+                        try
+                        {
+                            db1.SaveChanges();
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    db.Projects.Remove(t);
                 }
 
                 try
@@ -286,33 +300,27 @@ namespace LinePlaneCore.Manger
                 catch
                 {
                 }
-                db.Projects.Remove(t);
             }
 
-            try
+            using (LinePlaneContext db = new LinePlaneContext())
             {
-                db.SaveChanges();
-            }
-            catch
-            {
-            }
-
-            var deleteConservation =
+                var deleteConservation =
             from t in db.Conservations
             where t._Id == IdConservation
             select t;
 
-            foreach (var t in deleteConservation)
-            {
-                db.Conservations.Remove(t);
-            }
+                foreach (var t in deleteConservation)
+                {
+                    db.Conservations.Remove(t);
+                }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch
-            {
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                }
             }
         }
     }
