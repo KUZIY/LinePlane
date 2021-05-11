@@ -683,6 +683,7 @@ namespace LinePlaneCore.Control
             if (SelectedSave != null)
             {
                 //удаление из базы данных
+                SaveManager.DeleteSave(SelectedSave.SaveName);
 
                 SaveList.Remove(SelectedSave);
                 UserSaveView = CollectionViewSource.GetDefaultView(SaveList);

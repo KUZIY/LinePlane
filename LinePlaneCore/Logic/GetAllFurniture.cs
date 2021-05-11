@@ -23,7 +23,7 @@ namespace LinePlaneCore.Logic
                             bool AllreadyHave = false;
                             int index = 0;
 
-                            FurnitureView NewObj = new() { Amount=1 ,NameFurniture = o._FurnitureName, FurnitureURI = o._Link, Price = o._Price };
+                            FurnitureView NewObj = new() { Amount=1 ,NameFurniture = o._FurnitureUSERName, FurnitureURI = o._Link, Price = o._Price };
                             foreach( var obj in CanvasFurniture.Where(obj=> obj.NameFurniture == o._FurnitureName))
                             {
                                 AllreadyHave = true;

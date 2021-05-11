@@ -10,7 +10,7 @@
       Height="740.864"
       Width="1020.166" WindowStyle="ThreeDBorderWindow"
       ResizeMode="NoResize"
-      Icon="/Resources/Icon.png"
+      Icon="/Resources/AppSorce/Icon.png"
       Title="LinePlane" FontFamily="Poiret One"
         WindowStartupLocation="CenterScreen"
         >
@@ -27,7 +27,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Image Source="/Resources/phon.png" HorizontalAlignment="Center" Height="384" Margin="0,27,0,0" RenderOptions.BitmapScalingMode="Fant" VerticalAlignment="Top" Width="558" OpacityMask="#FFDED3D3" Effect="{StaticResource MaterialDesignShadowDepth4}"/>
+        <Image Source="/Resources/AppSorce/phon.png" HorizontalAlignment="Center" Height="384" Margin="0,27,0,0" RenderOptions.BitmapScalingMode="Fant" VerticalAlignment="Top" Width="558" OpacityMask="#FFDED3D3" Effect="{StaticResource MaterialDesignShadowDepth4}"/>
 
 
         <TextBox  Visibility="Visible" TextWrapping="Wrap" Text="LinePlane" Width="266" FontSize="70" Margin="0,99,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Poiret One"/>

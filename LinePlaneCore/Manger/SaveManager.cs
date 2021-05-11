@@ -135,7 +135,7 @@ namespace LinePlaneCore.Manger
                                     TypeShape = j.FurnitureTipe;
                                 }
 
-                                LocalURIImage = h._Link;
+                                LocalURIImage = h._Picture;
 
                                 foreach (var j in SubContext.Measurments.Where(obj => obj._IdFurniture == h._Id))
                                 {
@@ -147,6 +147,7 @@ namespace LinePlaneCore.Manger
 
                         var Shape = new FrameworkElement();
                         BitmapImage Image = null;
+
                         var dir = AppDomain.CurrentDomain.BaseDirectory;
                         dir = dir.Remove(dir.IndexOf("\\bin\\Debug\\net5.0-windows")) + LocalURIImage;
 
@@ -207,8 +208,8 @@ namespace LinePlaneCore.Manger
 
         internal static void DeleteSave(string SaveName)
         {
-            LinePlaneContext m = new LinePlaneContext();
-            int IdConservation = 0;
+            using (LinePlaneContext m = new LinePlaneContext()) { 
+{                int IdConservation = 0;
             foreach (var x in m.Conservations.Where(obj => obj._SaveName == SaveName))
             {
                 IdConservation = x._Id;

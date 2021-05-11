@@ -10,7 +10,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="FloorPlan" WindowStartupLocation="CenterScreen" 
 
-        Icon="/Resources/Icon.png"
+        Icon="/Resources/AppSorce/Icon.png"
 
          WindowState="Maximized"  
         MinHeight="576"
@@ -91,7 +91,7 @@
                 <MouseBinding Command="{Binding DeleteLastCanvasObjCmommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
-            <Image  Source="/Resources/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
+            <Image  Source="/Resources/AppSorce/next.png"  RenderOptions.BitmapScalingMode="Fant" Height="29" RenderTransformOrigin="0.5,0.5" Width="27">
 
 
                 <Image.RenderTransform>
@@ -113,12 +113,12 @@
                 <MouseBinding Command="{Binding BackDeleteCanvasObjCmommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
-            <Image Source="/Resources/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+            <Image Source="/Resources/AppSorce/next.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
 
         </Button>
 
         <Button Background="{x:Null}" HorizontalAlignment="Left" Height="35" Width="60" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,10,0,15" Grid.Column="0" VerticalAlignment="Center" Cursor="Hand" >
-            <Image Source="/Resources/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
+            <Image Source="/Resources/AppSorce/Save.png" RenderOptions.BitmapScalingMode="Fant" Height="29" Width="27" />
             <Button.InputBindings>
                 <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
@@ -129,7 +129,7 @@
         <Ellipse Stroke="#673AB7" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="Fant"  Grid.Column="3" Grid.Row="0" MaxHeight="60" MaxWidth="60" MinHeight="40" MinWidth="40" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Center">
             <Ellipse.Fill>
 
-                <ImageBrush Stretch="Uniform"  ImageSource="/Resources/USER2-removebg-preview.png" />
+                <ImageBrush Stretch="Uniform"  ImageSource="/Resources/AppSorce/USER2-removebg-preview.png" />
 
             </Ellipse.Fill>
             <Ellipse.InputBindings>
@@ -213,10 +213,10 @@
                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                            Text="{Binding NewSaveName, UpdateSourceTrigger=PropertyChanged}" Cursor="IBeam" />
 
-                <Image Source="/Resources/close.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                <Image Source="/Resources/AppSorce/close.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,10,0"/>
                 <Button  Style="{StaticResource MaterialDesignFlatButton}" Background="#66B88FDA" Height="30" Width="30" Margin="0,0,5,0" HorizontalAlignment="Right" Command="{Binding CloseAddSaveNameBarCommand}" Cursor="Hand"/>
-                
-                <Image Source="/Resources/check.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,45,0"/>
+
+                <Image Source="/Resources/AppSorce/check.png" Width="20" Height="20"  RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Right" Margin="0,0,45,0"/>
                 <Button  Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding AddSaveCommand}" Background="#66B88FDA" Height="30" Width="30" Margin="0,0,40,0" HorizontalAlignment="Right" Cursor="Hand"/>
             </Grid>
 
@@ -238,7 +238,7 @@
                 <MouseBinding Command="{Binding DeleteSaveSlotCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
-            <Image Source="/Resources/trash.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            <Image Source="/Resources/AppSorce/trash.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
             </Image>
 
         </Button>
@@ -260,7 +260,7 @@
                 <MouseBinding Command="{Binding ShowAddNameSaveBarCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
-            <Image Source="/Resources/add.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            <Image Source="/Resources/AppSorce/add.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
             </Image>
 
         </Button>
@@ -282,7 +282,7 @@
                 <MouseBinding Command="{Binding DownloadSaveCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
-            <Image Source="/Resources/download.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
+            <Image Source="/Resources/AppSorce/download.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
             </Image>
 
         </Button>
@@ -301,7 +301,7 @@
                 Margin="0,5,230,0"
                 UseLayoutRounding="False" Cursor="Hand" >
 
-            <Image Source="/Resources/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
+            <Image Source="/Resources/AppSorce/upload (1).png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
             <Button.InputBindings>
                 <MouseBinding Command="{Binding LoadSaveSlotCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
@@ -317,7 +317,7 @@
                 MinHeight="70"
                 MinWidth="70"
                 UseLayoutRounding="False" Cursor="Hand" >
-            <Image Source="/Resources/mine-cart.png" Width="38" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
+            <Image Source="/Resources/AppSorce/mine-cart.png" Width="38" Height="50"  RenderOptions.BitmapScalingMode="Fant"/>
             <Button.InputBindings>
                 <MouseBinding Command="{Binding ShowCartListCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
@@ -381,21 +381,21 @@
 
                     <!--#region button of panel-->
                     <Button  Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,0,0" Cursor="Hand" >
-                        <Image Source="/Resources/cursor.png"  Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/AppSorce/cursor.png"  Height="19" Width="19" RenderOptions.BitmapScalingMode="Fant"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Arrow" MouseAction="LeftClick"/>
                         </Button.InputBindings>
                     </Button>
 
                     <Button Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,50,0,0">
-                        <Image Source="/Resources/hand.png" Height="22" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/AppSorce/hand.png" Height="22" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Hand" MouseAction="LeftClick"/>
                         </Button.InputBindings>
                     </Button>
 
                     <Button Width="50" Height="50"  VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,100,0,0">
-                        <Image Source="/Resources/edit.png" Height="22" Width="18" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image Source="/Resources/AppSorce/edit.png" Height="22" Width="18" RenderOptions.BitmapScalingMode="Fant"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Edit" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -404,7 +404,7 @@
 
                     <!--#region button mainroom-->
                     <Button x:Name="Mainroom" Background="{Binding MainroomBrush}" Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,150,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/livingroom.png" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image  Source="/Resources/AppSorce/livingroom.png" RenderOptions.BitmapScalingMode="Fant"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Mainroom" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -507,7 +507,7 @@
                     <!--#region button bedroom-->
                     <Button x:Name="Bedroom" Background="{Binding BedroomBrush}" Width="50" Height="50" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,200,0,0">
 
-                        <Image  Source="/Resources/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
+                        <Image  Source="/Resources/AppSorce/bed.png" RenderOptions.BitmapScalingMode="Fant" Height="25"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Bedroom" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -570,7 +570,7 @@
                     <!--#region button kitchen-->
 
                     <Button x:Name="Kitchen" Background="{Binding KitchenBrush}" Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,250,0,0" Cursor="Hand">
-                        <Image Source="/Resources/kitchen.png"  RenderOptions.BitmapScalingMode="Fant" Height="20" Width="19"/>
+                        <Image Source="/Resources/AppSorce/kitchen.png"  RenderOptions.BitmapScalingMode="Fant" Height="20" Width="19"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Kitchen" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -655,7 +655,7 @@
                     <!--#region button bytovaya teh-->
 
                     <Button x:Name="Appl" Background="{Binding ApplBrush}" Width="50" Height="50" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,300,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/electrical.png" RenderOptions.BitmapScalingMode="Fant" Height="25" Width="20"/>
+                        <Image  Source="/Resources/AppSorce/electrical.png" RenderOptions.BitmapScalingMode="Fant" Height="25" Width="20"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Appl" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -732,7 +732,7 @@
                     <!--#region button garderobe-->
                     <Button x:Name="Garderobe" Background="{Binding GarderobeBrush}" Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,350,0,0" Cursor="Hand">
 
-                        <Image  Source="/Resources/closet.png" RenderOptions.BitmapScalingMode="Fant" Height="27" Width="23" HorizontalAlignment="Center"/>
+                        <Image  Source="/Resources/AppSorce/closet.png" RenderOptions.BitmapScalingMode="Fant" Height="27" Width="23" HorizontalAlignment="Center"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Garderobe" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -806,7 +806,7 @@
                     <!--#region button bathroom-->
 
                     <Button x:Name="Bath"  Background="{Binding BathBrush}"  Width="50" Height="50" VerticalAlignment="Top"  Style="{StaticResource MaterialDesignFlatButton}" Margin="0,400,0,0" Cursor="Hand">
-                        <Image  Source="/Resources/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
+                        <Image  Source="/Resources/AppSorce/plumbing.png" RenderOptions.BitmapScalingMode="Fant"/>
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Bath" MouseAction="LeftClick"/>
                         </Button.InputBindings>
@@ -882,7 +882,7 @@
                     <!--#region button interior-->
                     <Button x:Name="Interior" Background="{Binding InteriorBrush}" Width="50" Height="50" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}"  Margin="0,450,0,0" BorderBrush="#FFB8AFC9" Cursor="Hand">
 
-                        <Image  Source="/Resources/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
+                        <Image  Source="/Resources/AppSorce/cactus.png" RenderOptions.BitmapScalingMode="Fant" Width="20"/>
 
                         <Button.InputBindings>
                             <MouseBinding Command="{Binding EventButtonCommand}" CommandParameter="Interior" MouseAction="LeftClick"/>
@@ -971,9 +971,9 @@
 
         <Border x:Name="understrip" Background="#FFA6A39D" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"  CornerRadius="7" Visibility="Hidden">
             <Grid>
-                <Image Source="/Resources/delete.png" Width="18"  HorizontalAlignment="Left" Margin="11.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
+                <Image Source="/Resources/AppSorce/delete.png" Width="18"  HorizontalAlignment="Left" Margin="11.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.07,0.558" />
                 <Button  HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#4C7A7777" BorderThickness="0" Cursor="Hand"/>
-                <Image Source="/Resources/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="41,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
+                <Image Source="/Resources/AppSorce/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="41,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -984,7 +984,7 @@
                     </Image.RenderTransform>
                 </Image>
                 <Button  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Width="23" Height="23" Background="#477A7777" BorderThickness="0" Cursor="Hand"/>
-                <Image Source="/Resources/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="71.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
+                <Image Source="/Resources/AppSorce/undo-arrow.png" Width="20"  HorizontalAlignment="Left" Margin="71.5,0,0,0"  RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1"/>
