@@ -193,7 +193,7 @@
             HorizontalAlignment="Right"
             ItemsSource="{Binding UserSaveView}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-             SelectedItem="{Binding SelectedSave}"
+            SelectedItem="{Binding SelectedSave}"
             Grid.ColumnSpan="4" 
             Grid.Row="2">
 
@@ -235,7 +235,7 @@
                 Margin="0,5,5,0"
                 UseLayoutRounding="False" Cursor="Hand" >
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding DeleteSaveSlotCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
             <Image Source="/Resources/trash.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">

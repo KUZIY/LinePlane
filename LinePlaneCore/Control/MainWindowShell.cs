@@ -51,7 +51,7 @@ namespace LinePlaneCore.Control
         #endregion
 
         #region Savebar visibility
-        private Visibility _SaveBar = Visibility.Visible;
+        private Visibility _SaveBar = Visibility.Hidden;
 
         public Visibility SaveBar
         {
@@ -617,6 +617,7 @@ namespace LinePlaneCore.Control
 
         private void OnCloseAddSaveNameBarCommandExecuted(object p)
         {
+            NewSaveName = string.Empty;
             AddSaveNameBarVisibility = Visibility.Hidden;
         }
 
@@ -635,6 +636,7 @@ namespace LinePlaneCore.Control
                 SaveList = _SaveList;
                 OnCloseAddSaveNameBarCommandExecuted(null);
                 UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
+                NewSaveName = string.Empty;
             }
             else
             {
@@ -643,6 +645,9 @@ namespace LinePlaneCore.Control
         }
 
         private bool CanAddSaveCommandExecuted(object p) => true;
+        #endregion
+        #endregion
+
         #endregion
 
         #region Загрузить сохранения
@@ -669,16 +674,27 @@ namespace LinePlaneCore.Control
 
         private bool CanLoadSaveSlotCommandExecuted(object p) => true;
         #endregion
+
+        #region Удаление слота сохранений
+        public ICommand DeleteSaveSlotCommand { get; }
+
+        private void OnDeleteSaveSlotCommandExecuted(object p)
+        {
+            if (SelectedSave != null)
+            {
+                //удаление из базы данных
+
+                SaveList.Remove(SelectedSave);
+                UserSaveView = CollectionViewSource.GetDefaultView(SaveList);
+            }
+
+        }
+
+        private bool CanDeleteSaveSlotCommandExecuted(object p) => true;
         #endregion
 
-        #endregion
-
-
 
         #endregion
-
-
-
         #endregion
 
         public MainWindowShell()
@@ -717,14 +733,18 @@ namespace LinePlaneCore.Control
             BindingOperations.EnableCollectionSynchronization(FurnitureObserverList, new object());
             #endregion
 
+            #region данные для списка сохранения и списка добавленных предметов
             UserSaveView = CollectionViewSource.GetDefaultView(SaveManager.GetSaveList());
             SaveList = SaveManager.GetSaveList();
-
+            #endregion
+            #region команды для работы с сохранениями
             ShowAddNameSaveBarCommand = new ActionCommand(OnShowAddNameSaveBarCommandExecuted, CanShowAddNameSaveBarCommandExecuted);
             CloseAddSaveNameBarCommand = new ActionCommand(OnCloseAddSaveNameBarCommandExecuted, CanCloseAddSaveNameBarCommandExecuted);
             AddSaveCommand = new ActionCommand(OnAddSaveCommandExecuted, CanAddSaveCommandExecuted);
             LoadSaveSlotCommand = new ActionCommand(OnLoadSaveSlotCommandExecuted, CanLoadSaveSlotCommandExecuted);
             DownloadSaveCommand = new ActionCommand(OnDownloadSaveCommandExecuted, CanDownloadSaveCommandExecuted);
+            DeleteSaveSlotCommand = new ActionCommand(OnDeleteSaveSlotCommandExecuted, CanDeleteSaveSlotCommandExecuted);
+            #endregion
         }
 
     }
