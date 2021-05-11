@@ -41,13 +41,8 @@ namespace LinePlaneCore.Manger
             using (var DBContext = new LinePlaneContext())
             {
 
-
-                /*foreach( var x in DBContext.Conservations.Where(obj=>obj._SaveName==SaveName))
-                {
-                    SaveID = x._Id;
-                }
-
-                if (SaveID == null) return false;*/
+                DeleteSave(SaveName);
+                
 
                 Conservations AddSave = new Conservations() { _Picture = "asd", _IdUser = UserData.UserID, _SaveName = SaveName };
 

@@ -24,7 +24,7 @@ namespace LinePlaneCore.Logic
                             int index = 0;
 
                             FurnitureView NewObj = new() { Amount=1 ,NameFurniture = o._FurnitureUSERName, FurnitureURI = o._Link, Price = o._Price };
-                            foreach( var obj in CanvasFurniture.Where(obj=> obj.NameFurniture == o._FurnitureName))
+                            foreach( var obj in CanvasFurniture.Where(obj=> obj.NameFurniture == o._FurnitureUSERName))
                             {
                                 AllreadyHave = true;
                                 index = CanvasFurniture.IndexOf(obj);
