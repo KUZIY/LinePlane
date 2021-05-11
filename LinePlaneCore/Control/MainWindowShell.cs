@@ -645,28 +645,35 @@ namespace LinePlaneCore.Control
         private bool CanAddSaveCommandExecuted(object p) => true;
         #endregion
 
+        #region Загрузить сохранения
+        public ICommand DownloadSaveCommand { get; }
+
+        private void OnDownloadSaveCommandExecuted(object p)
+        {
+            Canvas canvas = MainCanvas;
+            if (SelectedSave != null) SaveManager.LoadSave(ref canvas, SelectedSave.SaveName);
+            MainCanvas = canvas;
+        }
+
+        private bool CanDownloadSaveCommandExecuted(object p) => true;
+
+        #endregion
+
         #region Нагрузить слот сохранения
         public ICommand LoadSaveSlotCommand { get; }
 
         private void OnLoadSaveSlotCommandExecuted(object p)
         {
-            if (SelectedSave!=null) SaveManager.SetSave(MainCanvas, SelectedSave.SaveName);
+            if (SelectedSave != null) SaveManager.SetSave(MainCanvas, SelectedSave.SaveName);
         }
 
         private bool CanLoadSaveSlotCommandExecuted(object p) => true;
         #endregion
-
         #endregion
 
         #endregion
 
 
-
-        #region команда добавления сохранения
-
-
-
-        #endregion
 
         #endregion
 
@@ -711,11 +718,13 @@ namespace LinePlaneCore.Control
             #endregion
 
             UserSaveView = CollectionViewSource.GetDefaultView(SaveManager.GetSaveList());
+            SaveList = SaveManager.GetSaveList();
 
             ShowAddNameSaveBarCommand = new ActionCommand(OnShowAddNameSaveBarCommandExecuted, CanShowAddNameSaveBarCommandExecuted);
             CloseAddSaveNameBarCommand = new ActionCommand(OnCloseAddSaveNameBarCommandExecuted, CanCloseAddSaveNameBarCommandExecuted);
             AddSaveCommand = new ActionCommand(OnAddSaveCommandExecuted, CanAddSaveCommandExecuted);
             LoadSaveSlotCommand = new ActionCommand(OnLoadSaveSlotCommandExecuted, CanLoadSaveSlotCommandExecuted);
+            DownloadSaveCommand = new ActionCommand(OnDownloadSaveCommandExecuted, CanDownloadSaveCommandExecuted);
         }
 
     }

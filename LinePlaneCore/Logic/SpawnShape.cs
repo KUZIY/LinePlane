@@ -75,7 +75,7 @@ namespace LinePlaneCore.Logic
 
             internal Draw_Square(double widith, double height, Point Margin, BitmapImage _shape_png = null, int ID=-1)
             {
-                Rectangle shape = new Rectangle();
+                _shape = new Rectangle();
 
                 set_events(shape);
 
@@ -152,8 +152,24 @@ namespace LinePlaneCore.Logic
 
             }
 
+            internal Draw_Ellipse(double widith, double height, Point Margin, BitmapImage _shape_png = null, int ID = -1)
+            {
+                _shape = new Ellipse();
 
-            #region исполнение ISelectable
+                set_events(shape);
+
+                shape.Height = height;
+                shape.Width = widith;
+                shape.Tag = ID;
+
+                if (_shape_png == null) shape.Fill = new SolidColorBrush(Colors.Black);
+                else shape.Fill = new ImageBrush(_shape_png);
+
+                Canvas.SetTop(shape, Margin.Y);
+                Canvas.SetLeft(shape, Margin.X);
+
+            }
+
             public void Choise_Shape(object sender, MouseButtonEventArgs e)
             {
                 MainWindowShell.TakeShape(_shape);
@@ -168,7 +184,7 @@ namespace LinePlaneCore.Logic
                 Binding myBinding = new Binding("MyDataProperty");
                 myBinding.Source = _shape;
             }
-            #endregion
+            
 
         }
 

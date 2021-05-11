@@ -29,7 +29,11 @@ namespace LinePlaneCore.Manger
                     DBContext.Users.Add(NewPeople);
                     DBContext.SaveChanges();
 
-                    SetUserID(DBContext.Users.Find(NewPeople)._Id);
+                    foreach (var x in DBContext.Users.Where(obj=> obj._Login == login && obj._Password==password))
+                    {
+                        UserData.UserID = x._Id;
+                    }
+                    
 
                     return true;
                 }

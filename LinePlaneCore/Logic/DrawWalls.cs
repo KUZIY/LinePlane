@@ -42,7 +42,7 @@ namespace LinePlaneCore.Logic
             _MainCanvas = value;
         }
 
-        internal  DrawWalls (Canvas canvas, Point FirstPoint, Point SecondPoint)
+        internal  DrawWalls (ref Canvas canvas, Point FirstPoint, Point SecondPoint)
         {
             Line wall = new ();
 
@@ -51,7 +51,7 @@ namespace LinePlaneCore.Logic
             wall.X2 = SecondPoint.X;
             wall.Y2 = SecondPoint.X;
 
-            wall.Tag = 0;
+            canvas.Tag = 0;
             canvas.Children.Add(wall);
         }
 

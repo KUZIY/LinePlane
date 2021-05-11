@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
+using LinePlaneCore.Logic;
+using System.Windows.Media.Imaging;
+
 
 namespace LinePlaneCore.Manger
 {
@@ -89,19 +92,99 @@ namespace LinePlaneCore.Manger
         {
             using (var DBContext = new LinePlaneContext())
             {
-                int? SaveID = null;
-
-                foreach (var x in DBContext.Conservations.Where(obj => obj._SaveName == SaveName))
+                int SaveID = 0;
+                
+                foreach (var x in DBContext.Conservations.Where(obj => obj._SaveName == SaveName && obj._IdUser==UserData.UserID))
                 {
                     SaveID = x._Id;
                 }
 
-                if (SaveID == null) return;
-                else
+                foreach (var x in DBContext.Walls.Where(obj => obj._IdConservation == SaveID))
                 {
-                    //foreach
+                    Point FirstPoint = new() { X = x._X1, Y = x._Y1 };
+                    Point SecondPoint = new() { X = x._X2, Y = x._Y2 };
+
+                    Line obj = new();
+                    object a = new DrawWalls(ref obj, FirstPoint, SecondPoint);
+                    canvas.Children.Add(obj);
                 }
 
+                foreach (var x in DBContext.Projects.Where(obj => obj._IdConservation == SaveID))
+                {
+
+                    int FurnitureID = x._IdFurniture;
+                    string TypeShape = string.Empty;
+                    string LocalURIImage = string.Empty;
+                    Point Size = new Point();
+                    Point Margin = new();
+
+                    using (var Context = new LinePlaneContext())
+                    {
+
+                        foreach (var Cord in Context.Сoordinates.Where(obj => obj._Id == x._IdСoordinates))
+                        {
+                            Margin.X = Cord._X;
+                            Margin.Y = Cord._Y;
+                        }
+
+                        foreach (var h in Context.Furnitures.Where(obj => obj._Id == x._IdFurniture))
+                        {
+                            using (var SubContext = new LinePlaneContext())
+                            {
+                                foreach (var j in SubContext.TipeFurnitures.Where(obj => obj._Id == h._IdTipeFurniture))
+                                {
+                                    TypeShape = j.FurnitureTipe;
+                                }
+
+                                LocalURIImage = h._Link;
+
+                                foreach (var j in SubContext.Measurments.Where(obj => obj._IdFurniture == h._Id))
+                                {
+                                    Size.X = j._Width;
+                                    Size.Y = j._Length;
+                                }
+                            }
+                        }
+
+                        var Shape = new FrameworkElement();
+                        BitmapImage Image = null;
+                        var dir = AppDomain.CurrentDomain.BaseDirectory;
+                        dir = dir.Remove(dir.IndexOf("\\bin\\Debug\\net5.0-windows")) + LocalURIImage;
+
+                        try
+                        {
+                            Image = new BitmapImage(new Uri(dir, UriKind.RelativeOrAbsolute));
+                        }
+                        catch
+                        {
+                            Image = null;
+                        }
+
+
+                        if (TypeShape == null)
+                        {
+                            var Square = new Logic.SpawnShape.Draw_Square(30, 30);
+                            Shape = Square.shape;
+                        }
+
+                        else
+                        {
+                            if (TypeShape.ToLower() == "square")
+                            {
+                                var Square = new Logic.SpawnShape.Draw_Square(Size.X, Size.Y, Margin, Image, FurnitureID);
+                                Shape = Square.shape;
+                            }
+                            else if (TypeShape.ToLower() == "ellipse")
+                            {
+                                var Ellipse = new Logic.SpawnShape.Draw_Ellipse(Size.X, Size.Y, Margin, Image, FurnitureID);
+                                Shape = Ellipse.shape;
+                            }
+                        }
+
+
+                        canvas.Children.Add(Shape);
+                    }
+                }
             }
         }  
 
@@ -112,10 +195,14 @@ namespace LinePlaneCore.Manger
                 foreach (var x in DBContext.Conservations.Where(obj=>obj._SaveName == SaveName))
                 {
                     return false;
+
                 }
+
                 SaveView NewSave = new SaveView() { SaveName = SaveName };
                 SaveList.Add(NewSave);
                 return true;
+
+                
             }
         }
 

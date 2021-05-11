@@ -279,7 +279,7 @@
                 Margin="0,5,155,0"
                 UseLayoutRounding="False" Cursor="Hand" >
             <Button.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding DownloadSaveCommand}" MouseAction="LeftClick"/>
             </Button.InputBindings>
 
             <Image Source="/Resources/download.png" Width="35" Height="50"  RenderOptions.BitmapScalingMode="Fant">
@@ -313,7 +313,7 @@
                 Grid.Column="2"
                 Background="#008772C1"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
                 MinHeight="70"
                 MinWidth="70"
                 UseLayoutRounding="False" Cursor="Hand" >
