@@ -18,13 +18,13 @@ namespace LinePlaneCore
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int _Id { get; set; }
         [Required]
-        public int _X1 { get; set; }
+        public double _X1 { get; set; }
         [Required]
-        public int _Y1 { get; set; }
+        public double _Y1 { get; set; }
         [Required]
-        public int _X2 { get; set; }
+        public double _X2 { get; set; }
         [Required]
-        public int _Y2 { get; set; }
+        public double _Y2 { get; set; }
         [Required]
         public int _IdConservation { get; set; }
         [ForeignKey(nameof(_IdConservation))]
