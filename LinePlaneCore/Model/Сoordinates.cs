@@ -19,6 +19,6 @@ namespace LinePlaneCore
         [Required]
         public double _Y { get; set; }
         [Required]
-        public double Angle { get; set; }
+        public double _Angle { get; set; }
     }
 }
