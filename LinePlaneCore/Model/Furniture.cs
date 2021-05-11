@@ -25,7 +25,9 @@ namespace LinePlaneCore
         
         [Required]
         public string _FurnitureName { get; set; }
-        
+        [Required]
+        public string _FurnitureUSERName { get; set; }
+
         [Required]
         public int _IdTipeFurniture { get; set; }
         [ForeignKey(nameof(_IdTipeFurniture))]
