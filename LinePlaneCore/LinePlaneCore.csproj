@@ -79,42 +79,42 @@
 
   <ItemGroup>
 
-    <Resource Include="Resources\add.png" />
+    <Resource Include="Resources\AppSorce\add.png" />
 
-    <Resource Include="Resources\bed.png" />
-    <Resource Include="Resources\cactus.png" />
-    <Resource Include="Resources\check.png" />
-    <Resource Include="Resources\close.png" />
-    <Resource Include="Resources\closet.png" />
-    <Resource Include="Resources\cursor.png" />
+    <Resource Include="Resources\AppSorce\bed.png" />
+    <Resource Include="Resources\AppSorce\cactus.png" />
+    <Resource Include="Resources\AppSorce\check.png" />
+    <Resource Include="Resources\AppSorce\close.png" />
+    <Resource Include="Resources\AppSorce\closet.png" />
+    <Resource Include="Resources\AppSorce\cursor.png" />
 
-    <Resource Include="Resources\delete.png">
+    <Resource Include="Resources\AppSorce\delete.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
 
-    <Resource Include="Resources\download.png" />
+    <Resource Include="Resources\AppSorce\download.png" />
 
-    <Resource Include="Resources\edit.png" />
-    <Resource Include="Resources\electrical.png" />
-    <Resource Include="Resources\grid.png" />
-    <Resource Include="Resources\hand.png" />
-    <Resource Include="Resources\Icon.png" />
-    <Resource Include="Resources\kitchen.png" />
-    <Resource Include="Resources\livingroom.png" />
-    <Resource Include="Resources\mine-cart.png" />
-    <Resource Include="Resources\moon.png" />
-    <Resource Include="Resources\next.png" />
-    <Resource Include="Resources\phon.png" />
-    <Resource Include="Resources\shopping-cart.png" />
+    <Resource Include="Resources\AppSorce\edit.png" />
+    <Resource Include="Resources\AppSorce\electrical.png" />
+    <Resource Include="Resources\AppSorce\grid.png" />
+    <Resource Include="Resources\AppSorce\hand.png" />
+    <Resource Include="Resources\AppSorce\Icon.png" />
+    <Resource Include="Resources\AppSorce\kitchen.png" />
+    <Resource Include="Resources\AppSorce\livingroom.png" />
+    <Resource Include="Resources\AppSorce\mine-cart.png" />
+    <Resource Include="Resources\AppSorce\moon.png" />
+    <Resource Include="Resources\AppSorce\next.png" />
+    <Resource Include="Resources\AppSorce\phon.png" />
+    <Resource Include="Resources\AppSorce\shopping-cart.png" />
 
-    <Resource Include="Resources\trash.png" />
-    <Resource Include="Resources\upload (1).png" />
+    <Resource Include="Resources\AppSorce\trash.png" />
+    <Resource Include="Resources\AppSorce\upload %281%29.png" />
 
-    <SplashScreen Include="Resources\logo.png" />
-    <Resource Include="Resources\plumbing.png" />
-    <Resource Include="Resources\Save.png" />
-    <Resource Include="Resources\undo-arrow.png" />
-    <Resource Include="Resources\USER2-removebg-preview.png" />
+    <SplashScreen Include="Resources\AppSorce\logo.png" />
+    <Resource Include="Resources\AppSorce\plumbing.png" />
+    <Resource Include="Resources\AppSorce\Save.png" />
+    <Resource Include="Resources\AppSorce\undo-arrow.png" />
+    <Resource Include="Resources\AppSorce\USER2-removebg-preview.png" />
 
 
   </ItemGroup>
