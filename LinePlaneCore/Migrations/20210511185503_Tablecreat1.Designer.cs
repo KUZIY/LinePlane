@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinePlaneCore.Migrations
 {
     [DbContext(typeof(LinePlaneContext))]
-    [Migration("20210511164013_TableFix1")]
-    partial class TableFix1
+    [Migration("20210511185503_Tablecreat1")]
+    partial class Tablecreat1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

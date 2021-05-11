@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
+
 namespace LinePlaneCore.Manger
 {
     static internal class SaveManager
@@ -21,7 +22,7 @@ namespace LinePlaneCore.Manger
             using (var DBContext = new LinePlaneContext())
             {
 
-                foreach ( var x in DBContext.Conservations.Where(b=>b._IdUser== UserData.UserID))
+                foreach (var x in DBContext.Conservations.Where(b => b._IdUser == UserData.UserID))
                 {
                     SaveView DbSave = new SaveView() { SaveName = x._SaveName };
                     Colection.Add(DbSave);
@@ -33,9 +34,9 @@ namespace LinePlaneCore.Manger
             return Colection;
         }
 
-        internal static void SetSave (Canvas canvas, string SaveName)
+        internal static void SetSave(Canvas canvas, string SaveName)
         {
-            using (var DBContext=new LinePlaneContext())
+            using (var DBContext = new LinePlaneContext())
             {
 
 
@@ -46,7 +47,7 @@ namespace LinePlaneCore.Manger
 
                 if (SaveID == null) return false;*/
 
-                Conservations AddSave = new Conservations() { _Picture="asd" ,_IdUser = UserData.UserID, _SaveName = SaveName };
+                Conservations AddSave = new Conservations() { _Picture = "asd", _IdUser = UserData.UserID, _SaveName = SaveName };
 
                 DBContext.Conservations.Add(AddSave);
                 DBContext.SaveChanges();
@@ -74,11 +75,11 @@ namespace LinePlaneCore.Manger
                         DBContext.Сoordinates.Add(coordinates);
                         DBContext.SaveChanges();
 
-                        int _IdСoordinates = DBContext.Сoordinates.OrderBy(Coord=>Coord._Id).Last()._Id;
+                        int _IdСoordinates = DBContext.Сoordinates.OrderBy(Coord => Coord._Id).Last()._Id;
 
-                        Project AddSaveProject = new() { _IdConservation = ConservationID, _IdFurniture = FurnitureID, _IdСoordinates = _IdСoordinates};
+                        Project AddSaveProject = new() { _IdConservation = ConservationID, _IdFurniture = FurnitureID, _IdСoordinates = _IdСoordinates };
                         DBContext.Projects.Add(AddSaveProject);
-                        
+
                     }
                 }
 
@@ -103,13 +104,13 @@ namespace LinePlaneCore.Manger
                 }
 
             }
-        }  
+        }
 
         internal static bool NewSave(ref ObservableCollection<SaveView> SaveList, string SaveName)
         {
             using (LinePlaneContext DBContext = new LinePlaneContext())
             {
-                foreach (var x in DBContext.Conservations.Where(obj=>obj._SaveName == SaveName))
+                foreach (var x in DBContext.Conservations.Where(obj => obj._SaveName == SaveName))
                 {
                     return false;
                 }
@@ -119,27 +120,115 @@ namespace LinePlaneCore.Manger
             }
         }
 
-     //  internal static void DeleteSave(string SaveName)
-     //  {
-     //      var deleteOrderDetails =
-     //          from details in db.OrderDetails
-     //          where details.OrderID == 11000
-     //          select details;
-     //
-     //      foreach (var detail in deleteOrderDetails)
-     //      {
-     //          db.OrderDetails.DeleteOnSubmit(detail);
-     //      }
-     //
-     //      try
-     //      {
-     //          db.SubmitChanges();
-     //      }
-     //      catch (Exception e)
-     //      {
-     //          Console.WriteLine(e);
-     //          // Provide for exceptions.
-     //      }
-     //  }
+        internal static void DeleteSave(string SaveName)
+        {
+            LinePlaneContext m = new LinePlaneContext();
+            int IdConservation = 0;
+            foreach (var x in m.Conservations.Where(obj => obj._SaveName == SaveName))
+            {
+                IdConservation = x._Id;
+            }
+            LinePlaneContext db = new LinePlaneContext();
+
+            var deleteWalls =
+                from t in db.Walls
+                where t._IdConservation == IdConservation
+                select t;
+
+            foreach (var t in deleteWalls)
+            {
+                db.Walls.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+
+
+   //         foreach (var x in m.Projects.Where(obj => obj._IdConservation == IdConservation))
+   //         {
+   //             IdConservation = x._Id;
+   //
+   //             var deleteСoordinates =
+   //                from t in db.Сoordinates
+   //                where t._Id == x._IdСoordinates
+   //                select t;
+   //
+   //             foreach (var t in deleteСoordinates)
+   //             {
+   //                 db.Сoordinates.Remove(t);
+   //
+   //             }
+   //
+   //             try
+   //             {
+   //                 db.SaveChanges();
+   //             }
+   //             catch
+   //             {
+   //             }
+   //
+   //         }
+   //
+
+            var deleteProject =
+                from t in db.Projects
+                where t._IdConservation == IdConservation
+                select t;
+
+            foreach (var t in deleteProject)
+            {
+                var deleteСoordinates =
+                   from q in db.Сoordinates
+                   where q._Id == t._IdСoordinates
+                   select q;
+
+                foreach (var q in deleteСoordinates)
+                {
+                    db.Сoordinates.Remove(q);
+
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                }
+                db.Projects.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+
+            var deleteConservation =
+    from t in db.Conservations
+    where t._Id == IdConservation
+    select t;
+
+            foreach (var t in deleteConservation)
+            {
+                db.Conservations.Remove(t);
+            }
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+            }
+        }
     }
 }
+

@@ -2,7 +2,7 @@
 
 namespace LinePlaneCore.Migrations
 {
-    public partial class CreateTable : Migration
+    public partial class Tablecreat1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace LinePlaneCore.Migrations
                 {
                     _Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    _X = table.Column<int>(type: "int", nullable: false),
-                    _Y = table.Column<int>(type: "int", nullable: false)
+                    _X = table.Column<double>(type: "float", nullable: false),
+                    _Y = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,6 +73,7 @@ namespace LinePlaneCore.Migrations
                     _Link = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     _Price = table.Column<int>(type: "int", nullable: false),
                     _FurnitureName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    _FurnitureUSERName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     _IdTipeFurniture = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -140,10 +141,10 @@ namespace LinePlaneCore.Migrations
                 {
                     _Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    _X1 = table.Column<int>(type: "int", nullable: false),
-                    _Y1 = table.Column<int>(type: "int", nullable: false),
-                    _X2 = table.Column<int>(type: "int", nullable: false),
-                    _Y2 = table.Column<int>(type: "int", nullable: false),
+                    _X1 = table.Column<double>(type: "float", nullable: false),
+                    _Y1 = table.Column<double>(type: "float", nullable: false),
+                    _X2 = table.Column<double>(type: "float", nullable: false),
+                    _Y2 = table.Column<double>(type: "float", nullable: false),
                     _IdConservation = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
