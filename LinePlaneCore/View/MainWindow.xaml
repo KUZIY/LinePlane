@@ -528,7 +528,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Кровать односпальная"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="Bed1" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 
@@ -538,7 +538,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Кровать двухспальная"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="Bed2" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 
@@ -548,7 +548,7 @@
                                 </Button.Effect>
                                 <TextBlock Text="Прикроватная тумбочка"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="BedsideTable" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 
@@ -559,7 +559,7 @@
 
                                 <TextBlock Text="Косметический столик"/>
                                 <Button.InputBindings>
-                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="" MouseAction="LeftClick"/>
+                                    <MouseBinding Command="{Binding SpawnShapeCommand}" CommandParameter="CosmeticTable" MouseAction="LeftClick"/>
                                 </Button.InputBindings>
                             </Button>
 

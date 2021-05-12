@@ -16,7 +16,7 @@ namespace LinePlaneCore.Logic
             {
                 using (var DBContext = new LinePlaneContext())
                 {
-                    if ((int)x.Tag != 0)
+                    if ( x.Tag!=null && (int)x.Tag != 0)
                     {
                         foreach (var o in DBContext.Furnitures.Where(obj => obj._Id == (int)x.Tag))
                         {
